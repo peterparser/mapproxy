@@ -3,7 +3,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>mapproxy-util &#8212; MapProxy 1.14.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
@@ -98,7 +99,7 @@
       </div>
     <div class="col-md-8">
       
-  <div class="section" id="mapproxy-util">
+  <section id="mapproxy-util">
 <span id="id1"></span><h1>mapproxy-util<a class="headerlink" href="#mapproxy-util" title="Permalink to this headline">¶</a></h1>
 <p>The commandline tool <code class="docutils literal notranslate"><span class="pre">mapproxy-util</span></code> provides sub-commands that are helpful when working with MapProxy.</p>
 <p>To get a list of all sub-commands call:</p>
@@ -125,7 +126,7 @@
 <li><p><a class="reference internal" href="#mapproxy-defrag-compact-cache"><span class="std std-ref">defrag-compact-cache</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">autoconfig</span></code> (see <a class="reference internal" href="mapproxy_util_autoconfig.html#mapproxy-util-autoconfig"><span class="std std-ref">mapproxy-util autoconfig</span></a>)</p></li>
 </ul>
-<div class="section" id="create">
+<section id="create">
 <span id="mapproxy-util-create"></span><h2><code class="docutils literal notranslate"><span class="pre">create</span></code><a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h2>
 <p>This sub-command creates example configurations for you. There are templates for each configuration file.</p>
 <dl class="std cmdoption">
@@ -152,7 +153,7 @@
 <dd><p>Overwrite any existing configuration with the same output filename.</p>
 </dd></dl>
 
-<div class="section" id="configuration-templates">
+<section id="configuration-templates">
 <h3>Configuration templates<a class="headerlink" href="#configuration-templates" title="Permalink to this headline">¶</a></h3>
 <p>Available templates are:</p>
 <dl class="simple">
@@ -163,15 +164,15 @@
 <dt>wsgi-app:</dt><dd><p>Creates an example server script for the given MapProxy configuration (<a class="reference internal" href="#cmdoption-mapproxy-util-create-f"><code class="xref std std-option docutils literal notranslate"><span class="pre">--f/--mapproxy-conf</span></code></a>) . You need to pass the target filename to the command.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="example">
+</section>
+<section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">create</span> <span class="o">-</span><span class="n">t</span> <span class="n">base</span><span class="o">-</span><span class="n">config</span> <span class="o">./</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="serve-develop">
+</section>
+</section>
+<section id="serve-develop">
 <span id="mapproxy-util-serve-develop"></span><span id="index-0"></span><h2><code class="docutils literal notranslate"><span class="pre">serve-develop</span></code><a class="headerlink" href="#serve-develop" title="Permalink to this headline">¶</a></h2>
 <p>This sub-command starts a MapProxy instance of your configuration as a stand-alone server.</p>
 <p>You need to pass the MapProxy configuration as an argument. The server will automatically reload if you change the configuration or any of the MapProxy source code.</p>
@@ -187,14 +188,14 @@
 <dd><p>The server outputs debug logging information to the console.</p>
 </dd></dl>
 
-<div class="section" id="id2">
+<section id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">serve</span><span class="o">-</span><span class="n">develop</span> <span class="o">./</span><span class="n">mapproxy</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="serve-multiapp-develop">
+</section>
+</section>
+<section id="serve-multiapp-develop">
 <span id="mapproxy-util-serve-multiapp-develop"></span><span id="index-1"></span><h2><code class="docutils literal notranslate"><span class="pre">serve-multiapp-develop</span></code><a class="headerlink" href="#serve-multiapp-develop" title="Permalink to this headline">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -207,14 +208,14 @@
 <dd><p>The server address where the HTTP server should listen for incomming connections. Can be a port (<code class="docutils literal notranslate"><span class="pre">:8080</span></code>), a host (<code class="docutils literal notranslate"><span class="pre">localhost</span></code>) or both (<code class="docutils literal notranslate"><span class="pre">localhost:8081</span></code>). The default is <code class="docutils literal notranslate"><span class="pre">localhost:8080</span></code>. You need to use <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code> to be able to connect to the server from external clients.</p>
 </dd></dl>
 
-<div class="section" id="id3">
+<section id="id3">
 <h3>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">serve</span><span class="o">-</span><span class="n">multiapp</span><span class="o">-</span><span class="n">develop</span> <span class="n">my_projects</span><span class="o">/</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="scales">
+</section>
+</section>
+<section id="scales">
 <span id="mapproxy-util-scales"></span><span id="index-2"></span><h2><code class="docutils literal notranslate"><span class="pre">scales</span></code><a class="headerlink" href="#scales" title="Permalink to this headline">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.2.0.</span></p>
@@ -252,7 +253,7 @@
 <dd><p>Calculate from resolutions to scale.</p>
 </dd></dl>
 
-<div class="section" id="id4">
+<section id="id4">
 <h3>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>For multiple levels as MapProxy configuration snippet:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">scales</span> <span class="o">-</span><span class="n">l</span> <span class="mi">4</span> <span class="o">--</span><span class="k">as</span><span class="o">-</span><span class="n">res</span><span class="o">-</span><span class="n">config</span> <span class="mi">100000</span>
@@ -281,9 +282,9 @@
 <span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="wms-capabilities">
+</section>
+</section>
+<section id="wms-capabilities">
 <span id="mapproxy-util-wms-capabilities"></span><h2><code class="docutils literal notranslate"><span class="pre">wms-capabilities</span></code><a class="headerlink" href="#wms-capabilities" title="Permalink to this headline">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
@@ -303,7 +304,7 @@
 <dd><p>Parse the Capabilities-document for the given version. Only version 1.1.1 and 1.3.0 are supported. The default value is 1.1.1</p>
 </dd></dl>
 
-<div class="section" id="id5">
+<section id="id5">
 <h3>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>With the following MapProxy layer configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span><span class="p">:</span>
@@ -385,9 +386,9 @@ Root-Layer:
             llbbox: [-180.0, -85.0511287798, 180.0, 85.0511287798]
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="grids">
+</section>
+</section>
+<section id="grids">
 <span id="mapproxy-util-grids"></span><h2><code class="docutils literal notranslate"><span class="pre">grids</span></code><a class="headerlink" href="#grids" title="Permalink to this headline">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
@@ -435,7 +436,7 @@ The coverage must be defined in Seed configuration.</p>
 <dd><p>This option loads the seed configuration and is needed if you use the <code class="docutils literal notranslate"><span class="pre">--coverage</span></code> option.</p>
 </dd></dl>
 
-<div class="section" id="id6">
+<section id="id6">
 <h3>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>With the following MapProxy grid configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grids</span><span class="p">:</span>
@@ -496,9 +497,9 @@ The coverage must be defined in Seed configuration.</p>
         <span class="mi">19</span><span class="p">:</span>  <span class="mf">0.019073486328125</span><span class="p">,</span> <span class="c1">#  73417 * 115402 =   8.472G</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="export">
+</section>
+</section>
+<section id="export">
 <span id="mapproxy-util-export"></span><h2><code class="docutils literal notranslate"><span class="pre">export</span></code><a class="headerlink" href="#export" title="Permalink to this headline">¶</a></h2>
 <p>This sub-command exports tiles from one cache to another. This is similar to the seed tool, but you don’t need to edit the configuration. The destination cache, grid and the coverage can be defined on the command line.</p>
 <p>Required arguments:</p>
@@ -557,7 +558,7 @@ The coverage must be defined in Seed configuration.</p>
 <dd><p>The number of concurrent export processes.</p>
 </dd></dl>
 
-<div class="section" id="export-types">
+<section id="export-types">
 <h3>Export types<a class="headerlink" href="#export-types" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">tms</span></code>:</dt><dd><p>Export tiles in a TMS like directory structure.</p>
@@ -575,31 +576,31 @@ The coverage must be defined in Seed configuration.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">compact-v1</span></code>:</dt><dd><p>Export tiles as ArcGIS compact cache bundle files (version 1).</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="examples">
+</section>
+<section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p>Export tiles into a TMS directory structure under <code class="docutils literal notranslate"><span class="pre">./cache/</span></code>. Limit export to the BBOX and levels 0 to 6.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">mapproxy</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">grid</span> <span class="n">osm_grid</span> \
     <span class="o">--</span><span class="n">source</span> <span class="n">osm_cache</span> <span class="o">--</span><span class="n">dest</span> <span class="o">./</span><span class="n">cache</span><span class="o">/</span> \
-    <span class="o">--</span><span class="n">levels</span> <span class="mf">1..6</span> <span class="o">--</span><span class="n">coverage</span> <span class="mi">5</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">60</span> <span class="o">--</span><span class="n">srs</span> <span class="mi">4326</span>
+    <span class="o">--</span><span class="n">levels</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">6</span> <span class="o">--</span><span class="n">coverage</span> <span class="mi">5</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">60</span> <span class="o">--</span><span class="n">srs</span> <span class="mi">4326</span>
 </pre></div>
 </div>
 <p>Export tiles into an MBTiles file. Limit export to a shape coverage.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">mapproxy</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">grid</span> <span class="n">osm_grid</span> \
     <span class="o">--</span><span class="n">source</span> <span class="n">osm_cache</span> <span class="o">--</span><span class="n">dest</span> <span class="n">osm</span><span class="o">.</span><span class="n">mbtiles</span> <span class="o">--</span><span class="nb">type</span> <span class="n">mbtile</span> \
-    <span class="o">--</span><span class="n">levels</span> <span class="mf">1..6</span> <span class="o">--</span><span class="n">coverage</span> <span class="n">boundaries</span><span class="o">.</span><span class="n">shp</span> \
+    <span class="o">--</span><span class="n">levels</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">6</span> <span class="o">--</span><span class="n">coverage</span> <span class="n">boundaries</span><span class="o">.</span><span class="n">shp</span> \
     <span class="o">--</span><span class="n">where</span> <span class="s1">&#39;CNTRY_NAME = &quot;Germany&quot;&#39;</span> <span class="o">--</span><span class="n">srs</span> <span class="mi">3857</span>
 </pre></div>
 </div>
 <p>Export tiles into an MBTiles file using a custom grid definition.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">mapproxy</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">levels</span> <span class="mf">1..6</span> \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">mapproxy</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">levels</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">6</span> \
     <span class="o">--</span><span class="n">grid</span> <span class="s2">&quot;srs=&#39;EPSG:4326&#39; bbox=[5,50,10,60] tile_size=[512,512]&quot;</span> \
     <span class="o">--</span><span class="n">source</span> <span class="n">osm_cache</span> <span class="o">--</span><span class="n">dest</span> <span class="n">osm</span><span class="o">.</span><span class="n">mbtiles</span> <span class="o">--</span><span class="nb">type</span> <span class="n">mbtile</span> \
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="defrag-compact-cache">
+</section>
+</section>
+<section id="defrag-compact-cache">
 <span id="mapproxy-defrag-compact-cache"></span><h2><code class="docutils literal notranslate"><span class="pre">defrag-compact-cache</span></code><a class="headerlink" href="#defrag-compact-cache" title="Permalink to this headline">¶</a></h2>
 <p>The ArcGIS compact cache format version 1 and 2 are append only. Updating existing tiles will increase the file size. Bundle files become larger and fragmented with time. The <code class="docutils literal notranslate"><span class="pre">defrag-compact-cache</span></code> sub-command compacts existing bundle files by rewriting and reorganizing each bundle file.</p>
 <p>Required arguments:</p>
@@ -628,7 +629,7 @@ The coverage must be defined in Seed configuration.</p>
 <dd><p>This will simulate the defragmentation process.</p>
 </dd></dl>
 
-<div class="section" id="id7">
+<section id="id7">
 <h3>Examples<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>Defragment bundle files from <code class="docutils literal notranslate"><span class="pre">map1_cache</span></code> and <code class="docutils literal notranslate"><span class="pre">map2_cache</span></code> when they have more than 20% and 5MB of unused space. E.g. a 20 MB bundle file only gets rewritten if it becomes smaller then 15MB after defragmentation; a 500MB bundle file only gets rewritten if it becomes smaller then 400MB after defragmentation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="n">defrag</span><span class="o">-</span><span class="n">compact</span><span class="o">-</span><span class="n">cache</span> <span class="o">-</span><span class="n">f</span> <span class="n">mapproxy</span><span class="o">.</span><span class="n">yaml</span> \
@@ -637,9 +638,9 @@ The coverage must be defined in Seed configuration.</p>
   <span class="o">--</span><span class="n">caches</span> <span class="n">map1_cache</span><span class="p">,</span><span class="n">map2_cache</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>

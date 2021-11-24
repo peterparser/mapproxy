@@ -3,7 +3,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Installation on Windows &#8212; MapProxy 1.14.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
@@ -95,10 +96,10 @@
       </div>
     <div class="col-md-8">
       
-  <div class="section" id="installation-on-windows">
+  <section id="installation-on-windows">
 <h1>Installation on Windows<a class="headerlink" href="#installation-on-windows" title="Permalink to this headline">¶</a></h1>
 <p>At frist you need a working Python installation. You can download Python from: <a class="reference external" href="https://www.python.org/download/">https://www.python.org/download/</a>. MapProxy requires Python 2.7, 3.4 or higher.</p>
-<div class="section" id="virtualenv">
+<section id="virtualenv">
 <h2>Virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h2>
 <p><em>If</em> you are using your Python installation for other applications as well, then we advise you to install MapProxy into a virtual Python environment to avoid any conflicts with different dependencies. <em>You can skip this if you only use the Python installation for MapProxy.</em>
 <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">Read about virtualenv</a> if you want to know more about the benefits.</p>
@@ -121,8 +122,8 @@ To install MapProxy with most dependencies call:</p>
 </pre></div>
 </div>
 <p>This might take a minute. You can skip the next step.</p>
-</div>
-<div class="section" id="pip">
+</section>
+<section id="pip">
 <h2>PIP<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
 <p>MapProxy and most dependencies can be installed with the <code class="docutils literal notranslate"><span class="pre">pip</span></code> command. <code class="docutils literal notranslate"><span class="pre">pip</span></code> is already installed if you are using Python &gt;=2.7.9, or Python &gt;=3.4. <a class="reference external" href="https://pip.pypa.io/en/stable/installing/">Read the pip documentation for more information</a>.</p>
 <p>After that you can install MapProxy with:</p>
@@ -130,27 +131,27 @@ To install MapProxy with most dependencies call:</p>
 </pre></div>
 </div>
 <p>This might take a minute.</p>
-</div>
-<div class="section" id="dependencies">
+</section>
+<section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Read <a class="reference internal" href="install.html#dependency-details"><span class="std std-ref">Dependency details</span></a> for more information about all dependencies.</p>
-<div class="section" id="pillow-and-yaml">
+<section id="pillow-and-yaml">
 <h3>Pillow and YAML<a class="headerlink" href="#pillow-and-yaml" title="Permalink to this headline">¶</a></h3>
 <p>Pillow and PyYAML are installed automatically by <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
-</div>
-<div class="section" id="pyproj">
+</section>
+<section id="pyproj">
 <h3>PyProj<a class="headerlink" href="#pyproj" title="Permalink to this headline">¶</a></h3>
 <p>Since PROJ is generally not available on a Windows system, you will also need to install the Python package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyproj</span>
 </pre></div>
 </div>
 <p>See <em>Platform dependent packages</em> below if this installation fails as Windows packages might not be available for pyproj.</p>
-</div>
-<div class="section" id="shapely-and-geos-optional">
+</section>
+<section id="shapely-and-geos-optional">
 <h3>Shapely and GEOS <em>(optional)</em><a class="headerlink" href="#shapely-and-geos-optional" title="Permalink to this headline">¶</a></h3>
 <p>Shapely can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">Shapely</span></code>. This will already include the required <code class="docutils literal notranslate"><span class="pre">geos.dll</span></code>.</p>
-</div>
-<div class="section" id="gdal-optional">
+</section>
+<section id="gdal-optional">
 <h3>GDAL <em>(optional)</em><a class="headerlink" href="#gdal-optional" title="Permalink to this headline">¶</a></h3>
 <p>MapProxy requires GDAL/OGR for coverage support. MapProxy can either load the <code class="docutils literal notranslate"><span class="pre">gdal.dll</span></code> directly or use the <code class="docutils literal notranslate"><span class="pre">osgeo.ogr</span></code> Python package. You can <a class="reference external" href="http://www.gisinternals.com/sdk/">download and install inofficial Windows binaries of GDAL and the Python package</a> (e.g. <cite>gdal-19-xxxx-code.msi</cite>).</p>
 <p>You need to add the installation path to the Windows <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable in both cases.
@@ -163,9 +164,9 @@ You can set the variable temporary on the command line (spaces in the filename n
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">GDAL_DRIVER_PATH</span><span class="o">=</span><span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span> <span class="p">(</span><span class="n">x86</span><span class="p">)</span>\<span class="n">GDAL</span>\<span class="n">gdalplugins</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="platform-dependent-packages">
+</section>
+</section>
+<section id="platform-dependent-packages">
 <span id="win-platform-packages"></span><h2>Platform dependent packages<a class="headerlink" href="#platform-dependent-packages" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span></code> downloads all packages from <a class="reference external" href="https://pypi.org/">https://pypi.org/</a>, but not all platform combinations might be available as a binary package, especially if you run a 64bit version of Python.</p>
 <p>If you run into trouble during installation, because it is trying to compile something (e.g. complaining about <code class="docutils literal notranslate"><span class="pre">vcvarsall.bat</span></code>), you should look at Christoph Gohlke’s <a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">Unofficial Windows Binaries for Python Extension Packages</a>. This is a reliable site for binary packages for Python. You need to download the right package: The <code class="docutils literal notranslate"><span class="pre">cpxx</span></code> code refers to the Python version (e.g. <code class="docutils literal notranslate"><span class="pre">cp27</span></code> for Python 2.7); <code class="docutils literal notranslate"><span class="pre">win32</span></code> for 32bit Python installations and <code class="docutils literal notranslate"><span class="pre">amd64</span></code> for 64bit.</p>
@@ -173,16 +174,16 @@ You can set the variable temporary on the command line (spaces in the filename n
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">path</span>\<span class="n">to</span>\<span class="n">package</span><span class="o">-</span><span class="n">xxx</span><span class="o">.</span><span class="n">whl</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="check-installation">
+</section>
+<section id="check-installation">
 <h2>Check installation<a class="headerlink" href="#check-installation" title="Permalink to this headline">¶</a></h2>
 <p>To check if the MapProxy was successfully installed you can call <code class="docutils literal notranslate"><span class="pre">mapproxy-util</span></code>. You should see the installed version number.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">util</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
 <p>Now continue with <a class="reference internal" href="install.html#create-configuration"><span class="std std-ref">Create a configuration</span></a> from the installation documentation.</p>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>

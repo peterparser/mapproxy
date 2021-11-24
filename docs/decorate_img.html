@@ -3,7 +3,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Decorate Image &#8212; MapProxy 1.14.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
@@ -92,22 +93,22 @@
       </div>
     <div class="col-md-8">
       
-  <div class="section" id="decorate-image">
+  <section id="decorate-image">
 <h1>Decorate Image<a class="headerlink" href="#decorate-image" title="Permalink to this headline">¶</a></h1>
 <p>MapProxy provides the ability to update the image produced in response to a WMS GetMap or Tile request prior to it being sent to the client. This can be used to decorate the image in some way such as applying an image watermark or applying an effect.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Some Python programming and knowledge of <a class="reference external" href="http://wsgi.org">WSGI</a> and WSGI middleware is required to take advantage of this feature.</p>
 </div>
-<div class="section" id="decorate-image-middleware">
+<section id="decorate-image-middleware">
 <h2>Decorate Image Middleware<a class="headerlink" href="#decorate-image-middleware" title="Permalink to this headline">¶</a></h2>
 <p>The ability to decorate the response image is implemented as WSGI middleware in a similar fashion to how <a class="reference internal" href="auth.html"><span class="doc">authorization</span></a> is handled. You must write a WSGI filter which wraps the MapProxy application in order to register a callback which accepts the ImageSource to be decorated.</p>
 <p>The callback is registered by assigning a function to the key <code class="docutils literal notranslate"><span class="pre">decorate_img</span></code> in the WSGI environment. Prior to the image being sent in the response MapProxy checks the environment and calls the callback passing the ImageSource and a number of other parameters related to the current request. The callback must then return a valid ImageSource instance which will be sent in the response.</p>
-<div class="section" id="wsgi-filter-middleware">
+<section id="wsgi-filter-middleware">
 <h3>WSGI Filter Middleware<a class="headerlink" href="#wsgi-filter-middleware" title="Permalink to this headline">¶</a></h3>
 <p>A simple middleware that annotates each image with information about the request might look like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mapproxy.image</span> <span class="kn">import</span> <span class="n">ImageSource</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageColor</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mapproxy.image</span> <span class="k">import</span> <span class="n">ImageSource</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">ImageColor</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
 
 
 <span class="k">def</span> <span class="nf">annotate_img</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">query_extent</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
@@ -143,10 +144,10 @@
 
 <span class="sd">    Annotates map images with information about the request.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">global_conf</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">global_conf</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">app</span>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
         <span class="c1"># Add the callback to the WSGI environment</span>
         <span class="n">environ</span><span class="p">[</span><span class="s1">&#39;mapproxy.decorate_img&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotate_img</span>
 
@@ -171,9 +172,9 @@
 <span class="o">...</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="mapproxy-decorate-image-api">
+</section>
+</section>
+<section id="mapproxy-decorate-image-api">
 <h2>MapProxy Decorate Image API<a class="headerlink" href="#mapproxy-decorate-image-api" title="Permalink to this headline">¶</a></h2>
 <p>The signature of the decorate_img function:</p>
 <dl class="py function">
@@ -202,8 +203,8 @@ of the request</p></li>
 <p>The actual name of the callable is insignificant, only the environment key <code class="docutils literal notranslate"><span class="pre">mapproxy.decorate_img</span></code> is important.</p>
 </div>
 <p>The function should return a valid ImageSource instance, either the one passed or a new instance depending the implementation.</p>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
