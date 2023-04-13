@@ -3,15 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Configuration examples &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="INSPIRE View Service" href="inspire.html" />
@@ -36,7 +35,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
+      <a href="index.html" class="pull-left">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -114,10 +113,10 @@
       </div>
     <div class="col-md-8">
       
-  <div class="section" id="configuration-examples">
+  <section id="configuration-examples">
 <span id="id1"></span><h1>Configuration examples<a class="headerlink" href="#configuration-examples" title="Permalink to this heading">¶</a></h1>
 <p>This document will show you some usage scenarios of MapProxy and will explain some combinations of configuration options that might be useful for you.</p>
-<div class="section" id="merge-multiple-layers">
+<section id="merge-multiple-layers">
 <span id="merge-layers"></span><h2>Merge multiple layers<a class="headerlink" href="#merge-multiple-layers" title="Permalink to this heading">¶</a></h2>
 <p>You have two WMS and want to offer a single layer with data from both servers. Each MapProxy cache can have more than one data source. MapProxy will combine the results from the sources before it stores the tiles on disk. These combined layers can also be requested via tiled services.</p>
 <p>The sources should be defined from bottom to top. All sources except the bottom source needs to be transparent.</p>
@@ -152,7 +151,7 @@ sources:
 <p class="admonition-title">Note</p>
 <p>If the layers come from the same WMS server, then you can add them direct to the <code class="docutils literal notranslate"><span class="pre">layers</span></code> parameter. E.g. <code class="docutils literal notranslate"><span class="pre">layers:</span> <span class="pre">water,railroads,roads</span></code>.</p>
 </div>
-<div class="section" id="merge-tile-sources">
+<section id="merge-tile-sources">
 <h3>Merge tile sources<a class="headerlink" href="#merge-tile-sources" title="Permalink to this heading">¶</a></h3>
 <p>You can also merge multiple tile sources. You need to tell MapProxy that all overlay sources are transparent:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sources:
@@ -162,9 +161,9 @@ sources:
     transparent: true
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="access-local-servers">
+</section>
+</section>
+<section id="access-local-servers">
 <h2>Access local servers<a class="headerlink" href="#access-local-servers" title="Permalink to this heading">¶</a></h2>
 <p>By default MapProxy will request data in the same format it uses to cache the data, if you cache files in PNG MapProxy will request all images from the source WMS in PNG. This encoding is quite CPU intensive for your WMS server but reduces the amount of data than needs to be transfered between you WMS and MapProxy. You can use uncompressed TIFF as the request format, if both servers are on the same host or if they are connected with high bandwidth.</p>
 <p>Example:</p>
@@ -178,8 +177,8 @@ sources:
       transparent: true
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-wms-from-existing-tile-server">
+</section>
+<section id="create-wms-from-existing-tile-server">
 <h2>Create WMS from existing tile server<a class="headerlink" href="#create-wms-from-existing-tile-server" title="Permalink to this heading">¶</a></h2>
 <p>You can use MapProxy to create a WMS server with data from an existing tile server. That tile server could be a WMTS, TMS or any other tile service where you can access tiles by simple HTTP requests. You always need to configure a cache in MapProxy to get a WMS from a tile source, since the cache is the part that does the tile stitching and reprojection.</p>
 <p>Here is a minimal example:</p>
@@ -242,8 +241,8 @@ Other tile services might use different SRS, bounding boxes or resolutions. You 
 <p class="admonition-title">Note</p>
 <p>Please make sure you are allowed to access the tile service. Commercial tile provider often prohibit the direct access to tiles. The tile service from OpenStreetMap has a strict <a class="reference external" href="http://wiki.openstreetmap.org/wiki/Tile_usage_policy">Tile Usage Prolicy</a>.</p>
 </div>
-</div>
-<div class="section" id="overlay-tiles-with-openstreetmap-or-google-maps-in-openlayers">
+</section>
+<section id="overlay-tiles-with-openstreetmap-or-google-maps-in-openlayers">
 <span id="overlay-tiles-osm-openlayers"></span><h2>Overlay tiles with OpenStreetMap or Google Maps in OpenLayers<a class="headerlink" href="#overlay-tiles-with-openstreetmap-or-google-maps-in-openlayers" title="Permalink to this heading">¶</a></h2>
 <p>You need to take care of a few options when you want to overlay your MapProxy tiles in OpenLayers with existing OpenStreetMap or Google Maps tiles.</p>
 <p>The basic configuration for this use-case with MapProxy may look like this:</p>
@@ -303,8 +302,8 @@ The first example creates a simple OpenLayers map in webmercator projection, add
 </div>
 <p>The origin parameter at the end of the URL tells MapProxy that the client expects the origin in the upper left corner (north/west).
 You can change the default origin of all MapProxy tile layers by using the <code class="docutils literal notranslate"><span class="pre">origin</span></code> option of the <code class="docutils literal notranslate"><span class="pre">tms</span></code> service. See the <a class="reference internal" href="services.html#google-maps-label"><span class="std std-ref">TMS standard tile origin</span></a> for more informations.</p>
-</div>
-<div class="section" id="using-existing-caches">
+</section>
+<section id="using-existing-caches">
 <span id="id2"></span><h2>Using existing caches<a class="headerlink" href="#using-existing-caches" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
@@ -335,8 +334,8 @@ to cover a larger bounding box, or to support tile clients that expect a differe
     <span class="n">min_res</span><span class="p">:</span> <span class="mi">5700</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="reprojecting-tiles">
+</section>
+<section id="reprojecting-tiles">
 <h2>Reprojecting Tiles<a class="headerlink" href="#reprojecting-tiles" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
@@ -375,8 +374,8 @@ Here is an example that uses OSM tiles as a source and offers them in UTM projec
     <span class="n">min_res</span><span class="p">:</span> <span class="mi">5700</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-grayscale-images">
+</section>
+<section id="create-grayscale-images">
 <h2>Create grayscale images<a class="headerlink" href="#create-grayscale-images" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.9.0.</span></p>
@@ -395,8 +394,8 @@ The following example mixes the RGB bands of a source with factors that matches 
          <span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="cache-raster-data">
+</section>
+<section id="cache-raster-data">
 <h2>Cache raster data<a class="headerlink" href="#cache-raster-data" title="Permalink to this heading">¶</a></h2>
 <p>You have a WMS server that offers raster data like aerial images. By default MapProxy uses PNG images as the caching format. The encoding process for PNG files is very CPU intensive and thus the caching process itself takes longer. For aerial images the quality of loss-less image formats like PNG is often not required. For best performance you should use JPEG as the cache format.</p>
 <p>By default MapProxy uses <cite>bicubic</cite> resampling. This resampling method also sharpens the image which is important for vector images. Aerial images do not need this, so you can use <cite>bilinear</cite> or even Nearest Neighbor (<cite>nearest</cite>) resampling.</p>
@@ -413,7 +412,7 @@ The following example mixes the RGB bands of a source with factors that matches 
   <span class="n">jpeg_quality</span><span class="p">:</span> <span class="mi">80</span>
 </pre></div>
 </div>
-<div class="section" id="mixed-mode">
+<section id="mixed-mode">
 <h3>Mixed mode<a class="headerlink" href="#mixed-mode" title="Permalink to this heading">¶</a></h3>
 <p>You need to store images with transparency when you want to overlay them over other images, e.g. at the boundaries of your aerial image coverage. PNG supports transparency but it is not efficient with arial images, while JPEG is efficient for aerial images but doesn’t support transparency.</p>
 <p>MapProxy <a class="reference internal" href="configuration.html#mixed-image-format"><span class="std std-ref">has a mixed image format</span></a> for this case. With the <code class="docutils literal notranslate"><span class="pre">mixed</span></code> format, MapProxy stores tiles as either PNG or JPEG, depending on the transparency of each tile. Images with transparency will be stored as PNG, fully opaque images as JPEG.</p>
@@ -438,12 +437,12 @@ The following example mixes the RGB bands of a source with factors that matches 
 </div>
 <p>You can now use the cache in all MapProxy services. WMS GetMap requests will return the image with the requested format.
 With TMS or WMTS you can only request PNG tiles, but the actual response image is either PNG or JPEG. The HTTP <cite>content-type</cite> header is set accordingly. This is supported by all web browsers.</p>
-</div>
-</div>
-<div class="section" id="cache-vector-data">
+</section>
+</section>
+<section id="cache-vector-data">
 <h2>Cache vector data<a class="headerlink" href="#cache-vector-data" title="Permalink to this heading">¶</a></h2>
 <p>You have a WMS server that renders vector data like road maps.</p>
-<div class="section" id="cache-resolutions">
+<section id="cache-resolutions">
 <span id="id3"></span><h3>Cache resolutions<a class="headerlink" href="#cache-resolutions" title="Permalink to this heading">¶</a></h3>
 <p>By default MapProxy caches traditional power-of-two image pyramids, the resolutions between each pyramid level doubles. For example if the first level has a resolution of 10km, it would also cache resolutions of 5km, 2.5km, 1.125km etc. Requests with a resolution of 7km would be generated from cached data with a resolution of 10km. The problem with this approach is, that everything needs to be scaled down, lines will get thin and text labels will become unreadable. The solution is simple: Just add more levels to the pyramid. There are three options to do this.</p>
 <p>You can set every cache resolution in the <code class="docutils literal notranslate"><span class="pre">res</span></code> option of a layer.</p>
@@ -474,8 +473,8 @@ With TMS or WMTS you can only request PNG tiles, but the actual response image i
 <p class="admonition-title">Note</p>
 <p>This does not improve the quality of aerial images or scanned maps, so you should avoid it for these images.</p>
 </div>
-</div>
-<div class="section" id="resampling-method">
+</section>
+<section id="resampling-method">
 <h3>Resampling method<a class="headerlink" href="#resampling-method" title="Permalink to this heading">¶</a></h3>
 <p>You can configure the method MapProxy uses for resampling when it scales or transforms data. For best results with vector data – from a viewers perspective – you should use bicubic resampling. You can configure this for each cache or in the globals section:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">caches</span><span class="p">:</span>
@@ -491,9 +490,9 @@ With TMS or WMTS you can only request PNG tiles, but the actual response image i
     <span class="n">resampling</span><span class="p">:</span> <span class="n">bicubic</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="wms-sources-with-styled-layer-description-sld">
+</section>
+</section>
+<section id="wms-sources-with-styled-layer-description-sld">
 <span id="sld-example"></span><h2>WMS Sources with Styled Layer Description (SLD)<a class="headerlink" href="#wms-sources-with-styled-layer-description-sld" title="Permalink to this heading">¶</a></h2>
 <p>You can configure SLDs for your WMS sources.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sources:
@@ -519,12 +518,12 @@ The path can either be absolute (e.g. <code class="docutils literal notranslate"
 </pre></div>
 </div>
 <p>MapProxy will use HTTP POST requests in this case. You can change <code class="docutils literal notranslate"><span class="pre">http.method</span></code>, if you want to force GET requests.</p>
-</div>
-<div class="section" id="add-highly-dynamic-layers">
+</section>
+<section id="add-highly-dynamic-layers">
 <span id="direct-source"></span><h2>Add highly dynamic layers<a class="headerlink" href="#add-highly-dynamic-layers" title="Permalink to this heading">¶</a></h2>
 <p>You have dynamic layers that change constantly and you do not want to cache these. You can use a direct source. See next example.</p>
-</div>
-<div class="section" id="reproject-wms-layers">
+</section>
+<section id="reproject-wms-layers">
 <h2>Reproject WMS layers<a class="headerlink" href="#reproject-wms-layers" title="Permalink to this heading">¶</a></h2>
 <p>If you do not want to cache data but still want to use MapProxy’s ability to reproject WMS layers on the fly, you can use a direct layer. Add your source directly to your layer instead of a cache.</p>
 <p>You should explicitly define the SRS the source WMS supports. Requests in other SRS will be reprojected. You should specify at least one geographic and one projected SRS to limit the distortions from reprojection.</p>
@@ -541,8 +540,8 @@ sources:
       layers: layer0,layer1
 </pre></div>
 </div>
-</div>
-<div class="section" id="featureinformation">
+</section>
+<section id="featureinformation">
 <span id="fi-xslt"></span><h2>FeatureInformation<a class="headerlink" href="#featureinformation" title="Permalink to this heading">¶</a></h2>
 <p>MapProxy can pass-through FeatureInformation requests to your WMS sources. You need to enable each source:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sources:
@@ -561,10 +560,10 @@ sources:
 <p class="admonition-title">Note</p>
 <p>The more advanced features <a class="reference internal" href="install.html#lxml-install"><span class="std std-ref">require the lxml library</span></a>.</p>
 </div>
-<div class="section" id="concatenation">
+<section id="concatenation">
 <h3>Concatenation<a class="headerlink" href="#concatenation" title="Permalink to this heading">¶</a></h3>
 <p>Feature information from different sources are concatenated as plain text, that means that XML documents may become invalid. But MapProxy can also do content-aware concatenation when <a class="reference internal" href="install.html#lxml-install"><span class="std std-ref">lxml</span></a> is available.</p>
-<div class="section" id="html">
+<section id="html">
 <h4>HTML<a class="headerlink" href="#html" title="Permalink to this heading">¶</a></h4>
 <p>Multiple HTML documents are put into the HTML <code class="docutils literal notranslate"><span class="pre">body</span></code> of the first document.
 MapProxy creates the HTML skeleton if it is missing.</p>
@@ -584,8 +583,8 @@ MapProxy creates the HTML skeleton if it is missing.</p>
 <span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="xml">
+</section>
+<section id="xml">
 <h4>XML<a class="headerlink" href="#xml" title="Permalink to this heading">¶</a></h4>
 <p>Multiple XML documents are put in the root of the first document.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">root</span><span class="o">&gt;</span>
@@ -606,13 +605,13 @@ MapProxy creates the HTML skeleton if it is missing.</p>
 <span class="o">&lt;/</span><span class="n">root</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="xsl-transformations">
+</section>
+</section>
+<section id="xsl-transformations">
 <h3>XSL Transformations<a class="headerlink" href="#xsl-transformations" title="Permalink to this heading">¶</a></h3>
 <p>MapProxy supports XSL transformations for more control over feature information. This also requires <a class="reference internal" href="install.html#lxml-install"><span class="std std-ref">lxml</span></a>. You can add an XSLT script for each WMS source (incoming) and for the WMS service (outgoing).</p>
 <p>You can use XSLT for sources to convert all incoming documents to a single, uniform format and then use outgoing XSLT scripts to transform this format to either HTML or XML/GML output.</p>
-<div class="section" id="example">
+<section id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h4>
 <p>Lets assume we have two WMS sources where we have no control over the format of the feature info responses.</p>
 <p>One source only offers HTML feature information. The XSLT script extracts data from a table. We force the WMS <code class="docutils literal notranslate"><span class="pre">INFO_FORMAT</span></code> to HTML with the <code class="docutils literal notranslate"><span class="pre">featureinfo_format</span></code> option, so that MapProxy will not query another format. The XSLT script returns XML and not HTML. We configure this with the <code class="docutils literal notranslate"><span class="pre">featureinfo_out_format</span></code> option.</p>
@@ -645,10 +644,10 @@ MapProxy creates the HTML skeleton if it is missing.</p>
   <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="wmts-service-with-dimensions">
+</section>
+</section>
+</section>
+<section id="wmts-service-with-dimensions">
 <span id="wmts-dimensions"></span><h2>WMTS service with dimensions<a class="headerlink" href="#wmts-service-with-dimensions" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.6.0.</span></p>
@@ -703,8 +702,8 @@ The RESTful service requires a custom URL template that contains the dimensions.
 </div>
 <p>Tiles are then available at <code class="docutils literal notranslate"><span class="pre">/wmts/temperature/GLOBAL_MERCATOR/1000/2012-11-12T00:00Z/6/33/22.png</span></code>.
 You can use <code class="docutils literal notranslate"><span class="pre">default</span></code> for missing dimensions, e.g. <code class="docutils literal notranslate"><span class="pre">/wmts/map/GLOBAL_MERCATOR/default/default/6/33/22.png</span></code>.</p>
-</div>
-<div class="section" id="wms-layers-with-http-authentication">
+</section>
+<section id="wms-layers-with-http-authentication">
 <h2>WMS layers with HTTP Authentication<a class="headerlink" href="#wms-layers-with-http-authentication" title="Permalink to this heading">¶</a></h2>
 <p>You have a WMS source that requires authentication. MapProxy has support for HTTP Basic
 Authentication and HTTP Digest Authentication. You just need to add the username and password to the URL. Since the Basic and Digest authentication
@@ -732,8 +731,8 @@ You need to configure the SSL certificates to allow MapProxy to verify the HTTPS
 <p class="admonition-title">Note</p>
 <p>If the source requires session handling through cookies, have a look at the <code class="docutils literal notranslate"><span class="pre">manage_cookies</span></code> configuration option.</p>
 </div>
-</div>
-<div class="section" id="access-sources-through-http-proxy">
+</section>
+<section id="access-sources-through-http-proxy">
 <span id="http-proxy"></span><h2>Access sources through HTTP proxy<a class="headerlink" href="#access-sources-through-http-proxy" title="Permalink to this heading">¶</a></h2>
 <p>MapProxy can use an HTTP proxy to make requests to your sources, if your system does not allow direct access to the source. You need to set the <code class="docutils literal notranslate"><span class="pre">http_proxy</span></code> and <code class="docutils literal notranslate"><span class="pre">https_proxy</span></code> environment variable to the proxy URL. This also applies if you install MapProxy with <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
 <p>On Linux/Unix:</p>
@@ -761,8 +760,8 @@ $ mapproxy-util serve-develop mapproxy.yaml
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export no_proxy=&quot;localhost,127.0.0.1,196.168.1.99&quot;
 </pre></div>
 </div>
-</div>
-<div class="section" id="cookie-management">
+</section>
+<section id="cookie-management">
 <h2>Cookie Management<a class="headerlink" href="#cookie-management" title="Permalink to this heading">¶</a></h2>
 <p>MapProxy can handle server cookies of HTTP sources, like browsers do. That is, MapProxy accepts cookies and passes them back
 on subsequent calls. This is useful for sources that use cookie for session management or rate-limiting for example:</p>
@@ -776,10 +775,10 @@ on subsequent calls. This is useful for sources that use cookie for session mana
       layers: layer0
 </pre></div>
 </div>
-</div>
-<div class="section" id="serve-multiple-mapproxy-instances">
+</section>
+<section id="serve-multiple-mapproxy-instances">
 <span id="paster-urlmap"></span><h2>Serve multiple MapProxy instances<a class="headerlink" href="#serve-multiple-mapproxy-instances" title="Permalink to this heading">¶</a></h2>
-<p>It is possible to load multiple MapProxy instances into a single process. Each MapProxy can have a different global configuration and different services and caches. <a class="footnote-reference brackets" href="#f1" id="id4">1</a>  You can use <a class="reference internal" href="deployment.html#multimapproxy"><span class="std std-ref">MultiMapProxy</span></a> to load multiple MapProxy configurations on-demand.</p>
+<p>It is possible to load multiple MapProxy instances into a single process. Each MapProxy can have a different global configuration and different services and caches. <a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>  You can use <a class="reference internal" href="deployment.html#multimapproxy"><span class="std std-ref">MultiMapProxy</span></a> to load multiple MapProxy configurations on-demand.</p>
 <p>Example <code class="docutils literal notranslate"><span class="pre">config.py</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mapproxy.multiapp</span> <span class="kn">import</span> <span class="n">make_wsgi_app</span>
 <span class="n">application</span> <span class="o">=</span> <span class="n">make_wsgi_app</span><span class="p">(</span><span class="s1">&#39;/path/to/projects&#39;</span><span class="p">,</span> <span class="n">allow_listing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -792,13 +791,14 @@ on subsequent calls. This is useful for sources that use cookie for session mana
    <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
-<dd><p>This does not apply to <cite>srs.proj_data_dir</cite>, because it affects the proj4 library directly.</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="generate-static-quadkey-virtual-earth-cache-for-use-on-multitouch-table">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p>This does not apply to <cite>srs.proj_data_dir</cite>, because it affects the proj4 library directly.</p>
+</aside>
+</aside>
+</section>
+<section id="generate-static-quadkey-virtual-earth-cache-for-use-on-multitouch-table">
 <span id="quadkey-cache"></span><h2>Generate static quadkey / virtual earth cache for use on Multitouch table<a class="headerlink" href="#generate-static-quadkey-virtual-earth-cache-for-use-on-multitouch-table" title="Permalink to this heading">¶</a></h2>
 <p>Some software running on Microsoft multitouch tables need a static quadkey generated cache. Mapproxy understands quadkey both as a client and as a cache option.</p>
 <p>Example part of <code class="docutils literal notranslate"><span class="pre">mapproxy.yaml</span></code> to generate a quadkey cache:</p>
@@ -811,8 +811,8 @@ on subsequent calls. This is useful for sources that use cookie for session mana
       <span class="n">directory_layout</span><span class="p">:</span> <span class="n">quadkey</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="hq-retina-tiles">
+</section>
+<section id="hq-retina-tiles">
 <span id="hq-tiles"></span><h2>HQ/Retina tiles<a class="headerlink" href="#hq-retina-tiles" title="Permalink to this heading">¶</a></h2>
 <p>MapProxy has no native support for delivering high-resolution tiles, but you can create a second tile layer with HQ tiles, if your source supports rendering with different scale-factor or DPI.</p>
 <p>At first you need two grids. One regular grid and one with half the resolution but twice the tile size. The following example configures two webmercator compatible grids:</p>
@@ -864,8 +864,8 @@ on subsequent calls. This is useful for sources that use cookie for session mana
 <img alt="_images/mapnik-webmerc.png" src="_images/mapnik-webmerc.png" />
 <p><code class="docutils literal notranslate"><span class="pre">/wmts/mapnik_hq/webmercator_hq/0/0/0.png</span></code> returns the same tile with 512x512 pixel:</p>
 <img alt="_images/mapnik-webmerc-hq.png" src="_images/mapnik-webmerc-hq.png" />
-</div>
-<div class="section" id="serve-multiple-caches-for-a-single-layer">
+</section>
+<section id="serve-multiple-caches-for-a-single-layer">
 <h2>Serve multiple caches for a single layer<a class="headerlink" href="#serve-multiple-caches-for-a-single-layer" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.8.2.</span></p>
@@ -904,8 +904,8 @@ However, this is limited to a single cache for each layer. You can’t reuse the
     <span class="n">disable_storage</span><span class="p">:</span> <span class="n">true</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -926,7 +926,7 @@ However, this is limited to a single cache for each layer. You can’t reuse the
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
      
    </p>
  </div>

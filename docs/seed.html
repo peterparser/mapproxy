@@ -3,15 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Seeding &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Coverages" href="coverages.html" />
@@ -36,7 +35,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
+      <a href="index.html" class="pull-left">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -102,14 +101,14 @@
       </div>
     <div class="col-md-8">
       
-  <div class="section" id="seeding">
+  <section id="seeding">
 <h1>Seeding<a class="headerlink" href="#seeding" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>The MapProxy creates all tiles on demand. To improve the performance for commonly
 requested areas it is possible to pre-generate these tiles. The <code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code> script does this task.</p>
 <p>The tool can seed one or more polygon or BBOX areas for each cache. It can seed missing tiles and refresh old tiles. A <cite>cleanup</cite> can be used to remove old tiles.</p>
-<div class="section" id="method">
+<section id="method">
 <span id="seed-method"></span><h3>Method<a class="headerlink" href="#method" title="Permalink to this heading">¶</a></h3>
 <p>MapProxy does not seed the tile pyramid level by level, but traverses the tile pyramid depth-first. It starts in the first zoom level and decides if the tiles in the next zoom level need to be seeded by checking each subtile for intersection with the coverage. It recursively repeats this step for all tiles below till it reaches the last zoom level to seed. Only then, before getting back to the parent tile, the tile is actually seeded.</p>
 <p>The following shows in which order tiles are seeded for a simple cache with three levels:</p>
@@ -132,12 +131,12 @@ requested areas it is possible to pre-generate these tiles. The <code class="doc
 </div>
 <p>This method is optimized to work <cite>with</cite> the caches of your operating system and geospatial database, as the same area is requested for multiple scales in direct succession.</p>
 <p>It also makes checks against complex coverages efficient as subtiles can be rejected early on.</p>
-</div>
-</div>
-<div class="section" id="mapproxy-seed">
+</section>
+</section>
+<section id="mapproxy-seed">
 <h2>mapproxy-seed<a class="headerlink" href="#mapproxy-seed" title="Permalink to this heading">¶</a></h2>
 <p>The command line script expects a seed configuration that describes which tiles from which layer should be generated. See <a class="reference internal" href="#configuration">configuration</a> for the format of the file.</p>
-<div class="section" id="options">
+<section id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-s">
@@ -269,8 +268,8 @@ It does not lock normal operation of MapProxy.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.0: </span><code class="docutils literal notranslate"><span class="pre">--duration</span></code>, <code class="docutils literal notranslate"><span class="pre">--reseed-file</span></code> and <code class="docutils literal notranslate"><span class="pre">--reseed-interval</span></code> option</p>
 </div>
-</div>
-<div class="section" id="examples">
+</section>
+<section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h3>
 <p>Seed with concurrency of 4:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapproxy</span><span class="o">-</span><span class="n">seed</span> <span class="o">-</span><span class="n">f</span> <span class="n">mapproxy</span><span class="o">.</span><span class="n">yaml</span> <span class="o">-</span><span class="n">c</span> <span class="mi">4</span> <span class="n">seed</span><span class="o">.</span><span class="n">yaml</span>
@@ -289,9 +288,9 @@ It does not lock normal operation of MapProxy.</p>
  <span class="o">--</span><span class="n">cleanup</span> <span class="n">task3</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="configuration">
+</section>
+</section>
+<section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -306,7 +305,7 @@ It does not lock normal operation of MapProxy.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">coverages</span></code></dt><dd><p>Configure coverages for seeding and cleanup tasks.</p>
 </dd>
 </dl>
-<div class="section" id="example">
+<section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seeds</span><span class="p">:</span>
   <span class="n">myseed1</span><span class="p">:</span>
@@ -327,26 +326,26 @@ It does not lock normal operation of MapProxy.</p>
     <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="seeds">
+</section>
+</section>
+<section id="seeds">
 <h2><code class="docutils literal notranslate"><span class="pre">seeds</span></code><a class="headerlink" href="#seeds" title="Permalink to this heading">¶</a></h2>
 <p>Here you can define multiple seeding tasks. A task defines <em>what</em> should be seeded. Each task is configured as a dictionary with the name of the task as the key. You can use the names to select single tasks on the command line of <code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code> will always process one tile pyramid after the other. Each tile pyramid is defined by a cache and a corresponding grid. A cache with multiple grids consists of multiple tile pyramids. You can configure which tile pyramid you want to seed with the <code class="docutils literal notranslate"><span class="pre">caches</span></code> and <code class="docutils literal notranslate"><span class="pre">grids</span></code> options.</p>
 <p>You can further limit the part of the tile pyramid with the <code class="docutils literal notranslate"><span class="pre">levels</span></code> and <code class="docutils literal notranslate"><span class="pre">coverages</span></code> options.</p>
 <p>Each seed tasks takes the following options:</p>
-<div class="section" id="caches">
+<section id="caches">
 <h3><code class="docutils literal notranslate"><span class="pre">caches</span></code><a class="headerlink" href="#caches" title="Permalink to this heading">¶</a></h3>
 <p>A list with the caches that should be seeded for this task. The names should match the cache names in your MapProxy configuration.</p>
-</div>
-<div class="section" id="grids">
+</section>
+<section id="grids">
 <h3><code class="docutils literal notranslate"><span class="pre">grids</span></code><a class="headerlink" href="#grids" title="Permalink to this heading">¶</a></h3>
 <p>A list with the grid names that should be seeded for the <code class="docutils literal notranslate"><span class="pre">caches</span></code>.
 The names should match the grid names in your MapProxy configuration.
 All caches of this tasks need to support the grids you specify here.
 By default, the grids that are common to all configured caches will be seeded.</p>
-</div>
-<div class="section" id="levels">
+</section>
+<section id="levels">
 <h3><code class="docutils literal notranslate"><span class="pre">levels</span></code><a class="headerlink" href="#levels" title="Permalink to this heading">¶</a></h3>
 <p>Either a list of levels that should be seeded, or a dictionary with <code class="docutils literal notranslate"><span class="pre">from</span></code> and <code class="docutils literal notranslate"><span class="pre">to</span></code> that define a range of levels. You can omit <code class="docutils literal notranslate"><span class="pre">from</span></code> to start at level 0, or you can omit <code class="docutils literal notranslate"><span class="pre">to</span></code> to seed till the last level.
 By default, all levels will be seeded.</p>
@@ -367,12 +366,12 @@ By default, all levels will be seeded.</p>
   <span class="n">to</span><span class="p">:</span> <span class="mi">6</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="coverages">
+</section>
+<section id="coverages">
 <h3><code class="docutils literal notranslate"><span class="pre">coverages</span></code><a class="headerlink" href="#coverages" title="Permalink to this heading">¶</a></h3>
 <p>A list with coverage names. Limits the seed area to the coverages. By default, the whole coverage of the grids will be seeded.</p>
-</div>
-<div class="section" id="refresh-before">
+</section>
+<section id="refresh-before">
 <h3><code class="docutils literal notranslate"><span class="pre">refresh_before</span></code><a class="headerlink" href="#refresh-before" title="Permalink to this heading">¶</a></h3>
 <p>Regenerate all tiles that are older than the given date. The date can either be absolute or relative. By default, existing tiles will not be refreshed.</p>
 <p>MapProxy can also use the last modification time of a file. File paths should be relative to the proxy configuration or absolute.</p>
@@ -393,8 +392,8 @@ By default, all levels will be seeded.</p>
   <span class="n">mtime</span><span class="p">:</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seeds</span><span class="p">:</span>
   <span class="n">myseed1</span><span class="p">:</span>
@@ -415,23 +414,23 @@ By default, all levels will be seeded.</p>
       <span class="n">to</span><span class="p">:</span> <span class="mi">15</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="cleanups">
+</section>
+</section>
+<section id="cleanups">
 <h2><code class="docutils literal notranslate"><span class="pre">cleanups</span></code><a class="headerlink" href="#cleanups" title="Permalink to this heading">¶</a></h2>
 <p>Here you can define multiple cleanup tasks. Each task is configured as a dictionary with the name of the task as the key. You can use the names to select single tasks on the command line of <code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code>.</p>
-<div class="section" id="id2">
+<section id="id2">
 <h3><code class="docutils literal notranslate"><span class="pre">caches</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <p>A list with the caches where you want to cleanup old tiles. The names should match the cache names in your MapProxy configuration.</p>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h3><code class="docutils literal notranslate"><span class="pre">grids</span></code><a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
 <p>A list with the grid names for the <code class="docutils literal notranslate"><span class="pre">caches</span></code> where you want to cleanup.
 The names should match the grid names in your MapProxy configuration.
 All caches of this tasks need to support the grids you specify here.
 By default, the grids that are common to all configured caches will be used.</p>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h3><code class="docutils literal notranslate"><span class="pre">levels</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <p>Either a list of levels that should be cleaned up, or a dictionary with <code class="docutils literal notranslate"><span class="pre">from</span></code> and <code class="docutils literal notranslate"><span class="pre">to</span></code> that define a range of levels. You can omit <code class="docutils literal notranslate"><span class="pre">from</span></code> to start at level 0, or you can omit <code class="docutils literal notranslate"><span class="pre">to</span></code> to cleanup till the last level.
 By default, all levels will be cleaned up.</p>
@@ -452,8 +451,8 @@ By default, all levels will be cleaned up.</p>
   <span class="n">to</span><span class="p">:</span> <span class="mi">6</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h3><code class="docutils literal notranslate"><span class="pre">coverages</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <p>A list with coverage names. Limits the cleanup area to the coverages. By default, the whole coverage of the grids will be cleaned up.</p>
 <div class="admonition note">
@@ -461,12 +460,12 @@ By default, all levels will be cleaned up.</p>
 <p>Be careful when cleaning up caches with large coverages and levels with lots of tiles (&gt;14).
 Without <code class="docutils literal notranslate"><span class="pre">coverages</span></code>, the seed tool works on the file system level and it only needs to check for existing tiles if they should be removed. With <code class="docutils literal notranslate"><span class="pre">coverages</span></code>, the seed tool traverses the whole tile pyramid and needs to check every posible tile if it exists and if it should be removed. This is much slower.</p>
 </div>
-</div>
-<div class="section" id="remove-all">
+</section>
+<section id="remove-all">
 <h3><code class="docutils literal notranslate"><span class="pre">remove_all</span></code><a class="headerlink" href="#remove-all" title="Permalink to this heading">¶</a></h3>
 <p>When set to true, remove all tiles regardless of the time they were created. You still limit the tiles with the <code class="docutils literal notranslate"><span class="pre">levels</span></code> and <code class="docutils literal notranslate"><span class="pre">coverage</span></code> options. MapProxy will try to remove tiles in a more efficient way with this option. For example: It will remove complete level directories for <code class="docutils literal notranslate"><span class="pre">file</span></code> caches instead of comparing each tile with a timestamp.</p>
-</div>
-<div class="section" id="remove-before">
+</section>
+<section id="remove-before">
 <h3><code class="docutils literal notranslate"><span class="pre">remove_before</span></code><a class="headerlink" href="#remove-before" title="Permalink to this heading">¶</a></h3>
 <p>Remove all tiles that are older than the given date. The date can either be absolute or relative. <code class="docutils literal notranslate"><span class="pre">remove_before</span></code> defaults to the start time of the seed process, so that newly created tile will not be removed.</p>
 <p>MapProxy can also use the last modification time of a file. File paths should be relative to the proxy configuration or absolute.</p>
@@ -487,8 +486,8 @@ Without <code class="docutils literal notranslate"><span class="pre">coverages</
   <span class="n">mtime</span><span class="p">:</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h3>Example<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cleanups</span><span class="p">:</span>
   <span class="n">highres</span><span class="p">:</span>
@@ -507,9 +506,9 @@ Without <code class="docutils literal notranslate"><span class="pre">coverages</
       <span class="n">to</span><span class="p">:</span> <span class="mi">18</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id7">
+</section>
+</section>
+<section id="id7">
 <h2><code class="docutils literal notranslate"><span class="pre">coverages</span></code><a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h2>
 <p>There are three different ways to describe the extent of a seeding or cleanup task.</p>
 <ul class="simple">
@@ -523,7 +522,7 @@ Without <code class="docutils literal notranslate"><span class="pre">coverages</
 <p>You will need to install additional dependencies, if you want to use polygons to define your geographical extent of the seeding area, instead of simple bounding boxes. See <a class="reference internal" href="coverages.html"><span class="doc">coverage documentation</span></a>.</p>
 </div>
 <p>Each coverage has a name that is used in the seed and cleanup task configuration. If you don’t specify a coverage for a task, then the BBOX of the grid will be used.</p>
-<div class="section" id="id8">
+<section id="id8">
 <h3>Example<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">coverages</span><span class="p">:</span>
   <span class="n">germany</span><span class="p">:</span>
@@ -538,9 +537,9 @@ Without <code class="docutils literal notranslate"><span class="pre">coverages</
     <span class="n">srs</span><span class="p">:</span> <span class="s1">&#39;EPSG:4326&#39;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="output">
+</section>
+</section>
+<section id="output">
 <h2>Output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code> prints out the progress of the current seeding task on the console.</p>
 <p>Example progress log:</p>
@@ -549,8 +548,8 @@ Without <code class="docutils literal notranslate"><span class="pre">coverages</
 </div>
 <p>The output starts with the current time and ends with the number of tiles it has seeded or removed so far. The third value is the current progress in percent. The progress can make large jumps, if the seeding detects that a tile and all its subtiles are outside of the seeding coverage.
 The second and fourth value show the level and bounding box of where the seeding tool is in this moment. Keep in mind, that it does not seed level by level. This is described in <a class="reference internal" href="#seed-method"><span class="std std-ref">seeding method</span></a>.</p>
-</div>
-<div class="section" id="example-background-seeding">
+</section>
+<section id="example-background-seeding">
 <span id="background-seeding"></span><h2>Example: Background seeding<a class="headerlink" href="#example-background-seeding" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.0: </span>Works on Linux and Unix only</p>
@@ -566,8 +565,8 @@ The following example starts seeding for six hours. It will seed for another six
 </pre></div>
 </div>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">--reseed-file</span></code> as a <code class="docutils literal notranslate"><span class="pre">refresh_before</span></code> and <code class="docutils literal notranslate"><span class="pre">remove_before</span></code> <code class="docutils literal notranslate"><span class="pre">mtime</span></code>-file.</p>
-</div>
-<div class="section" id="old-configuration">
+</section>
+<section id="old-configuration">
 <span id="seed-old-configuration"></span><h2>Old Configuration<a class="headerlink" href="#old-configuration" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -576,7 +575,7 @@ The following example starts seeding for six hours. It will seed for another six
 <p>The configuration contains two keys: <code class="docutils literal notranslate"><span class="pre">views</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds</span></code>. <code class="docutils literal notranslate"><span class="pre">views</span></code> describes
 the geographical extents that should be seeded. <code class="docutils literal notranslate"><span class="pre">seeds</span></code> links actual layers with
 those <code class="docutils literal notranslate"><span class="pre">views</span></code>.</p>
-<div class="section" id="id9">
+<section id="id9">
 <h3>Seeds<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
 <p>Contains a dictionary with layer/view mapping.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seeds</span><span class="p">:</span>
@@ -601,11 +600,11 @@ string (no time-zones, no abbreviations). To define time delta use one or more
 <cite>seconds</cite>, <cite>minutes</cite>, <cite>hours</cite>, <cite>days</cite> or <cite>weeks</cite> entries.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="views">
+</section>
+<section id="views">
 <h3>Views<a class="headerlink" href="#views" title="Permalink to this heading">¶</a></h3>
 <p>Contains a dictionary with all views. Each view describes a coverage/geographical extent and the levels that should be seeded.</p>
-<div class="section" id="id10">
+<section id="id10">
 <h4>Coverages<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -620,9 +619,9 @@ string (no time-zones, no abbreviations). To define time delta use one or more
 </ul>
 </div></blockquote>
 <p>Read the <a class="reference internal" href="coverages.html"><span class="doc">coverage documentation</span></a> for more information.</p>
-</div>
-</div>
-<div class="section" id="other-options">
+</section>
+</section>
+<section id="other-options">
 <h3>Other options<a class="headerlink" href="#other-options" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">srs</span></code>:</dt><dd><p>A list with SRSs. If the layer contains caches for multiple SRS, only the caches
@@ -637,7 +636,7 @@ that match one of the SRS in this list will be seeded.</p>
 levels that should be cached.</p>
 </dd>
 </dl>
-<div class="section" id="example-configuration">
+<section id="example-configuration">
 <h4>Example configuration<a class="headerlink" href="#example-configuration" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">views</span><span class="p">:</span>
   <span class="n">germany</span><span class="p">:</span>
@@ -668,10 +667,10 @@ levels that should be cached.</p>
       <span class="n">days</span><span class="p">:</span> <span class="mi">30</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
     </div>
@@ -692,7 +691,7 @@ levels that should be cached.</p>
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
      
    </p>
  </div>

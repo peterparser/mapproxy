@@ -3,15 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Installation via Docker &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tutorial" href="tutorial.html" />
@@ -36,7 +35,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
+      <a href="index.html" class="pull-left">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -95,7 +94,7 @@
       </div>
     <div class="col-md-8">
       
-  <div class="section" id="installation-via-docker">
+  <section id="installation-via-docker">
 <h1>Installation via Docker<a class="headerlink" href="#installation-via-docker" title="Permalink to this heading">¶</a></h1>
 <p>MapProxy does have its own official docker images.
 These are currently hosted on the GitHub container registry and can be found here:</p>
@@ -127,7 +126,7 @@ These are currently hosted on the GitHub container registry and can be found her
 <li><p><a class="reference external" href="https://github.com/justb4/docker-mapproxy-mapserver">https://github.com/justb4/docker-mapproxy-mapserver</a></p></li>
 <li><p><a class="reference external" href="https://github.com/justb4/docker-mapproxy-mapserver-mapnik">https://github.com/justb4/docker-mapproxy-mapserver-mapnik</a></p></li>
 </ul>
-<div class="section" id="quickstart">
+<section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h2>
 <p>Depending on your needs, pull the desired image (see description above):</p>
 <blockquote>
@@ -144,7 +143,7 @@ These are currently hosted on the GitHub container registry and can be found her
 <p>Create a directory (e.g. <cite>mapproxyconfig</cite>) for your configuration files. Put your configs into that folder.
 If you do not supply config files (seed.yaml and mapproxy.yaml) the image will create them for you.</p>
 <p>To start the docker container with a mount on your config folder, use the command matching your image.</p>
-<div class="section" id="running-the-plain-image-without-starting-a-webserver">
+<section id="running-the-plain-image-without-starting-a-webserver">
 <h3>Running the <cite>plain</cite> image without starting a webserver<a class="headerlink" href="#running-the-plain-image-without-starting-a-webserver" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;mapproxy&quot;</span><span class="w"> </span>-d<span class="w"> </span>-t<span class="w"> </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/mapproxyconfig:/mapproxy/config<span class="w"> </span>ghcr.io/mapproxy/mapproxy/mapproxy:1.15.1
 </pre></div>
@@ -153,23 +152,23 @@ If you do not supply config files (seed.yaml and mapproxy.yaml) the image will c
 <blockquote>
 <div><p>docker exec -it mapproxy bash</p>
 </div></blockquote>
-</div>
-<div class="section" id="running-the-dev-image">
+</section>
+<section id="running-the-dev-image">
 <h3>Running the <cite>dev</cite> image<a class="headerlink" href="#running-the-dev-image" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;mapproxy&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-d<span class="w"> </span>-t<span class="w"> </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/mapproxyconfig:/mapproxy/config<span class="w"> </span>ghcr.io/mapproxy/mapproxy/mapproxy:1.15.1-dev
 </pre></div>
 </div>
 <p>Afterwards, the <cite>MapProxy</cite> instance is running on <a class="reference external" href="http://localhost:8080/demo/">http://localhost:8080/demo/</a></p>
-</div>
-<div class="section" id="running-the-nginx-image">
+</section>
+<section id="running-the-nginx-image">
 <h3>Running the <cite>nginx</cite> image<a class="headerlink" href="#running-the-nginx-image" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;mapproxy&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span>-d<span class="w"> </span>-t<span class="w"> </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/mapproxyconfig:/mapproxy/config<span class="w"> </span>ghcr.io/mapproxy/mapproxy/mapproxy:1.15.1-nginx
 </pre></div>
 </div>
 <p>Afterwards, the <cite>MapProxy</cite> instance is running on <a class="reference external" href="http://localhost/mapproxy/demo/">http://localhost/mapproxy/demo/</a></p>
-</div>
-</div>
-<div class="section" id="build-your-own-image">
+</section>
+</section>
+<section id="build-your-own-image">
 <h2>Build your own image<a class="headerlink" href="#build-your-own-image" title="Permalink to this heading">¶</a></h2>
 <p>There is currently one build argument you can use.</p>
 <blockquote>
@@ -178,26 +177,26 @@ If you do not supply config files (seed.yaml and mapproxy.yaml) the image will c
 </ul>
 </div></blockquote>
 <p>Switch to the <cite>docker</cite> folder in the mapproxy repository checkout and then execute</p>
-<div class="section" id="for-the-plain-image-without-starting-a-webserver">
+<section id="for-the-plain-image-without-starting-a-webserver">
 <h3>For the <cite>plain</cite> image without starting a webserver<a class="headerlink" href="#for-the-plain-image-without-starting-a-webserver" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">MAPPROXY_VERSION</span><span class="o">=</span><span class="m">1</span>.15.1<span class="w"> </span>--target<span class="w"> </span>base<span class="w"> </span>-t<span class="w"> </span>ghcr.io/mapproxy/mapproxy/mapproxy:1.15.1<span class="w"> </span>.
 </pre></div>
 </div>
-</div>
-<div class="section" id="for-the-dev-image">
+</section>
+<section id="for-the-dev-image">
 <h3>For the <cite>dev</cite> image<a class="headerlink" href="#for-the-dev-image" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">MAPPROXY_VERSION</span><span class="o">=</span><span class="m">1</span>.15.1<span class="w"> </span>--target<span class="w"> </span>development<span class="w"> </span>-t<span class="w"> </span>ghcr.io/mapproxy/mapproxy/mapproxy:1.15.1-dev<span class="w"> </span>.
 </pre></div>
 </div>
-</div>
-<div class="section" id="for-the-nginx-image">
+</section>
+<section id="for-the-nginx-image">
 <h3>For the <cite>nginx</cite> image<a class="headerlink" href="#for-the-nginx-image" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">MAPPROXY_VERSION</span><span class="o">=</span><span class="m">1</span>.15.1<span class="w"> </span>--target<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span>ghcr.io/mapproxy/mapproxy/mapproxy:1.15.1-nginx<span class="w"> </span>.
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>
@@ -218,7 +217,7 @@ If you do not supply config files (seed.yaml and mapproxy.yaml) the image will c
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
      
    </p>
  </div>
