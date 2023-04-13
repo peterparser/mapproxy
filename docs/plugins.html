@@ -3,14 +3,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Writing plugins &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="MapProxy 2.0" href="mapproxy_2.html" />
@@ -35,7 +36,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left">
+      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -100,17 +101,17 @@
       </div>
     <div class="col-md-8">
       
-  <section id="writing-plugins">
+  <div class="section" id="writing-plugins">
 <h1>Writing plugins<a class="headerlink" href="#writing-plugins" title="Permalink to this heading">¶</a></h1>
 <p>Since MapProxy 1.15, it is possible to write plugins for MapProxy that can
 add new sources, services or commands. This requires Python &gt;= 3.7</p>
-<section id="example">
+<div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <p>The mapproxy_hips plugin at <a class="reference external" href="https://github.com/rouault/mapproxy_hips">https://github.com/rouault/mapproxy_hips</a> is an
 example of a plugin, which adds a new source, service and customizes the demo
 service, demonstrating all the below points.</p>
-</section>
-<section id="how-to-add-a-plugin">
+</div>
+<div class="section" id="how-to-add-a-plugin">
 <h2>How to add a plugin ?<a class="headerlink" href="#how-to-add-a-plugin" title="Permalink to this heading">¶</a></h2>
 <p>A plugin should be written as a Python package whose setuptools <code class="docutils literal notranslate"><span class="pre">setup()</span></code>
 method has a <code class="docutils literal notranslate"><span class="pre">entry_points</span></code> keyword with a group <code class="docutils literal notranslate"><span class="pre">mapproxy</span></code> pointing to
@@ -131,8 +132,8 @@ detailed hereafter.</p>
 <p>Plugins will often by dependent on MapProxy internal classes. It is their
 responsibility to check the MapProxy version, in case the MapProxy internal
 API or behavior would change and make them incompatible.</p>
-</section>
-<section id="adding-a-new-service">
+</div>
+<div class="section" id="adding-a-new-service">
 <h2>Adding a new service<a class="headerlink" href="#adding-a-new-service" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">mapproxy.config.loader</span></code> module has a <code class="docutils literal notranslate"><span class="pre">register_service_configuration()</span></code>
 method to register a new service and specify the allowed keywords for it in
@@ -177,8 +178,8 @@ the YAML configuration file.</p>
 </pre></div>
 </div>
 <p>A real-world implementation can be found at <a class="reference external" href="https://github.com/rouault/mapproxy_hips/blob/master/mapproxy_hips/service/hips.py">https://github.com/rouault/mapproxy_hips/blob/master/mapproxy_hips/service/hips.py</a></p>
-</section>
-<section id="customizing-layer-metadata-in-yaml-configuration-file">
+</div>
+<div class="section" id="customizing-layer-metadata-in-yaml-configuration-file">
 <h2>Customizing layer metadata in YAML configuration file<a class="headerlink" href="#customizing-layer-metadata-in-yaml-configuration-file" title="Permalink to this heading">¶</a></h2>
 <p>When implementing a new service, it might be useful to add per-layer metadata
 for it. The YAML validator needs to be updated to recognize the new keywords.
@@ -198,8 +199,8 @@ can be used to do that.</p>
 <span class="n">add_subcategory_to_layer_md</span><span class="p">(</span><span class="s1">&#39;hips&#39;</span><span class="p">,</span> <span class="n">anything</span><span class="p">())</span>
 </pre></div>
 </div>
-</section>
-<section id="adding-a-new-source">
+</div>
+<div class="section" id="adding-a-new-source">
 <h2>Adding a new source<a class="headerlink" href="#adding-a-new-source" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">mapproxy.config.loader</span></code> module has a <code class="docutils literal notranslate"><span class="pre">register_source_configuration()</span></code>
 method to register a new source and specify the allowed keywords for it in
@@ -246,8 +247,8 @@ the YAML configuration file.</p>
 </pre></div>
 </div>
 <p>A real-world implementation can be found at <a class="reference external" href="https://github.com/rouault/mapproxy_hips/blob/master/mapproxy_hips/source/hips.py">https://github.com/rouault/mapproxy_hips/blob/master/mapproxy_hips/source/hips.py</a></p>
-</section>
-<section id="customizing-the-demo-service">
+</div>
+<div class="section" id="customizing-the-demo-service">
 <h2>Customizing the demo service<a class="headerlink" href="#customizing-the-demo-service" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="services.html#demo-service-label"><span class="std std-ref">MapProxy Demo Service</span></a> can be customized in two ways:</p>
 <ul>
@@ -304,8 +305,8 @@ method of the <code class="docutils literal notranslate"><span class="pre">mappr
 </pre></div>
 </div>
 <p>A real-world example can be found at <a class="reference external" href="https://github.com/rouault/mapproxy_hips/blob/master/mapproxy_hips/service/demo_extra.py">https://github.com/rouault/mapproxy_hips/blob/master/mapproxy_hips/service/demo_extra.py</a></p>
-</section>
-<section id="adding-new-commands-to-mapproxy-util">
+</div>
+<div class="section" id="adding-new-commands-to-mapproxy-util">
 <h2>Adding new commands to mapproxy-util<a class="headerlink" href="#adding-new-commands-to-mapproxy-util" title="Permalink to this heading">¶</a></h2>
 <p>New commands can be added to <a class="reference internal" href="mapproxy_util.html#mapproxy-util"><span class="std std-ref">mapproxy-util</span></a> by using the
 <code class="docutils literal notranslate"><span class="pre">register_command()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">mapproxy.script.util</span></code> module</p>
@@ -349,13 +350,13 @@ method of the <code class="docutils literal notranslate"><span class="pre">mappr
 <p>A real-world example can be found at
 <a class="reference external" href="https://github.com/rouault/mapproxy_hips/blob/master/mapproxy_hips/script/hipsallsky.py">https://github.com/rouault/mapproxy_hips/blob/master/mapproxy_hips/script/hipsallsky.py</a>
 `</p>
-</section>
-<section id="credits">
+</div>
+<div class="section" id="credits">
 <h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">¶</a></h2>
 <p>The development of the plugin mechanism has been funded by
 Centre National d’Etudes Spatiales (CNES): <a class="reference external" href="https://cnes.fr">https://cnes.fr</a></p>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
@@ -376,7 +377,7 @@ Centre National d’Etudes Spatiales (CNES): <a class="reference external" href=
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>

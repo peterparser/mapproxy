@@ -3,14 +3,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sources &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Caches" href="caches.html" />
@@ -35,7 +36,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left">
+      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -98,7 +99,7 @@
       </div>
     <div class="col-md-8">
       
-  <section id="sources">
+  <div class="section" id="sources">
 <span id="id1"></span><h1>Sources<a class="headerlink" href="#sources" title="Permalink to this heading">¶</a></h1>
 <p>MapProxy supports the following sources:</p>
 <ul class="simple">
@@ -122,10 +123,10 @@
 </pre></div>
 </div>
 <p>See below for a detailed description of each service.</p>
-<section id="wms">
+<div class="section" id="wms">
 <span id="wms-label"></span><h2>WMS<a class="headerlink" href="#wms" title="Permalink to this heading">¶</a></h2>
 <p>Use the type <code class="docutils literal notranslate"><span class="pre">wms</span></code> to for WMS servers.</p>
-<section id="req">
+<div class="section" id="req">
 <h3><code class="docutils literal notranslate"><span class="pre">req</span></code><a class="headerlink" href="#req" title="Permalink to this heading">¶</a></h3>
 <p>This describes the WMS source. The only required options are <code class="docutils literal notranslate"><span class="pre">url</span></code> and <code class="docutils literal notranslate"><span class="pre">layers</span></code>.
 You need to set <code class="docutils literal notranslate"><span class="pre">transparent</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you want to use this source as an overlay.</p>
@@ -145,8 +146,8 @@ You need to set <code class="docutils literal notranslate"><span class="pre">tra
 </div>
 <p>You can also configure <code class="docutils literal notranslate"><span class="pre">sld</span></code> or <code class="docutils literal notranslate"><span class="pre">sld_body</span></code> parameters, in this case you can omit <code class="docutils literal notranslate"><span class="pre">layers</span></code>. <code class="docutils literal notranslate"><span class="pre">sld</span></code> can also point to a <code class="docutils literal notranslate"><span class="pre">file://</span></code>-URL. MapProxy will read this file and use the content as the <code class="docutils literal notranslate"><span class="pre">sld_body</span></code>. See <a class="reference internal" href="configuration_examples.html#sld-example"><span class="std std-ref">sources with SLD</span></a> for more information.</p>
 <p>You can omit layers if you use <a class="reference internal" href="#tagged-source-names"><span class="std std-ref">Tagged source names</span></a>.</p>
-</section>
-<section id="wms-opts">
+</div>
+<div class="section" id="wms-opts">
 <h3><code class="docutils literal notranslate"><span class="pre">wms_opts</span></code><a class="headerlink" href="#wms-opts" title="Permalink to this heading">¶</a></h3>
 <p>This option affects what request MapProxy sends to the source WMS server.</p>
 <dl class="simple">
@@ -171,42 +172,42 @@ You need to set <code class="docutils literal notranslate"><span class="pre">tra
 <p><span class="versionmodified added">New in version 1.12.0: </span><code class="docutils literal notranslate"><span class="pre">featureinfo_out_format</span></code></p>
 </div>
 <p>See <a class="reference internal" href="configuration_examples.html#fi-xslt"><span class="std std-ref">FeatureInformation for more information</span></a>.</p>
-</section>
-<section id="coverage">
+</div>
+<div class="section" id="coverage">
 <h3><code class="docutils literal notranslate"><span class="pre">coverage</span></code><a class="headerlink" href="#coverage" title="Permalink to this heading">¶</a></h3>
 <p>Define the covered area of the source. The source will only be requested if there is an intersection between the requested data and the coverage. See <a class="reference internal" href="coverages.html"><span class="doc">coverages</span></a> for more information about the configuration. The intersection is calculated for meta-tiles and not the actual client request, so you should expect more visible data at the coverage boundaries.</p>
-</section>
-<section id="seed-only">
+</div>
+<div class="section" id="seed-only">
 <span id="wms-seed-only"></span><h3><code class="docutils literal notranslate"><span class="pre">seed_only</span></code><a class="headerlink" href="#seed-only" title="Permalink to this heading">¶</a></h3>
 <p>Disable this source in regular mode. If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, this source will always return a blank/transparent image. The source will only be requested during the seeding process. You can use this option to run MapProxy in an offline mode.</p>
-</section>
-<section id="min-res-max-res-or-min-scale-max-scale">
+</div>
+<div class="section" id="min-res-max-res-or-min-scale-max-scale">
 <span id="source-minmax-res"></span><h3><code class="docutils literal notranslate"><span class="pre">min_res</span></code>, <code class="docutils literal notranslate"><span class="pre">max_res</span></code> or <code class="docutils literal notranslate"><span class="pre">min_scale</span></code>, <code class="docutils literal notranslate"><span class="pre">max_scale</span></code><a class="headerlink" href="#min-res-max-res-or-min-scale-max-scale" title="Permalink to this heading">¶</a></h3>
 <p>Limit the source to the given min and max resolution or scale. MapProxy will return a blank image for requests outside of these boundaries (<code class="docutils literal notranslate"><span class="pre">min_res</span></code> is inclusive, <code class="docutils literal notranslate"><span class="pre">max_res</span></code> exclusive). You can use either the resolution or the scale values, missing values will be interpreted as <cite>unlimited</cite>. Resolutions should be in meters per pixel.</p>
 <p>The values will also apear in the capabilities documents (i.e. WMS ScaleHint and Min/MaxScaleDenominator). The boundaries will be regarded for each source, but the values in the capabilities might differ if you combine multiple sources or if the MapProxy layer already has a <code class="docutils literal notranslate"><span class="pre">min/max_res</span></code> configuration.</p>
 <p>Please read <a class="reference internal" href="configuration.html#scale-resolution"><span class="std std-ref">scale vs. resolution</span></a> for some notes on <cite>scale</cite>.</p>
-</section>
-<section id="supported-srs">
+</div>
+<div class="section" id="supported-srs">
 <span id="id2"></span><h3><code class="docutils literal notranslate"><span class="pre">supported_srs</span></code><a class="headerlink" href="#supported-srs" title="Permalink to this heading">¶</a></h3>
 <p>A list with SRSs that the WMS source supports. MapProxy will only query the source in these SRSs. It will reproject data if it needs to get data from this layer in any other SRS.</p>
 <p>You don’t need to configure this if you only use this WMS as a cache source and the WMS supports all SRS of the cache.</p>
 <p>If MapProxy needs to reproject and the source has multiple <code class="docutils literal notranslate"><span class="pre">supported_srs</span></code>, then it will use the first projected SRS for requests in a projected SRS, or the first geographic SRS for requests in a geographic SRS. E.g when <cite>supported_srs</cite> is <code class="docutils literal notranslate"><span class="pre">['EPSG:4326',</span> <span class="pre">'EPSG:31467']</span></code> caches with EPSG:3857 (projected, meter) will use EPSG:31467 (projected, meter) and not EPSG:4326 (geographic, lat/long).</p>
 <blockquote>
 <div></div></blockquote>
-</section>
-<section id="forward-req-params">
+</div>
+<div class="section" id="forward-req-params">
 <h3><code class="docutils literal notranslate"><span class="pre">forward_req_params</span></code><a class="headerlink" href="#forward-req-params" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
 </div>
 <p>A list with request parameters that will be forwarded to the source server (if available in the original request). A typical use case of this feature would be to forward the <cite>TIME</cite> parameter when working with a WMS-T server.</p>
 <p>This feature only works with <a class="reference internal" href="configuration_examples.html#direct-source"><span class="std std-ref">uncached sources</span></a>.</p>
-</section>
-<section id="supported-formats">
+</div>
+<div class="section" id="supported-formats">
 <h3><code class="docutils literal notranslate"><span class="pre">supported_formats</span></code><a class="headerlink" href="#supported-formats" title="Permalink to this heading">¶</a></h3>
 <p>Use this option to specify which image formats your source WMS supports. MapProxy only requests images in one of these formats, and will convert any image if it needs another format. If you do not supply this options, MapProxy assumes that the source supports all formats.</p>
-</section>
-<section id="image">
+</div>
+<div class="section" id="image">
 <h3><code class="docutils literal notranslate"><span class="pre">image</span></code><a class="headerlink" href="#image" title="Permalink to this heading">¶</a></h3>
 <p>See <a class="reference internal" href="configuration.html#image-options"><span class="std std-ref">Image Format Options</span></a> for other options.</p>
 <p><code class="docutils literal notranslate"><span class="pre">transparent_color</span></code></p>
@@ -222,13 +223,13 @@ You need to set <code class="docutils literal notranslate"><span class="pre">tra
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="concurrent-requests">
+</div>
+<div class="section" id="concurrent-requests">
 <span id="wms-source-concurrent-requests-label"></span><h3><code class="docutils literal notranslate"><span class="pre">concurrent_requests</span></code><a class="headerlink" href="#concurrent-requests" title="Permalink to this heading">¶</a></h3>
 <p>This limits the number of parallel requests MapProxy will issue to the source server.
 It even works across multiple WMS sources as long as all have the same <code class="docutils literal notranslate"><span class="pre">concurrent_requests</span></code> value and all <code class="docutils literal notranslate"><span class="pre">req.url</span></code> parameters point to the same host. Defaults to 0, which means no limitation.</p>
-</section>
-<section id="http">
+</div>
+<div class="section" id="http">
 <h3><code class="docutils literal notranslate"><span class="pre">http</span></code><a class="headerlink" href="#http" title="Permalink to this heading">¶</a></h3>
 <p>You can configure the following HTTP related options for this source:</p>
 <ul class="simple">
@@ -240,8 +241,8 @@ It even works across multiple WMS sources as long as all have the same <code cla
 <li><p><code class="docutils literal notranslate"><span class="pre">manage_cookies</span></code></p></li>
 </ul>
 <p>See <a class="reference internal" href="configuration.html#http-ssl"><span class="std std-ref">HTTP Options</span></a> for detailed documentation.</p>
-</section>
-<section id="tagged-source-names">
+</div>
+<div class="section" id="tagged-source-names">
 <span id="id3"></span><h3>Tagged source names<a class="headerlink" href="#tagged-source-names" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.1.0.</span></p>
@@ -267,8 +268,8 @@ sources:
 </pre></div>
 </div>
 <p>You can either omit the <code class="docutils literal notranslate"><span class="pre">layers</span></code> in the <code class="docutils literal notranslate"><span class="pre">req</span></code> parameter, or you can use them to limit the tagged layers. In this case MapProxy will raise an error if you configure <code class="docutils literal notranslate"><span class="pre">layers:</span> <span class="pre">lyr1,lyr2</span></code> and then try to access <code class="docutils literal notranslate"><span class="pre">wms:lyr2,lyr3</span></code> for example.</p>
-</section>
-<section id="on-error">
+</div>
+<div class="section" id="on-error">
 <h3><code class="docutils literal notranslate"><span class="pre">on_error</span></code><a class="headerlink" href="#on-error" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.12.0.</span></p>
@@ -308,8 +309,8 @@ sources:
       cache: False
 </pre></div>
 </div>
-</section>
-<section id="example-configuration">
+</div>
+<div class="section" id="example-configuration">
 <h3>Example configuration<a class="headerlink" href="#example-configuration" title="Permalink to this heading">¶</a></h3>
 <p>Minimal example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>my_minimal_wmssource:
@@ -340,18 +341,18 @@ sources:
     transparent: true
 </pre></div>
 </div>
-</section>
-</section>
-<section id="arcgis-rest-api">
+</div>
+</div>
+<div class="section" id="arcgis-rest-api">
 <span id="arcgis-label"></span><h2>ArcGIS REST API<a class="headerlink" href="#arcgis-rest-api" title="Permalink to this heading">¶</a></h2>
 <p>Use the type <code class="docutils literal notranslate"><span class="pre">arcgis</span></code> for ArcGIS MapServer and ImageServer REST server endpoints. This
 source is based on <a class="reference internal" href="#wms-label"><span class="std std-ref">the WMS source</span></a> and most WMS options apply to the
 ArcGIS source too.</p>
-<section id="id4">
+<div class="section" id="id4">
 <h3><code class="docutils literal notranslate"><span class="pre">req</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <p>This describes the ArcGIS source. The only required option is <code class="docutils literal notranslate"><span class="pre">url</span></code>. You need to set <code class="docutils literal notranslate"><span class="pre">transparent</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you want to use this source as an overlay. You can also add ArcGIS specific parameters to <code class="docutils literal notranslate"><span class="pre">req</span></code>, for example to set the <a class="reference external" href="http://resources.arcgis.com/en/help/rest/apiref/exportimage.html">interpolation method for ImageServers</a>.</p>
-</section>
-<section id="opts">
+</div>
+<div class="section" id="opts">
 <h3><code class="docutils literal notranslate"><span class="pre">opts</span></code><a class="headerlink" href="#opts" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.0.</span></p>
@@ -370,15 +371,15 @@ ArcGIS source too.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">map</span></code></dt><dd><p>If this is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, MapProxy will not request images from this source. You can use this option in combination with <code class="docutils literal notranslate"><span class="pre">featureinfo:</span> <span class="pre">true</span></code> to create a source that is only used for feature info requests.</p>
 </dd>
 </dl>
-</section>
-<section id="id5">
+</div>
+<div class="section" id="id5">
 <h3><code class="docutils literal notranslate"><span class="pre">seed_only</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.11.0.</span></p>
 </div>
 <p>See <a class="reference internal" href="#wms-seed-only"><span class="std std-ref">seed_only</span></a></p>
-</section>
-<section id="id6">
+</div>
+<div class="section" id="id6">
 <h3>Example configuration<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
 <p>MapServer example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_minimal_arcgissource</span><span class="p">:</span>
@@ -405,12 +406,12 @@ ArcGIS source too.</p>
     <span class="n">bandIds</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="tiles">
+</div>
+</div>
+<div class="section" id="tiles">
 <span id="tiles-label"></span><h2>Tiles<a class="headerlink" href="#tiles" title="Permalink to this heading">¶</a></h2>
 <p>Use the type <code class="docutils literal notranslate"><span class="pre">tile</span></code> to request data from from existing tile servers like TileCache and GeoWebCache. You can also use this source cascade MapProxy installations.</p>
-<section id="url">
+<div class="section" id="url">
 <h3><code class="docutils literal notranslate"><span class="pre">url</span></code><a class="headerlink" href="#url" title="Permalink to this heading">¶</a></h3>
 <p>This source takes a <code class="docutils literal notranslate"><span class="pre">url</span></code> option that contains a URL template. The template format is <code class="docutils literal notranslate"><span class="pre">%(key_name)s</span></code>. MapProxy supports the following named variables in the URL:</p>
 <dl class="simple">
@@ -434,27 +435,27 @@ extension.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.1.0: </span><code class="docutils literal notranslate"><span class="pre">arcgiscache_path</span></code> and <code class="docutils literal notranslate"><span class="pre">bbox</span></code> parameter.</p>
 </div>
-</section>
-<section id="origin">
+</div>
+<div class="section" id="origin">
 <h3><code class="docutils literal notranslate"><span class="pre">origin</span></code><a class="headerlink" href="#origin" title="Permalink to this heading">¶</a></h3>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version 1.3.0: </span>Use grid with the <code class="docutils literal notranslate"><span class="pre">origin</span></code> option.</p>
 </div>
 <p>The origin of the tile grid (i.e. the location of the 0,0 tile). Supported values are <code class="docutils literal notranslate"><span class="pre">sw</span></code> for south-west (lower-left) origin or <code class="docutils literal notranslate"><span class="pre">nw</span></code> for north-west (upper-left) origin. <code class="docutils literal notranslate"><span class="pre">sw</span></code> is the default.</p>
-</section>
-<section id="grid">
+</div>
+<div class="section" id="grid">
 <h3><code class="docutils literal notranslate"><span class="pre">grid</span></code><a class="headerlink" href="#grid" title="Permalink to this heading">¶</a></h3>
 <p>The grid of the tile source. Defaults to <code class="docutils literal notranslate"><span class="pre">GLOBAL_MERCATOR</span></code>, a grid that is compatible with popular web mapping applications.</p>
-</section>
-<section id="id7">
+</div>
+<div class="section" id="id7">
 <h3><code class="docutils literal notranslate"><span class="pre">coverage</span></code><a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
 <p>Define the covered area of the source. The source will only be requested if there is an intersection between the incoming request and the coverage. See <a class="reference internal" href="coverages.html"><span class="doc">coverages</span></a> for more information.</p>
-</section>
-<section id="transparent">
+</div>
+<div class="section" id="transparent">
 <h3><code class="docutils literal notranslate"><span class="pre">transparent</span></code><a class="headerlink" href="#transparent" title="Permalink to this heading">¶</a></h3>
 <p>You need to set this to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you want to use this source as an overlay.</p>
-</section>
-<section id="id8">
+</div>
+<div class="section" id="id8">
 <h3><code class="docutils literal notranslate"><span class="pre">http</span></code><a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <p>You can configure the following HTTP related options for this source:</p>
 <ul class="simple">
@@ -465,19 +466,19 @@ extension.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">manage_cookies</span></code></p></li>
 </ul>
 <p>See <a class="reference internal" href="configuration.html#http-ssl"><span class="std std-ref">HTTP Options</span></a> for detailed documentation.</p>
-</section>
-<section id="id9">
+</div>
+<div class="section" id="id9">
 <h3><code class="docutils literal notranslate"><span class="pre">seed_only</span></code><a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
 <p>See <a class="reference internal" href="#wms-seed-only"><span class="std std-ref">seed_only</span></a></p>
-</section>
-<section id="id10">
+</div>
+<div class="section" id="id10">
 <h3><code class="docutils literal notranslate"><span class="pre">min_res</span></code>, <code class="docutils literal notranslate"><span class="pre">max_res</span></code> or <code class="docutils literal notranslate"><span class="pre">min_scale</span></code>, <code class="docutils literal notranslate"><span class="pre">max_scale</span></code><a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
 </div>
 <p>See <a class="reference internal" href="#source-minmax-res"><span class="std std-ref">min_res, max_res or min_scale, max_scale</span></a>.</p>
-</section>
-<section id="id11">
+</div>
+<div class="section" id="id11">
 <h3><code class="docutils literal notranslate"><span class="pre">on_error</span></code><a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.4.0.</span></p>
@@ -510,8 +511,8 @@ extension.</p>
       <span class="n">cache</span><span class="p">:</span> <span class="kc">False</span>
 </pre></div>
 </div>
-</section>
-<section id="id12">
+</div>
+<div class="section" id="id12">
 <h3>Example configuration<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>my_tile_source:
   type: tile
@@ -519,9 +520,9 @@ extension.</p>
   url: http://localhost:8080/tile?x=%(x)s&amp;y=%(y)s&amp;z=%(z)s&amp;format=%(format)s
 </pre></div>
 </div>
-</section>
-</section>
-<section id="mapserver">
+</div>
+</div>
+<div class="section" id="mapserver">
 <span id="mapserver-label"></span><h2>Mapserver<a class="headerlink" href="#mapserver" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.1.0.</span></p>
@@ -529,7 +530,7 @@ extension.</p>
 <p>Use the type <code class="docutils literal notranslate"><span class="pre">mapserver</span></code> to directly call the Mapserver CGI executable. This source is based on <a class="reference internal" href="#wms-label"><span class="std std-ref">the WMS source</span></a> and most options apply to the Mapserver source too.</p>
 <p>The only differences are that it does not support the <code class="docutils literal notranslate"><span class="pre">http</span></code> option and the <code class="docutils literal notranslate"><span class="pre">req.url</span></code> parameter is ignored. The <code class="docutils literal notranslate"><span class="pre">req.map</span></code> should point to your Mapserver mapfile.</p>
 <p>The mapfile used must have a WMS server enabled, e.g. with <code class="docutils literal notranslate"><span class="pre">wms_enable_request</span></code> or <code class="docutils literal notranslate"><span class="pre">ows_enable_request</span></code> in the mapfile.</p>
-<section id="id13">
+<div class="section" id="id13">
 <h3><code class="docutils literal notranslate"><span class="pre">mapserver</span></code><a class="headerlink" href="#id13" title="Permalink to this heading">¶</a></h3>
 <p>You can also set these options in the <a class="reference internal" href="configuration.html#globals-conf-label"><span class="std std-ref">globals</span></a> section.</p>
 <p><code class="docutils literal notranslate"><span class="pre">binary</span></code></p>
@@ -543,8 +544,8 @@ extension.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.11.0: </span>The <code class="docutils literal notranslate"><span class="pre">mapserv</span></code> binary is searched in all directories of the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment, if <code class="docutils literal notranslate"><span class="pre">binary</span></code> is not set.</p>
 </div>
-</section>
-<section id="id14">
+</div>
+<div class="section" id="id14">
 <h3>Example configuration<a class="headerlink" href="#id14" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_ms_source</span><span class="p">:</span>
   <span class="nb">type</span><span class="p">:</span> <span class="n">mapserver</span>
@@ -556,9 +557,9 @@ extension.</p>
     <span class="n">working_dir</span><span class="p">:</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="mapnik">
+</div>
+</div>
+<div class="section" id="mapnik">
 <span id="mapnik-label"></span><h2>Mapnik<a class="headerlink" href="#mapnik" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.1.0.</span></p>
@@ -567,48 +568,48 @@ extension.</p>
 <p><span class="versionmodified changed">Changed in version 1.2.0: </span>New <code class="docutils literal notranslate"><span class="pre">layers</span></code> option and support for <a class="reference internal" href="#tagged-source-names"><span class="std std-ref">tagged sources</span></a>.</p>
 </div>
 <p>Use the type <code class="docutils literal notranslate"><span class="pre">mapnik</span></code> to directly call Mapnik without any WMS service. It uses the Mapnik Python API and you need to have a working Mapnik installation that is accessible by the Python installation that runs MapProxy. A call of <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">'import</span> <span class="pre">mapnik'</span></code> should return no error.</p>
-<section id="mapfile">
+<div class="section" id="mapfile">
 <h3><code class="docutils literal notranslate"><span class="pre">mapfile</span></code><a class="headerlink" href="#mapfile" title="Permalink to this heading">¶</a></h3>
 <p>The filename of you Mapnik XML mapfile.</p>
-</section>
-<section id="layers">
+</div>
+<div class="section" id="layers">
 <h3><code class="docutils literal notranslate"><span class="pre">layers</span></code><a class="headerlink" href="#layers" title="Permalink to this heading">¶</a></h3>
 <p>A list of layer names you want to render. MapProxy disables each layer that is not included in this list. It does not reorder the layers and unnamed layers (<cite>Unknown</cite>) are always rendered.</p>
-</section>
-<section id="use-mapnik2">
+</div>
+<div class="section" id="use-mapnik2">
 <h3><code class="docutils literal notranslate"><span class="pre">use_mapnik2</span></code><a class="headerlink" href="#use-mapnik2" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
 </div>
 <p>Use Mapnik 2 if set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. This option is now deprecated and only required for Mapnik 2.0.0. Mapnik 2.0.1 and newer are available as <code class="docutils literal notranslate"><span class="pre">mapnik</span></code> package.</p>
-</section>
-<section id="id15">
+</div>
+<div class="section" id="id15">
 <h3><code class="docutils literal notranslate"><span class="pre">transparent</span></code><a class="headerlink" href="#id15" title="Permalink to this heading">¶</a></h3>
 <p>Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to render from mapnik sources with background-color=”transparent”, <code class="docutils literal notranslate"><span class="pre">false</span></code> (default) will force a black background color.</p>
-</section>
-<section id="scale-factor">
+</div>
+<div class="section" id="scale-factor">
 <h3><code class="docutils literal notranslate"><span class="pre">scale_factor</span></code><a class="headerlink" href="#scale-factor" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.8.0.</span></p>
 </div>
 <p>Set the <a class="reference external" href="https://github.com/mapnik/mapnik/wiki/Scale-factor">Mapnik scale_factor</a> option. Mapnik scales most style options like the width of lines and font sizes by this factor.
 See also <a class="reference internal" href="configuration_examples.html#hq-tiles"><span class="std std-ref">HQ/Retina tiles</span></a>.</p>
-</section>
-<section id="other-options">
+</div>
+<div class="section" id="other-options">
 <h3>Other options<a class="headerlink" href="#other-options" title="Permalink to this heading">¶</a></h3>
 <p>The Mapnik source also supports the <code class="docutils literal notranslate"><span class="pre">min_res</span></code>/<code class="docutils literal notranslate"><span class="pre">max_res</span></code>/<code class="docutils literal notranslate"><span class="pre">min_scale</span></code>/<code class="docutils literal notranslate"><span class="pre">max_scale</span></code>, <code class="docutils literal notranslate"><span class="pre">concurrent_requests</span></code>, <code class="docutils literal notranslate"><span class="pre">seed_only</span></code> and <code class="docutils literal notranslate"><span class="pre">coverage</span></code> options. See <a class="reference internal" href="#wms-label"><span class="std std-ref">WMS</span></a>.</p>
 <p>Mapnik can be used in multithreading and multiprocessing operation by setting <code class="docutils literal notranslate"><span class="pre">multithreaded:</span> <span class="pre">True</span></code>. This is only tested and safe <em>for seeding</em>.</p>
-</section>
-<section id="id16">
+</div>
+<div class="section" id="id16">
 <h3>Example configuration<a class="headerlink" href="#id16" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_mapnik_source</span><span class="p">:</span>
   <span class="nb">type</span><span class="p">:</span> <span class="n">mapnik</span>
   <span class="n">mapfile</span><span class="p">:</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mapnik</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="debug">
+</div>
+</div>
+<div class="section" id="debug">
 <span id="debug-label"></span><h2>Debug<a class="headerlink" href="#debug" title="Permalink to this heading">¶</a></h2>
 <p>Adds information like resolution and BBOX to the response image.
 This is useful to determine a fixed set of resolutions for the <code class="docutils literal notranslate"><span class="pre">res</span></code>-parameter. It takes no options.</p>
@@ -617,8 +618,8 @@ This is useful to determine a fixed set of resolutions for the <code class="docu
   <span class="nb">type</span><span class="p">:</span> <span class="n">debug</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
@@ -639,7 +640,7 @@ This is useful to determine a fixed set of resolutions for the <code class="docu
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>

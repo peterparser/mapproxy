@@ -3,14 +3,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WMS Labeling &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Authentication and Authorization" href="auth.html" />
@@ -35,7 +36,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left">
+      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -97,41 +98,40 @@
       </div>
     <div class="col-md-8">
       
-  <section id="wms-labeling">
+  <div class="section" id="wms-labeling">
 <h1>WMS Labeling<a class="headerlink" href="#wms-labeling" title="Permalink to this heading">¶</a></h1>
 <p>The tiling of rendered vector maps often results in issues with truncated or repeated labels. Some of these issues can be reduced with a proper configuration of MapProxy, but some require changes to the configuration of the source WMS server.</p>
 <p>This document describes settings for MapProxy and MapServer, but the problems and solutions are also valid for other WMS servers. Refer to their documentations on how to configure these settings.</p>
-<section id="the-problem">
+<div class="section" id="the-problem">
 <h2>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this heading">¶</a></h2>
-<p>MapProxy always uses small tiles for caching. MapProxy does not pass through incoming requests to the source WMS <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, but it always requests images/tiles that are aligned to the internal grid. MapProxy combines, scales and reprojects these tiles for WMS requests and for tiled requests (TMS/KML) the tiles are combined by the client (OpenLayers, etc).</p>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id2" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Except for uncached, cascaded WMS requests.</p>
-</aside>
-</aside>
+<p>MapProxy always uses small tiles for caching. MapProxy does not pass through incoming requests to the source WMS <a class="footnote-reference brackets" href="#id2" id="id1">1</a>, but it always requests images/tiles that are aligned to the internal grid. MapProxy combines, scales and reprojects these tiles for WMS requests and for tiled requests (TMS/KML) the tiles are combined by the client (OpenLayers, etc).</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Except for uncached, cascaded WMS requests.</p>
+</dd>
+</dl>
 <p>When tiles are combined, the text labels at the boundaries need to be present at both tiles and need to be placed at the exact same (geographic) location.</p>
 <p>There are three common problems here.</p>
-<section id="no-placement-outside-the-bbox">
+<div class="section" id="no-placement-outside-the-bbox">
 <h3>No placement outside the BBOX<a class="headerlink" href="#no-placement-outside-the-bbox" title="Permalink to this heading">¶</a></h3>
 <p>WMS servers do not draw features that are outside of the map bounds. For example, a city label that extends into the neighboring map tile will not be drawn in that other tile, because the geographic feature of the city (a single point) is only present in one tile.</p>
 <img alt="_images/labeling-no-placement.png" src="_images/labeling-no-placement.png" />
-</section>
-<section id="dynamic-label-placement">
+</div>
+<div class="section" id="dynamic-label-placement">
 <h3>Dynamic label placement<a class="headerlink" href="#dynamic-label-placement" title="Permalink to this heading">¶</a></h3>
 <p>WMS servers can adjust the position of labels so that more labels can fit on a map. For example, a city label is not always displayed at the same geographic location, but moved around to fit in the requested map or to make space for other labels.</p>
 <img alt="_images/labeling-dynamic.png" src="_images/labeling-dynamic.png" />
-</section>
-<section id="repeated-labels">
+</div>
+<div class="section" id="repeated-labels">
 <h3>Repeated labels<a class="headerlink" href="#repeated-labels" title="Permalink to this heading">¶</a></h3>
 <p>WMS servers render labels for polygon areas in each request. Labels for large areas will appear multiple times, once in each tile.</p>
 <img alt="_images/labeling-repeated.png" src="_images/labeling-repeated.png" />
-</section>
-</section>
-<section id="mapproxy-options">
+</div>
+</div>
+<div class="section" id="mapproxy-options">
 <h2>MapProxy Options<a class="headerlink" href="#mapproxy-options" title="Permalink to this heading">¶</a></h2>
 <p>There are two options that help with these issues.</p>
-<section id="meta-tiles">
+<div class="section" id="meta-tiles">
 <span id="id3"></span><h3>Meta Tiles<a class="headerlink" href="#meta-tiles" title="Permalink to this heading">¶</a></h3>
 <p>You can use meta tiles to reduce the labeling issues. A meta tile is a collection of multiple tiles. Instead of requesting each tile with a single request, MapProxy requests a single image that covers the area of multiple tiles and then splits that response into the actual tiles.</p>
 <p>The following image demonstrates that:</p>
@@ -152,8 +152,8 @@
 </pre></div>
 </div>
 <p>This does also work for tiles services. When a client like OpenLayers requests the 20 tiles from the example above in parallel, MapProxy will still requests the two meta tiles. Locking ensures that each meta tile will be requested only once.</p>
-</section>
-<section id="meta-buffer">
+</div>
+<div class="section" id="meta-buffer">
 <span id="id4"></span><h3>Meta Buffer<a class="headerlink" href="#meta-buffer" title="Permalink to this heading">¶</a></h3>
 <p>In addition to meta tiles, MapProxy implements a meta buffer. The meta buffer adds extra space at the edges of the requested area. With this buffer, you can solve the first issue: no placement outside the BBOX.</p>
 <img alt="_images/labeling-meta-buffer.png" src="_images/labeling-meta-buffer.png" />
@@ -173,14 +173,14 @@
     <span class="n">meta_buffer</span><span class="p">:</span> <span class="mi">150</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="wms-server-options">
+</div>
+</div>
+<div class="section" id="wms-server-options">
 <h2>WMS Server Options<a class="headerlink" href="#wms-server-options" title="Permalink to this heading">¶</a></h2>
 <p>You can reduce some of the labeling issues with meta tiling, and solve the first issue with the meta buffer. The issues with dynamic and repeated labeling requires some changes to your WMS server.</p>
 <p>In general, you need to disable the dynamic position of labels and you need to allow the rendering of partial labels.</p>
-</section>
-<section id="mapserver-options">
+</div>
+<div class="section" id="mapserver-options">
 <h2>MapServer Options<a class="headerlink" href="#mapserver-options" title="Permalink to this heading">¶</a></h2>
 <p>MapServer has lots of settings that affect the rendering. The two most important settings are</p>
 <dl class="simple">
@@ -192,14 +192,14 @@
 <dt><code class="docutils literal notranslate"><span class="pre">PARTIALS</span></code> from the <code class="docutils literal notranslate"><span class="pre">LABEL</span></code> configuration.</dt><dd><p>If this option is true, then labels are rendered beyond the boundaries of the map request. Default is true.</p>
 </dd>
 </dl>
-<section id="partial-false">
+<div class="section" id="partial-false">
 <h3><code class="docutils literal notranslate"><span class="pre">PARTIAL</span> <span class="pre">FALSE</span></code><a class="headerlink" href="#partial-false" title="Permalink to this heading">¶</a></h3>
 <p>The easiest option to solve all issues is <code class="docutils literal notranslate"><span class="pre">PARTIAL</span> <span class="pre">FALSE</span></code> with a meta buffer of 0. This prevents any label from truncation, but it comes with a large downside: Since no labels are rendered at the boundaries of the meta tiles, you will have areas with no labels at all. These areas form a noticeable grid pattern on your maps.</p>
 <p>The following images demonstrates a WMS request with a meta tile boundary in the center.</p>
 <img alt="_images/labeling-partial-false.png" src="_images/labeling-partial-false.png" />
 <p>You can improve that with the right set of configuration options for each type of geometry.</p>
-</section>
-<section id="points">
+</div>
+<div class="section" id="points">
 <h3>Points<a class="headerlink" href="#points" title="Permalink to this heading">¶</a></h3>
 <p>As described above, you can use a meta buffer to prevent missing labels. You need to set <code class="docutils literal notranslate"><span class="pre">PARTIALS</span> <span class="pre">TRUE</span></code> (which is the default), and configure a large enough meta buffer. The labels need to be placed at the same position with each request. You can configure that with the <code class="docutils literal notranslate"><span class="pre">POSITION</span></code> options. The default is <code class="docutils literal notranslate"><span class="pre">auto</span></code> and you should set this to an explicit value, <code class="docutils literal notranslate"><span class="pre">cc</span></code> or <code class="docutils literal notranslate"><span class="pre">uc</span></code> for example.</p>
 <p><code class="docutils literal notranslate"><span class="pre">example.map</span></code>:</p>
@@ -217,8 +217,8 @@
     <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="polygons">
+</div>
+<div class="section" id="polygons">
 <h3>Polygons<a class="headerlink" href="#polygons" title="Permalink to this heading">¶</a></h3>
 <p>Meta tiling reduces the number of repeated labels, but they can still appear at the border of meta tiles.</p>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">PROCESSING</span> <span class="pre">&quot;LABEL_NO_CLIP=ON&quot;</span></code> option to fix this problem.
@@ -245,8 +245,8 @@ With this option, MapServer places the label always at a fixed position, even if
     <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="lines">
+</div>
+<div class="section" id="lines">
 <h3>Lines<a class="headerlink" href="#lines" title="Permalink to this heading">¶</a></h3>
 <p>By default, labels are repeated on longer line strings. Where these labels are repeated depends on the current view of that line. That placement might differ in two neighboring image requests for long lines.</p>
 <p>Most of the time, the labels will match at the boundaries of the meta tiles, when you use <code class="docutils literal notranslate"><span class="pre">PARTIALS</span> <span class="pre">TRUE</span></code> and a meta buffer. But, you might notice truncated labels on long line strings. In practice these issues are rare, though.</p>
@@ -314,14 +314,14 @@ With this option, MapServer places the label always at a fixed position, even if
     <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="other-wms-servers">
+</div>
+</div>
+<div class="section" id="other-wms-servers">
 <h2>Other WMS Servers<a class="headerlink" href="#other-wms-servers" title="Permalink to this heading">¶</a></h2>
 <p>The most important step for all WMS servers is to disable to dynamic placement of labels. Look into the documentation how to do this for you WMS server.</p>
 <p>If you want to contribute to this document then join our <a class="reference external" href="http://lists.osgeo.org/mailman/listinfo/mapproxy">mailing list</a> or use our <a class="reference external" href="https://github.com/mapproxy/mapproxy/issues/">issue tracker</a>.</p>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
@@ -342,7 +342,7 @@ With this option, MapServer places the label always at a fixed position, even if
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>

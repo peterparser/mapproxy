@@ -3,14 +3,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coverages &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="mapproxy-util" href="mapproxy_util.html" />
@@ -35,7 +36,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left">
+      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -97,7 +98,7 @@
       </div>
     <div class="col-md-8">
       
-  <section id="coverages">
+  <div class="section" id="coverages">
 <span id="id1"></span><h1>Coverages<a class="headerlink" href="#coverages" title="Permalink to this heading">¶</a></h1>
 <p>With coverages you can define areas where data is available or where data you are interested in is.
 MapProxy supports coverages for <a class="reference internal" href="sources.html"><span class="doc">sources</span></a> and in the <a class="reference internal" href="seed.html"><span class="doc">mapproxy-seed tool</span></a>. Refer to the corresponding section in the documentation.</p>
@@ -113,7 +114,7 @@ MapProxy supports coverages for <a class="reference internal" href="sources.html
 <p><span class="versionmodified added">New in version 1.10.</span></p>
 </div>
 <p>You can also build intersections, unions and differences between multiple coverages.</p>
-<section id="requirements">
+<div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
 <p>If you want to use polygons to define a coverage, instead of simple bounding boxes, you will also need Shapely and GEOS. For loading polygons from shapefiles you’ll also need GDAL/OGR.</p>
 <p>MapProxy requires Shapely 1.2.0 or later and GEOS 3.1.0 or later.</p>
@@ -122,8 +123,8 @@ MapProxy supports coverages for <a class="reference internal" href="sources.html
 <span class="n">pip</span> <span class="n">install</span> <span class="n">Shapely</span>
 </pre></div>
 </div>
-</section>
-<section id="configuration">
+</div>
+<div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
 <p>All coverages are configured by defining the source of the coverage and the SRS.
 The configuration of the coverage depends on the type. The SRS can allways be configured with the <code class="docutils literal notranslate"><span class="pre">srs</span></code> option.</p>
@@ -131,18 +132,18 @@ The configuration of the coverage depends on the type. The SRS can allways be co
 <p><span class="versionmodified added">New in version 1.5.0: </span>MapProxy can autodetect the type of the coverage. You can now use <code class="docutils literal notranslate"><span class="pre">coverage</span></code> instead of the <code class="docutils literal notranslate"><span class="pre">bbox</span></code>, <code class="docutils literal notranslate"><span class="pre">polygons</span></code> or <code class="docutils literal notranslate"><span class="pre">ogr_datasource</span></code> option.
 The old options are still supported.</p>
 </div>
-</section>
-<section id="coverage-types">
+</div>
+<div class="section" id="coverage-types">
 <h2>Coverage Types<a class="headerlink" href="#coverage-types" title="Permalink to this heading">¶</a></h2>
-<section id="bounding-box">
+<div class="section" id="bounding-box">
 <h3>Bounding box<a class="headerlink" href="#bounding-box" title="Permalink to this heading">¶</a></h3>
 <p>For simple box coverages.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">bbox</span></code> or <code class="docutils literal notranslate"><span class="pre">datasource</span></code>:</dt><dd><p>A simple BBOX as a list of minx, miny, maxx, maxy, e.g: <cite>[4, -30, 10, -28]</cite> or as a string <cite>4,-30,10,-28</cite>.</p>
 </dd>
 </dl>
-</section>
-<section id="polygon-file">
+</div>
+<div class="section" id="polygon-file">
 <h3>Polygon file<a class="headerlink" href="#polygon-file" title="Permalink to this heading">¶</a></h3>
 <p>Text files with one WKT polygon or multi-polygon per line.
 You can create your own files or use <a class="reference external" href="http://mapproxy.org/static/polygons/">one of the files we provide for every country</a>. Read <a class="reference external" href="http://mapproxy.org/static/polygons/0-fips-codes.txt">the index</a> to find your country.</p>
@@ -150,8 +151,8 @@ You can create your own files or use <a class="reference external" href="http://
 <dt><code class="docutils literal notranslate"><span class="pre">datasource</span></code>:</dt><dd><p>The path to the polygon file. Should be relative to the proxy configuration or absolute.</p>
 </dd>
 </dl>
-</section>
-<section id="geojson">
+</div>
+<div class="section" id="geojson">
 <h3>GeoJSON<a class="headerlink" href="#geojson" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10: </span>Previous versions required OGR/GDAL for reading GeoJSON.</p>
@@ -161,8 +162,8 @@ You can create your own files or use <a class="reference external" href="http://
 <dt><code class="docutils literal notranslate"><span class="pre">datasource</span></code>:</dt><dd><p>The path to the GeoJSON file. Should be relative to the proxy configuration or absolute.</p>
 </dd>
 </dl>
-</section>
-<section id="ogr-datasource">
+</div>
+<div class="section" id="ogr-datasource">
 <h3>OGR datasource<a class="headerlink" href="#ogr-datasource" title="Permalink to this heading">¶</a></h3>
 <p>Any polygon datasource that is supported by OGR (e.g. Shapefile, GeoJSON, PostGIS).</p>
 <dl class="simple">
@@ -175,8 +176,8 @@ statement (e.g. <code class="docutils literal notranslate"><span class="pre">&qu
 option is unset, the first layer from the datasource will be used.</p>
 </dd>
 </dl>
-</section>
-<section id="expire-tiles">
+</div>
+<div class="section" id="expire-tiles">
 <h3>Expire tiles<a class="headerlink" href="#expire-tiles" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.</span></p>
@@ -187,8 +188,8 @@ with one tile coordinate per line. Only tiles in the webmercator grid are suppor
 <dt><code class="docutils literal notranslate"><span class="pre">expire_tiles</span></code>:</dt><dd><p>File or directory with expire tile files. Directories are loaded recursive.</p>
 </dd>
 </dl>
-</section>
-<section id="union">
+</div>
+<div class="section" id="union">
 <h3>Union<a class="headerlink" href="#union" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.</span></p>
@@ -198,8 +199,8 @@ with one tile coordinate per line. Only tiles in the webmercator grid are suppor
 <dt><code class="docutils literal notranslate"><span class="pre">union</span></code>:</dt><dd><p>A list of multiple coverages.</p>
 </dd>
 </dl>
-</section>
-<section id="difference">
+</div>
+<div class="section" id="difference">
 <h3>Difference<a class="headerlink" href="#difference" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.</span></p>
@@ -209,8 +210,8 @@ with one tile coordinate per line. Only tiles in the webmercator grid are suppor
 <dt><code class="docutils literal notranslate"><span class="pre">difference</span></code>:</dt><dd><p>A list of multiple coverages.</p>
 </dd>
 </dl>
-</section>
-<section id="intersection">
+</div>
+<div class="section" id="intersection">
 <h3>Intersection<a class="headerlink" href="#intersection" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.</span></p>
@@ -220,9 +221,9 @@ with one tile coordinate per line. Only tiles in the webmercator grid are suppor
 <dt><code class="docutils literal notranslate"><span class="pre">difference</span></code>:</dt><dd><p>A list of multiple coverages.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="clipping">
+</div>
+</div>
+<div class="section" id="clipping">
 <h2>Clipping<a class="headerlink" href="#clipping" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.0.</span></p>
@@ -230,10 +231,10 @@ with one tile coordinate per line. Only tiles in the webmercator grid are suppor
 <p>By default MapProxy tries to get and serve full source image even if a coverage only touches it.
 Clipping by coverage can be enabled by setting <code class="docutils literal notranslate"><span class="pre">clip:</span> <span class="pre">true</span></code>. If enabled, all areas outside the coverage will be converted to transparent pixels.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">clip</span></code> option is only active for source coverages and not for seeding coverages.</p>
-</section>
-<section id="examples">
+</div>
+<div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<section id="sources">
+<div class="section" id="sources">
 <h3>sources<a class="headerlink" href="#sources" title="Permalink to this heading">¶</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">coverage</span></code> option to define a coverage for a WMS or tile source.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sources:
@@ -263,8 +264,8 @@ Clipping by coverage can be enabled by setting <code class="docutils literal not
           srs: &#39;EPSG:4326&#39;
 </pre></div>
 </div>
-</section>
-<section id="mapproxy-seed">
+</div>
+<div class="section" id="mapproxy-seed">
 <h3>mapproxy-seed<a class="headerlink" href="#mapproxy-seed" title="Permalink to this heading">¶</a></h3>
 <p>To define a seed-area in the <code class="docutils literal notranslate"><span class="pre">seed.yaml</span></code>, add the coverage directly to the view.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">coverages</span><span class="p">:</span>
@@ -291,9 +292,9 @@ Clipping by coverage can be enabled by setting <code class="docutils literal not
 </pre></div>
 </div>
 <p>See <a class="reference external" href="http://www.gdal.org/ogr/ogr_formats.html">the OGR driver list</a> for all supported formats.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
     </div>
@@ -314,7 +315,7 @@ Clipping by coverage can be enabled by setting <code class="docutils literal not
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>

@@ -3,14 +3,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Caches &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Seeding" href="seed.html" />
@@ -35,7 +36,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left">
+      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -103,13 +104,13 @@
       </div>
     <div class="col-md-8">
       
-  <section id="caches">
+  <div class="section" id="caches">
 <h1>Caches<a class="headerlink" href="#caches" title="Permalink to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.2.0.</span></p>
 </div>
 <p>MapProxy supports multiple backends to store the internal tiles. The default backend is file based and does not require any further configuration.</p>
-<section id="configuration">
+<div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
 <p>You can configure a backend for each cache with the <code class="docutils literal notranslate"><span class="pre">cache</span></code> option.
 Each backend has a <code class="docutils literal notranslate"><span class="pre">type</span></code> and one or more options.</p>
@@ -136,8 +137,8 @@ Each backend has a <code class="docutils literal notranslate"><span class="pre">
 <li><p><a class="reference internal" href="#cache-azureblob"><span class="std std-ref">azureblob</span></a></p></li>
 <li><p><a class="reference internal" href="#cache-compact"><span class="std std-ref">compact</span></a></p></li>
 </ul>
-</section>
-<section id="file">
+</div>
+<div class="section" id="file">
 <span id="cache-file"></span><h2><code class="docutils literal notranslate"><span class="pre">file</span></code><a class="headerlink" href="#file" title="Permalink to this heading">¶</a></h2>
 <p>This is the default cache type and it uses a single file for each tile. Available options are:</p>
 <dl>
@@ -165,8 +166,8 @@ Each backend has a <code class="docutils literal notranslate"><span class="pre">
 </div>
 </dd>
 </dl>
-</section>
-<section id="mbtiles">
+</div>
+<div class="section" id="mbtiles">
 <span id="cache-mbtiles"></span><h2><code class="docutils literal notranslate"><span class="pre">mbtiles</span></code><a class="headerlink" href="#mbtiles" title="Permalink to this heading">¶</a></h2>
 <p>Use a single SQLite file for this cache. It uses the <a class="reference external" href="http://mbtiles.org/">MBTile specification</a>.</p>
 <p>Available options:</p>
@@ -195,8 +196,8 @@ Each backend has a <code class="docutils literal notranslate"><span class="pre">
 Use the <code class="docutils literal notranslate"><span class="pre">--summary</span></code> option of the <code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code> tool.</p>
 </div>
 <p>The note about <code class="docutils literal notranslate"><span class="pre">bulk_meta_tiles</span></code> for SQLite below applies to MBtiles as well.</p>
-</section>
-<section id="sqlite">
+</div>
+<div class="section" id="sqlite">
 <span id="cache-sqlite"></span><h2><code class="docutils literal notranslate"><span class="pre">sqlite</span></code><a class="headerlink" href="#sqlite" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.6.0.</span></p>
@@ -238,18 +239,18 @@ Use the <code class="docutils literal notranslate"><span class="pre">--summary</
 </pre></div>
 </div>
 </div>
-</section>
-<section id="couchdb">
+</div>
+<div class="section" id="couchdb">
 <span id="cache-couchdb"></span><h2><code class="docutils literal notranslate"><span class="pre">couchdb</span></code><a class="headerlink" href="#couchdb" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
 </div>
 <p>Store tiles inside a <a class="reference external" href="http://couchdb.apache.org/">CouchDB</a>. MapProxy creates a JSON document for each tile. This document contains metadata, like timestamps, and the tile image itself as a attachment.</p>
-<section id="requirements">
+<div class="section" id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h3>
 <p>Besides a running CouchDB you will need the <a class="reference external" href="http://python-requests.org/">Python requests package</a>. You can install it the usual way, for example <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">requests</span></code>.</p>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h3>Configuration<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <p>You can configure the database and database name and the tile ID and additional metadata.</p>
 <p>Available options:</p>
@@ -296,8 +297,8 @@ There are a few predefined values that MapProxy will replace with  tile-depended
 </dl>
 </dd>
 </dl>
-</section>
-<section id="example">
+</div>
+<div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">caches</span><span class="p">:</span>
   <span class="n">mycouchdbcache</span><span class="p">:</span>
@@ -344,20 +345,20 @@ There are a few predefined values that MapProxy will replace with  tile-depended
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">_attachments</span></code>-part is the internal structure of CouchDB where the tile itself is stored. You can access the tile directly at: <code class="docutils literal notranslate"><span class="pre">http://localhost:9999/mywms_tiles/mygrid-3-1-2/tile</span></code>.</p>
-</section>
-</section>
-<section id="riak">
+</div>
+</div>
+<div class="section" id="riak">
 <span id="cache-riak"></span><h2><code class="docutils literal notranslate"><span class="pre">riak</span></code><a class="headerlink" href="#riak" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.6.0.</span></p>
 </div>
 <p>Store tiles in a <a class="reference external" href="http://basho.com/riak/">Riak</a> cluster. MapProxy creates keys with binary data as value and timestamps as user defined metadata.
 This backend is good for very large caches which can be distributed over many nodes. Data can be distributed over multiple nodes providing a fault-tolernt and high-available storage. A Riak cluster is masterless and each node can handle read and write requests.</p>
-<section id="id4">
+<div class="section" id="id4">
 <h3>Requirements<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <p>You will need the <a class="reference external" href="https://pypi.org/project/riak">Python Riak client</a> version 2.4.2 or older. You can install it in the usual way, for example with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">riak==2.4.2</span></code>. Environments with older version must be upgraded with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">riak==2.4.2</span></code>. Python library depends on packages <cite>python-dev</cite>, <cite>libffi-dev</cite> and <cite>libssl-dev</cite>.</p>
-</section>
-<section id="id5">
+</div>
+<div class="section" id="id5">
 <h3>Configuration<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <p>Available options:</p>
 <dl class="simple">
@@ -372,8 +373,8 @@ This backend is good for very large caches which can be distributed over many no
 <dt><code class="docutils literal notranslate"><span class="pre">secondary_index</span></code>:</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> enables secondary index for tiles. This improves seed cleanup performance but requires that Riak uses LevelDB as the backend. Refer to the Riak documentation. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </dd>
 </dl>
-</section>
-<section id="id6">
+</div>
+<div class="section" id="id6">
 <h3>Example<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myriakcache</span><span class="p">:</span>
   <span class="n">sources</span><span class="p">:</span> <span class="p">[</span><span class="n">mywms</span><span class="p">]</span>
@@ -392,9 +393,9 @@ This backend is good for very large caches which can be distributed over many no
       <span class="n">http</span><span class="p">:</span> <span class="mi">8098</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="redis">
+</div>
+</div>
+<div class="section" id="redis">
 <span id="cache-redis"></span><h2><code class="docutils literal notranslate"><span class="pre">redis</span></code><a class="headerlink" href="#redis" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.0.</span></p>
@@ -405,11 +406,11 @@ This backend is good for very large caches which can be distributed over many no
 <span class="n">maxmemory</span><span class="o">-</span><span class="n">policy</span> <span class="n">volatile</span><span class="o">-</span><span class="n">ttl</span>
 </pre></div>
 </div>
-<section id="id8">
+<div class="section" id="id8">
 <h3>Requirements<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <p>You will need the <a class="reference external" href="https://pypi.org/project/redis">Python Redis client</a>. You can install it in the usual way, for example with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">redis</span></code>.</p>
-</section>
-<section id="id9">
+</div>
+<div class="section" id="id9">
 <h3>Configuration<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
 <p>Available options:</p>
 <dl class="simple">
@@ -424,8 +425,8 @@ This backend is good for very large caches which can be distributed over many no
 <dt><code class="docutils literal notranslate"><span class="pre">default_ttl</span></code>:</dt><dd><p>The default Time-To-Live of each tile in the Redis cache in seconds. Defaults to 3600 seconds (1 hour).</p>
 </dd>
 </dl>
-</section>
-<section id="id10">
+</div>
+<div class="section" id="id10">
 <h3>Example<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">redis_cache</span><span class="p">:</span>
     <span class="n">sources</span><span class="p">:</span> <span class="p">[</span><span class="n">mywms</span><span class="p">]</span>
@@ -435,9 +436,9 @@ This backend is good for very large caches which can be distributed over many no
       <span class="n">default_ttl</span><span class="p">:</span> <span class="mi">600</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="geopackage">
+</div>
+</div>
+<div class="section" id="geopackage">
 <span id="cache-geopackage"></span><h2><code class="docutils literal notranslate"><span class="pre">geopackage</span></code><a class="headerlink" href="#geopackage" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.0.</span></p>
@@ -472,8 +473,8 @@ If set to true, <code class="docutils literal notranslate"><span class="pre">fil
 <p>The geopackage format specification does not include any timestamps for each tile and the seeding function is limited therefore. If you include any <code class="docutils literal notranslate"><span class="pre">refresh_before</span></code> time in a seed task, all tiles will be recreated regardless of the value. The cleanup process does not support any <code class="docutils literal notranslate"><span class="pre">remove_before</span></code> times for geopackage and it always removes all tiles.
 Use the <code class="docutils literal notranslate"><span class="pre">--summary</span></code> option of the <code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code> tool.</p>
 </div>
-</section>
-<section id="s3">
+</div>
+<div class="section" id="s3">
 <span id="cache-s3"></span><h2><code class="docutils literal notranslate"><span class="pre">s3</span></code><a class="headerlink" href="#s3" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.0.</span></p>
@@ -482,11 +483,11 @@ Use the <code class="docutils literal notranslate"><span class="pre">--summary</
 <p><span class="versionmodified added">New in version 1.11.0: </span><code class="docutils literal notranslate"><span class="pre">region_name</span></code>, <code class="docutils literal notranslate"><span class="pre">endpoint_url</span></code> and <code class="docutils literal notranslate"><span class="pre">access_control_list</span></code></p>
 </div>
 <p>Store tiles in a <a class="reference external" href="https://aws.amazon.com/s3/">Amazon Simple Storage Service (S3)</a> or any other S3 compatible object storage.</p>
-<section id="id12">
+<div class="section" id="id12">
 <h3>Requirements<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h3>
 <p>You will need the Python <a class="reference external" href="https://pypi.org/project/boto3">boto3</a> package. You can install it in the usual way, for example with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">boto3</span></code>.</p>
-</section>
-<section id="id13">
+</div>
+<div class="section" id="id13">
 <h3>Configuration<a class="headerlink" href="#id13" title="Permalink to this heading">¶</a></h3>
 <p>Available options:</p>
 <dl class="simple">
@@ -510,8 +511,8 @@ You can set the default profile with <code class="docutils literal notranslate">
 <p class="admonition-title">Note</p>
 <p>The hierarchical <code class="docutils literal notranslate"><span class="pre">directory_layouts</span></code> can hit limitations of S3 <em>“if you are routinely processing 100 or more requests per second”</em>. <code class="docutils literal notranslate"><span class="pre">directory_layout:</span> <span class="pre">reverse_tms</span></code> can work around this limitation. Please read <a class="reference external" href="http://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html">S3 Request Rate and Performance Considerations</a> for more information on this issue.</p>
 </div>
-</section>
-<section id="id14">
+</div>
+<div class="section" id="id14">
 <h3>Example<a class="headerlink" href="#id14" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cache</span><span class="p">:</span>
   <span class="n">my_layer_20110501_epsg_4326_cache_out</span><span class="p">:</span>
@@ -527,8 +528,8 @@ You can set the default profile with <code class="docutils literal notranslate">
       <span class="n">profile_name</span><span class="p">:</span> <span class="n">default</span>
 </pre></div>
 </div>
-</section>
-<section id="example-usage-with-digitalocean-spaces">
+</div>
+<div class="section" id="example-usage-with-digitalocean-spaces">
 <h3>Example usage with DigitalOcean Spaces<a class="headerlink" href="#example-usage-with-digitalocean-spaces" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cache</span><span class="p">:</span>
   <span class="n">my_layer_20110501_epsg_4326_cache_out</span><span class="p">:</span>
@@ -547,19 +548,19 @@ You can set the default profile with <code class="docutils literal notranslate">
       <span class="n">access_control_list</span><span class="p">:</span> <span class="n">public</span><span class="o">-</span><span class="n">read</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="azureblob">
+</div>
+</div>
+<div class="section" id="azureblob">
 <span id="cache-azureblob"></span><h2><code class="docutils literal notranslate"><span class="pre">azureblob</span></code><a class="headerlink" href="#azureblob" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version to: </span>be released</p>
 </div>
 <p>Store tiles in <a class="reference external" href="https://azure.microsoft.com/en-us/products/storage/blobs/">Azure Blob Storage</a>, Microsoft’s object storage solution for the cloud.</p>
-<section id="id15">
+<div class="section" id="id15">
 <h3>Requirements<a class="headerlink" href="#id15" title="Permalink to this heading">¶</a></h3>
 <p>You will need the <a class="reference external" href="https://pypi.org/project/azure-storage-blob/">azure-storage-blob</a> package. You can install it in the usual way, for example with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">azure-storage-blob</span></code>.</p>
-</section>
-<section id="id16">
+</div>
+<div class="section" id="id16">
 <h3>Configuration<a class="headerlink" href="#id16" title="Permalink to this heading">¶</a></h3>
 <p>Available options:</p>
 <dl class="simple">
@@ -594,8 +595,8 @@ using the <code class="docutils literal notranslate"><span class="pre">AZURE_STO
 <dt><code class="docutils literal notranslate"><span class="pre">directory_layout</span></code>:</dt><dd><p>Defines the directory layout for the tiles (<code class="docutils literal notranslate"><span class="pre">12/12345/67890.png</span></code>, <code class="docutils literal notranslate"><span class="pre">L12/R00010932/C00003039.png</span></code>, etc.).  See <a class="reference internal" href="#cache-file"><span class="std std-ref">file</span></a> for available options. Defaults to <code class="docutils literal notranslate"><span class="pre">tms</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">12/12345/67890.png</span></code>). This cache cache also supports <code class="docutils literal notranslate"><span class="pre">reverse_tms</span></code> where tiles are stored as <code class="docutils literal notranslate"><span class="pre">y/x/z.format</span></code>.</p>
 </dd>
 </dl>
-</section>
-<section id="id17">
+</div>
+<div class="section" id="id17">
 <h3>Example<a class="headerlink" href="#id17" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cache</span><span class="p">:</span>
   <span class="n">my_layer_20110501_epsg_4326_cache_out</span><span class="p">:</span>
@@ -611,9 +612,9 @@ using the <code class="docutils literal notranslate"><span class="pre">AZURE_STO
       <span class="n">connection_string</span><span class="p">:</span> <span class="s2">&quot;DefaultEndpointsProtocol=https;AccountName=xxxx;AccountKey=xxxx&quot;</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="compact">
+</div>
+</div>
+<div class="section" id="compact">
 <span id="cache-compact"></span><h2><code class="docutils literal notranslate"><span class="pre">compact</span></code><a class="headerlink" href="#compact" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.10.0: </span>Support for format version 1</p>
@@ -658,8 +659,8 @@ Use the <code class="docutils literal notranslate"><span class="pre">--summary</
 Removing or refreshing tiles with <code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code> does not reduce the size of the cache files.
 You can use the <a class="reference internal" href="mapproxy_util.html#mapproxy-defrag-compact-cache"><span class="std std-ref">defrag-compact-cache</span></a> util to reduce the file size of existing bundle files.</p>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
@@ -680,7 +681,7 @@ You can use the <a class="reference internal" href="mapproxy_util.html#mapproxy-
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>

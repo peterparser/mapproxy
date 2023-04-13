@@ -3,14 +3,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MapProxy 2.0 &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Writing plugins" href="plugins.html" />
@@ -34,7 +35,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left">
+      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -94,7 +95,7 @@
       </div>
     <div class="col-md-8">
       
-  <section id="mapproxy-2-0">
+  <div class="section" id="mapproxy-2-0">
 <h1>MapProxy 2.0<a class="headerlink" href="#mapproxy-2-0" title="Permalink to this heading">¶</a></h1>
 <p>MapProxy will change a few defaults in the configuration between 1.8 and 2.0. You might need to adapt your configuration to have MapProxy 2.0 work the same as MapProxy 1.8 or 1.7.</p>
 <p>Most changes are made to make things more consistent, to make it easier for new users and to discourage a few deprecated things.</p>
@@ -102,35 +103,35 @@
 <p class="admonition-title">Warning</p>
 <p>Please read this document carefully. Also check all warnings that the latest 1.8 version of <cite>mapproxy-util serve-develop</cite> will generate with your configuration before upgrading to 2.0.</p>
 </div>
-<section id="grids">
+<div class="section" id="grids">
 <h2>Grids<a class="headerlink" href="#grids" title="Permalink to this heading">¶</a></h2>
-<section id="new-default-tile-grid">
+<div class="section" id="new-default-tile-grid">
 <h3>New default tile grid<a class="headerlink" href="#new-default-tile-grid" title="Permalink to this heading">¶</a></h3>
 <p>MapProxy now uses GLOBAL_WEBMERCATOR as the default grid, when no grids are configured for a cache or a tile source. This grid is compatible with Google Maps and OpenStreetMap, and uses the same tile origin as the WMTS standard.</p>
 <p>The old default GLOBAL_MERCATOR uses a different tile origin (lower-left instead of upper-left) and you need to set this grid if you upgrade from MapProxy 1 and have caches or tile sources without an explicit grid configured.</p>
 <p>MapProxy used the lower-left tile in a tile grid as the origin. This is the same origin as the TMS standard uses. Google Maps, OpenStreetMap and now also WMTS are counting tiles from the upper-left tile. MapProxy changes</p>
-</section>
-<section id="default-origin">
+</div>
+<div class="section" id="default-origin">
 <h3>Default origin<a class="headerlink" href="#default-origin" title="Permalink to this heading">¶</a></h3>
 <p>The default origin changes from ‘ll’ (lower-left) to ‘ul’ (upper-left). You need to set the origin explicitly if you use custom grids. The origin will stay the same if your custom grid is <cite>base`d on the `GLOBAL_*</cite> grids.</p>
-</section>
-</section>
-<section id="wms">
+</div>
+</div>
+<div class="section" id="wms">
 <h2>WMS<a class="headerlink" href="#wms" title="Permalink to this heading">¶</a></h2>
-<section id="srs">
+<div class="section" id="srs">
 <h3>SRS<a class="headerlink" href="#srs" title="Permalink to this heading">¶</a></h3>
 <p>The WMS does not support EPSG:900913 by default anymore to discourage the use of this deprecated EPSG code. Please use EPSG:3857 instead or add it back to the WMS configuration (see <a class="reference internal" href="services.html#wms-srs"><span class="std std-ref">srs</span></a>).</p>
-</section>
-<section id="image-formats">
+</div>
+<div class="section" id="image-formats">
 <h3>Image formats<a class="headerlink" href="#image-formats" title="Permalink to this heading">¶</a></h3>
 <p>PNG and JPEG are the right image formats for almost all use cases. GIF and TIFF are therefore no longer enabled by default. You can enable them back in the WMS configuration if you need them (<a class="reference internal" href="services.html#wms-image-formats"><span class="std std-ref">image_formats</span></a>)</p>
-</section>
-</section>
-<section id="other">
+</div>
+</div>
+<div class="section" id="other">
 <h2>Other<a class="headerlink" href="#other" title="Permalink to this heading">¶</a></h2>
 <p>This document will be extended.</p>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
@@ -151,7 +152,7 @@
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>

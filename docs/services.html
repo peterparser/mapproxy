@@ -3,14 +3,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Services &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sources" href="sources.html" />
@@ -35,7 +36,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="pull-left">
+      <a href="index.html" class="pull-left"><img src="_static/logo.png" height="50">
       </a>
       <a class="navbar-brand" href="index.html">
         <span>
@@ -97,7 +98,7 @@
       </div>
     <div class="col-md-8">
       
-  <section id="services">
+  <div class="section" id="services">
 <span id="id1"></span><h1>Services<a class="headerlink" href="#services" title="Permalink to this heading">¶</a></h1>
 <p>The following services are available:</p>
 <ul class="simple">
@@ -116,36 +117,36 @@
     <span class="n">wmsoption2</span><span class="p">:</span> <span class="n">xxx</span>
 </pre></div>
 </div>
-<section id="web-map-service-ogc-wms">
+<div class="section" id="web-map-service-ogc-wms">
 <span id="wms-service-label"></span><span id="index-0"></span><h2>Web Map Service (OGC WMS)<a class="headerlink" href="#web-map-service-ogc-wms" title="Permalink to this heading">¶</a></h2>
 <p>The WMS server is accessible at <code class="docutils literal notranslate"><span class="pre">/service</span></code>, <code class="docutils literal notranslate"><span class="pre">/ows</span></code> and <code class="docutils literal notranslate"><span class="pre">/wms</span></code>  and it supports the WMS versions 1.0.0, 1.1.1 and 1.3.0.</p>
 <p>See <a class="reference internal" href="inspire.html"><span class="doc">INSPIRE View Service</span></a> for configuring INSPIRE metadata.</p>
 <p>The WMS service will use all configured <a class="reference internal" href="configuration.html#id1"><span class="std std-ref">layers</span></a>.</p>
 <p>The service takes the following additional option.</p>
-<section id="attribution">
+<div class="section" id="attribution">
 <h3><code class="docutils literal notranslate"><span class="pre">attribution</span></code><a class="headerlink" href="#attribution" title="Permalink to this heading">¶</a></h3>
 <p>Adds an attribution (copyright) line to all WMS requests.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">text</span></code></dt><dd><p>The text line of the attribution (e.g. some copyright notice, etc).</p>
 </dd>
 </dl>
-</section>
-<section id="md">
+</div>
+<div class="section" id="md">
 <span id="wms-md"></span><h3><code class="docutils literal notranslate"><span class="pre">md</span></code><a class="headerlink" href="#md" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">md</span></code> is for metadata. These fields are used for the WMS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> responses. See the example below for all supported keys.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.8.1: </span><code class="docutils literal notranslate"><span class="pre">keyword_list</span></code></p>
 </div>
-</section>
-<section id="srs">
+</div>
+<div class="section" id="srs">
 <span id="wms-srs"></span><h3><code class="docutils literal notranslate"><span class="pre">srs</span></code><a class="headerlink" href="#srs" title="Permalink to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">srs</span></code> option defines which SRS the WMS service supports.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srs</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span> <span class="s1">&#39;CRS:84&#39;</span><span class="p">,</span> <span class="s1">&#39;EPSG:900913&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="configuration.html#axis-order"><span class="std std-ref">axis order</span></a> for further configuration that might be needed for WMS 1.3.0.</p>
-</section>
-<section id="bbox-srs">
+</div>
+<div class="section" id="bbox-srs">
 <h3><code class="docutils literal notranslate"><span class="pre">bbox_srs</span></code><a class="headerlink" href="#bbox-srs" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -175,16 +176,16 @@
 </pre></div>
 </div>
 <p>You can use this to offer global datasets with SRS that are only valid in a local region, like UTM zones.</p>
-</section>
-<section id="image-formats">
+</div>
+<div class="section" id="image-formats">
 <span id="wms-image-formats"></span><h3><code class="docutils literal notranslate"><span class="pre">image_formats</span></code><a class="headerlink" href="#image-formats" title="Permalink to this heading">¶</a></h3>
 <p>A list of image mime types the server should offer.</p>
-</section>
-<section id="featureinfo-types">
+</div>
+<div class="section" id="featureinfo-types">
 <span id="wms-featureinfo-types"></span><h3><code class="docutils literal notranslate"><span class="pre">featureinfo_types</span></code><a class="headerlink" href="#featureinfo-types" title="Permalink to this heading">¶</a></h3>
 <p>A list of feature info types the server should offer. Available types are <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">html</span></code>, <code class="docutils literal notranslate"><span class="pre">xml</span></code> and <code class="docutils literal notranslate"><span class="pre">json</span></code>. The types are advertised in the capabilities with the correct mime type. Defaults to <code class="docutils literal notranslate"><span class="pre">[text,</span> <span class="pre">html,</span> <span class="pre">xml]</span></code>.</p>
-</section>
-<section id="featureinfo-xslt">
+</div>
+<div class="section" id="featureinfo-xslt">
 <h3><code class="docutils literal notranslate"><span class="pre">featureinfo_xslt</span></code><a class="headerlink" href="#featureinfo-xslt" title="Permalink to this heading">¶</a></h3>
 <p>You can define XSLT scripts to transform outgoing feature information. You can define scripts for different feature info types:</p>
 <dl class="simple">
@@ -194,31 +195,31 @@
 </dd>
 </dl>
 <p>See <a class="reference internal" href="configuration_examples.html#fi-xslt"><span class="std std-ref">FeatureInformation for more informaiton</span></a>.</p>
-</section>
-<section id="strict">
+</div>
+<div class="section" id="strict">
 <h3><code class="docutils literal notranslate"><span class="pre">strict</span></code><a class="headerlink" href="#strict" title="Permalink to this heading">¶</a></h3>
 <p>Some WMS clients do not send all required parameters in feature info requests, MapProxy ignores these errors unless you set <code class="docutils literal notranslate"><span class="pre">strict</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-</section>
-<section id="on-source-errors">
+</div>
+<div class="section" id="on-source-errors">
 <h3><code class="docutils literal notranslate"><span class="pre">on_source_errors</span></code><a class="headerlink" href="#on-source-errors" title="Permalink to this heading">¶</a></h3>
 <p>Configure what MapProxy should do when one or more sources return errors or no response at all (e.g. timeout). The default is <code class="docutils literal notranslate"><span class="pre">notify</span></code>, which adds a text line in the image response for each erroneous source, but only if a least one source was successful. When <code class="docutils literal notranslate"><span class="pre">on_source_errors</span></code> is set to <code class="docutils literal notranslate"><span class="pre">raise</span></code>, MapProxy will return an OGC service exception in any error case.</p>
-</section>
-<section id="max-output-pixels">
+</div>
+<div class="section" id="max-output-pixels">
 <h3><code class="docutils literal notranslate"><span class="pre">max_output_pixels</span></code><a class="headerlink" href="#max-output-pixels" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
 </div>
 <p>The maximum output size for a WMS requests in pixel. MapProxy returns an WMS exception in XML format for requests that are larger. Defaults to <code class="docutils literal notranslate"><span class="pre">[4000,</span> <span class="pre">4000]</span></code> which will limit the maximum output size to 16 million pixels (i.e. 5000x3000 is still allowed).</p>
 <p>See also <a class="reference internal" href="configuration.html#max-tile-limit"><span class="std std-ref">globals.cache.max_tile_limit</span></a> for the maximum number of tiles MapProxy will merge together for each layer.</p>
-</section>
-<section id="versions">
+</div>
+<div class="section" id="versions">
 <h3><code class="docutils literal notranslate"><span class="pre">versions</span></code><a class="headerlink" href="#versions" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.7.0.</span></p>
 </div>
 <p>A list of WMS version numbers that MapProxy should support. Defaults to <code class="docutils literal notranslate"><span class="pre">['1.0.0',</span> <span class="pre">'1.1.0',</span> <span class="pre">'1.1.1',</span> <span class="pre">'1.3.0']</span></code>.</p>
-</section>
-<section id="full-example">
+</div>
+<div class="section" id="full-example">
 <h3>Full example<a class="headerlink" href="#full-example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">services</span><span class="p">:</span>
   <span class="n">wms</span><span class="p">:</span>
@@ -251,44 +252,44 @@
        <span class="o">-</span> <span class="n">keywords</span><span class="p">:</span>   <span class="p">[</span><span class="s2">&quot;View Service&quot;</span><span class="p">,</span> <span class="n">MapProxy</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="wms-c">
+</div>
+<div class="section" id="wms-c">
 <span id="wmsc-service-label"></span><span id="index-1"></span><h3>WMS-C<a class="headerlink" href="#wms-c" title="Permalink to this heading">¶</a></h3>
 <p>The MapProxy WMS service also supports the <a class="reference external" href="http://wiki.osgeo.org/wiki/WMS_Tiling_Client_Recommendation">WMS Tiling Client Recommendation</a> from OSGeo.</p>
 <p>If you add <code class="docutils literal notranslate"><span class="pre">tiled=true</span></code> to the GetCapabilities request, MapProxy will add metadata about the internal tile structure to the WMS capabilities document. Clients that support WMS-C can use this information to request tiles at the exact tile boundaries. MapProxy can return the tile as-it-is for these requests, the performace is on par with the TMS service.</p>
 <p>MapProxy will limit the WMS support when <code class="docutils literal notranslate"><span class="pre">tiled=true</span></code> is added to the <cite>GetMap</cite> requests and it will return WMS service exceptions for requests that do not match the exact tile boundaries or if the requested image size or format differs.</p>
-</section>
-</section>
-<section id="tiled-map-services-tms">
+</div>
+</div>
+<div class="section" id="tiled-map-services-tms">
 <span id="tms-service-label"></span><span id="index-2"></span><h2>Tiled Map Services (TMS)<a class="headerlink" href="#tiled-map-services-tms" title="Permalink to this heading">¶</a></h2>
 <p>MapProxy supports the <a class="reference external" href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">Tile Map Service Specification</a> from the OSGeo. The TMS is available at <code class="docutils literal notranslate"><span class="pre">/tms/1.0.0</span></code>.</p>
 <p>The TMS service will use all configured <a class="reference internal" href="configuration.html#id1"><span class="std std-ref">layers</span></a> that have a name and single cached source. Any layer grouping will be flattened.</p>
 <p>Here is an example TMS request: <code class="docutils literal notranslate"><span class="pre">/tms/1.0.0/base/EPSG900913/3/1/0.png</span></code>. <code class="docutils literal notranslate"><span class="pre">png</span></code> is the internal format of the cached tiles. <code class="docutils literal notranslate"><span class="pre">base</span></code> is the name of the layer and <code class="docutils literal notranslate"><span class="pre">EPSG900913</span></code> is the SRS of the layer. The tiles are also available under the layer name <code class="docutils literal notranslate"><span class="pre">base_EPSG900913</span></code> when <code class="docutils literal notranslate"><span class="pre">use_grid_names</span></code> is false or unset.</p>
 <p>A request to <code class="docutils literal notranslate"><span class="pre">/tms/1.0.0</span></code> will return the TMS metadata as XML. <code class="docutils literal notranslate"><span class="pre">/tms/1.0.0/layername</span></code> will return information about the bounding box, resolutions and tile size of this specific layer.</p>
-<section id="use-grid-names">
+<div class="section" id="use-grid-names">
 <h3><code class="docutils literal notranslate"><span class="pre">use_grid_names</span></code><a class="headerlink" href="#use-grid-names" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
 </div>
 <p>When set to <cite>true</cite>, MapProxy uses the actual name of the grid as the grid identifier instead of the SRS code.
 Tiles will then be available under <code class="docutils literal notranslate"><span class="pre">/tms/1.0.0/mylayer/mygrid/</span></code> instead of <code class="docutils literal notranslate"><span class="pre">/tms/1.0.0/mylayer/EPSG1234/</span></code> or <code class="docutils literal notranslate"><span class="pre">/tms/1.0.0/mylayer_EPSG1234/</span></code>.</p>
-</section>
-<section id="example">
+</div>
+<div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">services</span><span class="p">:</span>
   <span class="n">tms</span><span class="p">:</span>
     <span class="n">use_grid_names</span><span class="p">:</span> <span class="n">true</span>
 </pre></div>
 </div>
-</section>
-<section id="openlayers">
+</div>
+<div class="section" id="openlayers">
 <span id="open-layers-label"></span><span id="index-3"></span><h3>OpenLayers<a class="headerlink" href="#openlayers" title="Permalink to this heading">¶</a></h3>
 <p>When you create a map in OpenLayers with an explicit <code class="docutils literal notranslate"><span class="pre">mapExtent</span></code>, it will request only a single tile for the first (z=0) level.
 TMS begins with two or four tiles by default, depending on the SRS. MapProxy supports a different TMS mode to support this use-case. MapProxy will start with a single-tile level if you request <code class="docutils literal notranslate"><span class="pre">/tiles</span></code> instead of <code class="docutils literal notranslate"><span class="pre">/tms</span></code>.</p>
 <p>Alternatively, you can use the OpenLayers TMS option <code class="docutils literal notranslate"><span class="pre">zoomOffset</span></code> to compensate the difference. The option is available since OpenLayers 2.10.</p>
 <p>There is an example available at <a class="reference internal" href="configuration_examples.html#overlay-tiles-osm-openlayers"><span class="std std-ref">the configuration-examples section</span></a>, which shows the use of OpenLayers in combination with an overlay of tiles on top of OpenStreetMap tiles.</p>
-</section>
-<section id="google-maps">
+</div>
+<div class="section" id="google-maps">
 <span id="google-maps-label"></span><span id="index-4"></span><h3>Google Maps<a class="headerlink" href="#google-maps" title="Permalink to this heading">¶</a></h3>
 <p>The TMS standard counts tiles starting from the lower left corner of the tile grid, while Google Maps and compatible services start at the upper left corner. The <code class="docutils literal notranslate"><span class="pre">/tiles</span></code> service accepts an <code class="docutils literal notranslate"><span class="pre">origin</span></code> parameter that flips the y-axis accordingly. You can set it to either <code class="docutils literal notranslate"><span class="pre">sw</span></code> (south-west), the default, or to <code class="docutils literal notranslate"><span class="pre">nw</span></code> (north-west), required for Google Maps.</p>
 <p>Example:</p>
@@ -304,32 +305,32 @@ TMS begins with two or four tiles by default, depending on the SRS. MapProxy sup
 </pre></div>
 </div>
 </div>
-</section>
-</section>
-<section id="keyhole-markup-language-ogc-kml">
+</div>
+</div>
+<div class="section" id="keyhole-markup-language-ogc-kml">
 <span id="kml-service-label"></span><span id="index-5"></span><h2>Keyhole Markup Language (OGC KML)<a class="headerlink" href="#keyhole-markup-language-ogc-kml" title="Permalink to this heading">¶</a></h2>
 <p>MapProxy supports KML version 2.2 for integration into Google Earth. Each layer is available as a Super Overlay – image tiles are loaded on demand when the user zooms to a specific region. The initial KML file is available at <code class="docutils literal notranslate"><span class="pre">/kml/layername/EPSG1234/0/0/0.kml</span></code>. The tiles are also available under the layer name <code class="docutils literal notranslate"><span class="pre">layername_EPSG1234</span></code> when <code class="docutils literal notranslate"><span class="pre">use_grid_names</span></code> is false or unset.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0: </span>The initial KML is also available at <code class="docutils literal notranslate"><span class="pre">/kml/layername_EPSG1234</span></code> and <code class="docutils literal notranslate"><span class="pre">/kml/layername/EPSG1234</span></code>.</p>
 </div>
-<section id="id2">
+<div class="section" id="id2">
 <h3><code class="docutils literal notranslate"><span class="pre">use_grid_names</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
 </div>
 <p>When set to <cite>true</cite>, MapProxy uses the actual name of the grid as the grid identifier instead of the SRS code.
 Tiles will then be available under <code class="docutils literal notranslate"><span class="pre">/kml/mylayer/mygrid/</span></code> instead of <code class="docutils literal notranslate"><span class="pre">/kml/mylayer/EPSG1234/</span></code>.</p>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h3>Example<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">services</span><span class="p">:</span>
   <span class="n">kml</span><span class="p">:</span>
     <span class="n">use_grid_names</span><span class="p">:</span> <span class="n">true</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="web-map-tile-services-wmts">
+</div>
+</div>
+<div class="section" id="web-map-tile-services-wmts">
 <span id="wmts-service-label"></span><span id="index-6"></span><h2>Web Map Tile Services (WMTS)<a class="headerlink" href="#web-map-tile-services-wmts" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.1.0.</span></p>
@@ -339,7 +340,7 @@ Tiles will then be available under <code class="docutils literal notranslate"><s
 <p>There are some limitations depending on the grid configuration you use. Please refer to <a class="reference internal" href="configuration.html#grid-origin"><span class="std std-ref">grid.origin</span></a> for more information.</p>
 <p>The metadata (ServiceContact, etc. ) of this service is taken from the WMS configuration. You can add <code class="docutils literal notranslate"><span class="pre">md</span></code> to the <code class="docutils literal notranslate"><span class="pre">wmts</span></code> configuration to replace the WMS metadata. See <a class="reference internal" href="#wms-md"><span class="std std-ref">WMS metadata</span></a>.</p>
 <p>WMTS defines different access methods and MapProxy supports KVP and RESTful access. Both are enabled by default.</p>
-<section id="kvp">
+<div class="section" id="kvp">
 <h3>KVP<a class="headerlink" href="#kvp" title="Permalink to this heading">¶</a></h3>
 <p>MapProxy supports <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> and <code class="docutils literal notranslate"><span class="pre">GetTile</span></code> KVP requests.
 The KVP service is available at <code class="docutils literal notranslate"><span class="pre">/service</span></code> and <code class="docutils literal notranslate"><span class="pre">/ows</span></code>.</p>
@@ -350,8 +351,8 @@ The KVP service is available at <code class="docutils literal notranslate"><span
     <span class="n">restful</span><span class="p">:</span> <span class="n">true</span>
 </pre></div>
 </div>
-</section>
-<section id="restful">
+</div>
+<div class="section" id="restful">
 <h3>RESTful<a class="headerlink" href="#restful" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
@@ -365,7 +366,7 @@ The RESTful service capabilities are available at <code class="docutils literal 
     <span class="n">kvp</span><span class="p">:</span> <span class="n">true</span>
 </pre></div>
 </div>
-<section id="url-template">
+<div class="section" id="url-template">
 <h4>URL Template<a class="headerlink" href="#url-template" title="Permalink to this heading">¶</a></h4>
 <p>WMTS RESTful service supports custom URLs. You can configure your own URL templates with the <code class="docutils literal notranslate"><span class="pre">restful_template</span></code> and <code class="docutils literal notranslate"><span class="pre">restful_fi_template</span></code>.</p>
 <p>The default template is <code class="docutils literal notranslate"><span class="pre">/{Layer}/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.{Format}</span></code> for tile requests and <code class="docutils literal notranslate"><span class="pre">/{Layer}/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}/{I}/{J}.{InfoFormat}</span></code> for feature info requests. All RESTful WMTS requests begin with with <code class="docutils literal notranslate"><span class="pre">/wmts</span></code> and this prefix must not be added to the template.</p>
@@ -381,15 +382,15 @@ with the following configuration:</p>
         <span class="s1">&#39;/1.0.0/</span><span class="si">{Layer}</span><span class="s1">-</span><span class="si">{TileMatrixSet}</span><span class="s1">/</span><span class="si">{TileMatrix}</span><span class="s1">-</span><span class="si">{TileCol}</span><span class="s1">-</span><span class="si">{TileRow}</span><span class="s1">/</span><span class="si">{I}</span><span class="s1">-</span><span class="si">{J}</span><span class="s1">/</span><span class="si">{InfoFormat}</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
-</section>
-<section id="feature-info">
+</div>
+<div class="section" id="feature-info">
 <span id="wmts-feature-info"></span><h4>Feature Info<a class="headerlink" href="#feature-info" title="Permalink to this heading">¶</a></h4>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.12.</span></p>
 </div>
-</section>
-</section>
-<section id="featureinfo-formats">
+</div>
+</div>
+<div class="section" id="featureinfo-formats">
 <h3><code class="docutils literal notranslate"><span class="pre">featureinfo_formats</span></code><a class="headerlink" href="#featureinfo-formats" title="Permalink to this heading">¶</a></h3>
 <p>A list of feature info formats that the WMTS service should offer. Each format requires the full mimetype and a filename suffix. The mimetype is the <code class="docutils literal notranslate"><span class="pre">infoformat</span></code> requested by KVP clients. The suffix is the <code class="docutils literal notranslate"><span class="pre">{InfoFormat}</span></code> requested by RESTful clients.</p>
 <p>No <code class="docutils literal notranslate"><span class="pre">featureinfo_formats</span></code> are configured by default.</p>
@@ -408,9 +409,9 @@ with the following configuration:</p>
 <p class="admonition-title">Note</p>
 <p>The configuration differs from WMS as older WMS versions required a type like <code class="docutils literal notranslate"><span class="pre">html</span></code> instead of a mimetype like <code class="docutils literal notranslate"><span class="pre">text/html</span></code>.</p>
 </div>
-</section>
-</section>
-<section id="mapproxy-demo-service">
+</div>
+</div>
+<div class="section" id="mapproxy-demo-service">
 <span id="demo-service-label"></span><span id="index-7"></span><h2>MapProxy Demo Service<a class="headerlink" href="#mapproxy-demo-service" title="Permalink to this heading">¶</a></h2>
 <p>MapProxy comes with a demo service that lists all configured WMS and TMS layers. You can test each layer with a simple OpenLayers client.</p>
 <p>The service is available at <code class="docutils literal notranslate"><span class="pre">/demo/</span></code>.</p>
@@ -419,8 +420,8 @@ with the following configuration:</p>
     <span class="n">demo</span><span class="p">:</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
     </div>
@@ -441,7 +442,7 @@ with the following configuration:</p>
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>
