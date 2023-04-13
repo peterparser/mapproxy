@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Configuration &#8212; MapProxy 1.14.0 Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuration &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -20,10 +20,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -41,7 +41,7 @@
       <a class="navbar-brand" href="index.html">
         <span>
           MapProxy</span>
-        <span>1.14.0</span>
+        <span>1.16.0</span>
       </a>
     </div>
     <div class="collapse navbar-collapse nav-collapse">
@@ -66,6 +66,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install_windows.html">Installation on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install_osgeo4w.html">Installation on OSGeo4W</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_docker.html">Installation via Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#mapproxy-yaml">mapproxy.yaml</a></li>
@@ -93,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Authentication and Authorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decorate_img.html">Decorate Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Writing plugins</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mapproxy_2.html">MapProxy 2.0</a></li>
 </ul>
 
@@ -100,8 +102,8 @@
       </div>
     <div class="col-md-8">
       
-  <section id="configuration">
-<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h1>
 <p>There are two configuration files used by MapProxy.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">mappproxy.yaml</span></code></dt><dd><p>This is the main configuration of MapProxy. It configures all aspects of the server:
@@ -111,8 +113,8 @@ etc..</p>
 <dt><code class="docutils literal notranslate"><span class="pre">seed.yaml</span></code></dt><dd><p>This file is the configuration for the <code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code> tool. See <a class="reference internal" href="seed.html"><span class="doc">seeding documentation</span></a> for more information.</p>
 </dd>
 </dl>
-<section id="mapproxy-yaml">
-<span id="index-0"></span><h2>mapproxy.yaml<a class="headerlink" href="#mapproxy-yaml" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mapproxy-yaml">
+<span id="index-0"></span><h2>mapproxy.yaml<a class="headerlink" href="#mapproxy-yaml" title="Permalink to this heading">¶</a></h2>
 <p>The configuration uses the YAML format. The Wikipedia contains a <a class="reference external" href="http://en.wikipedia.org/wiki/YAML">good introduction to YAML</a>.</p>
 <p>The MapProxy configuration is grouped into sections, each configures a different aspect of MapProxy. These are the following sections:</p>
 <ul class="simple">
@@ -152,8 +154,8 @@ The services MapProxy offers, e.g. WMS or TMS.</p></li>
     <span class="o">...</span>
 </pre></div>
 </div>
-<section id="base">
-<h3><code class="docutils literal notranslate"><span class="pre">base</span></code><a class="headerlink" href="#base" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="base">
+<h3><code class="docutils literal notranslate"><span class="pre">base</span></code><a class="headerlink" href="#base" title="Permalink to this heading">¶</a></h3>
 <p>You can split a configuration into multiple files with the <code class="docutils literal notranslate"><span class="pre">base</span></code> option. The <code class="docutils literal notranslate"><span class="pre">base</span></code> option loads the other files and merges the loaded configuration dictionaries together – it is not a literal include of the other files.</p>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base</span><span class="p">:</span> <span class="p">[</span><span class="n">mygrids</span><span class="o">.</span><span class="n">yaml</span><span class="p">,</span> <span class="n">mycaches_sources</span><span class="o">.</span><span class="n">yaml</span><span class="p">]</span>
@@ -164,10 +166,10 @@ The services MapProxy offers, e.g. WMS or TMS.</p></li>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 1.4.0: </span>Support for recursive imports and for multiple files.</p>
 </div>
-</section>
-</section>
-<section id="services">
-<span id="index-1"></span><h2>services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="services">
+<span id="index-1"></span><h2>services<a class="headerlink" href="#services" title="Permalink to this heading">¶</a></h2>
 <p>Here you can configure which services should be started. The configuration for all services is described in the <a class="reference internal" href="services.html"><span class="doc">Services</span></a> documentation.</p>
 <p>Here is an example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">services</span><span class="p">:</span>
@@ -179,9 +181,9 @@ The services MapProxy offers, e.g. WMS or TMS.</p></li>
       <span class="c1"># [...]</span>
 </pre></div>
 </div>
-</section>
-<section id="layers">
-<span id="layers-section"></span><span id="index-2"></span><h2>layers<a class="headerlink" href="#layers" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="layers">
+<span id="layers-section"></span><span id="index-2"></span><h2>layers<a class="headerlink" href="#layers" title="Permalink to this heading">¶</a></h2>
 <p>Here you can define all layers MapProxy should offer. The layer definition is similar to WMS: each layer can have a name and title and you can nest layers to build a layer tree.</p>
 <p>Layers should be configured as a list (<code class="docutils literal notranslate"><span class="pre">-</span></code> in YAML), where each layer configuration is a dictionary (<code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">value</span></code> in YAML)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span><span class="p">:</span>
@@ -201,27 +203,27 @@ The services MapProxy offers, e.g. WMS or TMS.</p></li>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span><span class="p">:</span>
   <span class="n">mylayer</span><span class="p">:</span>
     <span class="n">title</span><span class="p">:</span> <span class="n">My</span> <span class="n">Layer</span>
-    <span class="n">source</span><span class="p">:</span> <span class="p">[</span><span class="n">mysource</span><span class="p">]</span>
+    <span class="n">sources</span><span class="p">:</span> <span class="p">[</span><span class="n">mysource</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>should become</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">mylayer</span>
     <span class="n">title</span><span class="p">:</span> <span class="n">My</span> <span class="n">Layer</span>
-    <span class="n">source</span><span class="p">:</span> <span class="p">[</span><span class="n">mysource</span><span class="p">]</span>
+    <span class="n">sources</span><span class="p">:</span> <span class="p">[</span><span class="n">mysource</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The mixed format where the layers are a list (<code class="docutils literal notranslate"><span class="pre">-</span></code>) but each layer is still a dictionary is no longer supported (e.g. <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">mylayer:</span></code> becomes <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">name:</span> <span class="pre">mylayer</span></code>).</p>
-<section id="name">
-<span id="layers-name"></span><h3><code class="docutils literal notranslate"><span class="pre">name</span></code><a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<p>The mixed format where the layers are a list (<code class="docutils literal notranslate"><span class="pre">-</span></code>) but each layer is still a dictionary is no longer supported (e.g. <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">mylayer:</span></code> becomes <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">name:</span> <span class="pre">mylayer</span></code>). Note that the deprecated format is still currently required if you are using the base: option due to  <cite>issue #490 &lt;https://github.com/mapproxy/mapproxy/issues/490&gt;</cite>.</p>
+<div class="section" id="name">
+<span id="layers-name"></span><h3><code class="docutils literal notranslate"><span class="pre">name</span></code><a class="headerlink" href="#name" title="Permalink to this heading">¶</a></h3>
 <p>The name of the layer. You can omit the name for group layers (e.g. layers with <code class="docutils literal notranslate"><span class="pre">layers</span></code>), in this case the layer is not addressable in WMS and used only for grouping.</p>
-</section>
-<section id="title">
-<h3><code class="docutils literal notranslate"><span class="pre">title</span></code><a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="title">
+<h3><code class="docutils literal notranslate"><span class="pre">title</span></code><a class="headerlink" href="#title" title="Permalink to this heading">¶</a></h3>
 <p>Readable name of the layer, e.g WMS layer title.</p>
-</section>
-<section id="id1">
-<span id="id2"></span><h3><code class="docutils literal notranslate"><span class="pre">layers</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id1">
+<span id="id2"></span><h3><code class="docutils literal notranslate"><span class="pre">layers</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <p>Each layer can contain another <code class="docutils literal notranslate"><span class="pre">layers</span></code> configuration. You can use this to build group layers and to build a nested layer tree.</p>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span><span class="p">:</span>
@@ -248,31 +250,31 @@ The services MapProxy offers, e.g. WMS or TMS.</p></li>
 <p class="admonition-title">Note</p>
 <p>The old syntax (see <code class="docutils literal notranslate"><span class="pre">name</span></code> <a class="reference internal" href="#layers-name"><span class="std std-ref">above</span></a>) is not supported if you use the nested layer configuration format.</p>
 </div>
-</section>
-<section id="sources">
-<h3><code class="docutils literal notranslate"><span class="pre">sources</span></code><a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sources">
+<h3><code class="docutils literal notranslate"><span class="pre">sources</span></code><a class="headerlink" href="#sources" title="Permalink to this heading">¶</a></h3>
 <p>A list of data sources for this layer. You can use sources defined in the <code class="docutils literal notranslate"><span class="pre">sources</span></code> and <code class="docutils literal notranslate"><span class="pre">caches</span></code> section. MapProxy will merge multiple sources from left (bottom) to right (top).</p>
 <p>WMS and Mapserver sources also support tagged names (<code class="docutils literal notranslate"><span class="pre">wms:lyr1,lyr2</span></code>). See <a class="reference internal" href="sources.html#tagged-source-names"><span class="std std-ref">Tagged source names</span></a>.</p>
-</section>
-<section id="tile-sources">
-<h3><code class="docutils literal notranslate"><span class="pre">tile_sources</span></code><a class="headerlink" href="#tile-sources" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="tile-sources">
+<h3><code class="docutils literal notranslate"><span class="pre">tile_sources</span></code><a class="headerlink" href="#tile-sources" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.8.2.</span></p>
 </div>
 <p>A list of caches for this layer. This list overrides <code class="docutils literal notranslate"><span class="pre">sources</span></code> for WMTS and TMS. <code class="docutils literal notranslate"><span class="pre">tile_sources</span></code> are not merged like <code class="docutils literal notranslate"><span class="pre">sources</span></code>, instead all the caches are added as additional tile (matrix) sets.</p>
-</section>
-<section id="min-res-max-res-or-min-scale-max-scale">
-<h3><code class="docutils literal notranslate"><span class="pre">min_res</span></code>, <code class="docutils literal notranslate"><span class="pre">max_res</span></code> or <code class="docutils literal notranslate"><span class="pre">min_scale</span></code>, <code class="docutils literal notranslate"><span class="pre">max_scale</span></code><a class="headerlink" href="#min-res-max-res-or-min-scale-max-scale" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="min-res-max-res-or-min-scale-max-scale">
+<h3><code class="docutils literal notranslate"><span class="pre">min_res</span></code>, <code class="docutils literal notranslate"><span class="pre">max_res</span></code> or <code class="docutils literal notranslate"><span class="pre">min_scale</span></code>, <code class="docutils literal notranslate"><span class="pre">max_scale</span></code><a class="headerlink" href="#min-res-max-res-or-min-scale-max-scale" title="Permalink to this heading">¶</a></h3>
 <p>Limit the layer to the given min and max resolution or scale. MapProxy will return a blank image for requests outside of these boundaries (<code class="docutils literal notranslate"><span class="pre">min_res</span></code> is inclusive, <code class="docutils literal notranslate"><span class="pre">max_res</span></code> exclusive). You can use either the resolution or the scale values, missing values will be interpreted as <cite>unlimited</cite>. Resolutions should be in meters per pixel.</p>
 <p>The values will also apear in the capabilities documents (i.e. WMS ScaleHint and Min/MaxScaleDenominator).</p>
-<p>Pleas read <a class="reference internal" href="#scale-resolution"><span class="std std-ref">scale vs. resolution</span></a> for some notes on <cite>scale</cite>.</p>
-</section>
-<section id="legendurl">
-<h3><code class="docutils literal notranslate"><span class="pre">legendurl</span></code><a class="headerlink" href="#legendurl" title="Permalink to this headline">¶</a></h3>
+<p>Please read <a class="reference internal" href="#scale-resolution"><span class="std std-ref">scale vs. resolution</span></a> for some notes on <cite>scale</cite>.</p>
+</div>
+<div class="section" id="legendurl">
+<h3><code class="docutils literal notranslate"><span class="pre">legendurl</span></code><a class="headerlink" href="#legendurl" title="Permalink to this heading">¶</a></h3>
 <p>Configure a URL to an image that should be returned as the legend for this layer. Local URLs (<code class="docutils literal notranslate"><span class="pre">file://</span></code>) are also supported. MapProxy ignores the legends from the sources of this layer if you configure a <code class="docutils literal notranslate"><span class="pre">legendurl</span></code> here.</p>
-</section>
-<section id="md">
-<span id="layer-metadata"></span><h3><code class="docutils literal notranslate"><span class="pre">md</span></code><a class="headerlink" href="#md" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="md">
+<span id="layer-metadata"></span><h3><code class="docutils literal notranslate"><span class="pre">md</span></code><a class="headerlink" href="#md" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.4.0.</span></p>
 </div>
@@ -314,15 +316,15 @@ The services MapProxy offers, e.g. WMS or TMS.</p></li>
         <span class="o">-</span> <span class="n">url</span><span class="p">:</span>    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">shp</span>
           <span class="nb">format</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">octet</span><span class="o">-</span><span class="n">stream</span>
         <span class="o">-</span> <span class="n">url</span><span class="p">:</span>    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">gml</span>
-          <span class="nb">format</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span> <span class="n">subtype</span><span class="o">=</span><span class="n">gml</span><span class="o">/</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span>
+          <span class="nb">format</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span><span class="p">;</span> <span class="n">subtype</span><span class="o">=</span><span class="n">gml</span><span class="o">/</span><span class="mf">3.2.1</span>
       <span class="n">feature_list</span><span class="p">:</span>
         <span class="o">-</span> <span class="n">url</span><span class="p">:</span>    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">pdf</span>
           <span class="nb">format</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">pdf</span>
 </pre></div>
 </div>
-</section>
-<section id="dimensions">
-<h3><code class="docutils literal notranslate"><span class="pre">dimensions</span></code><a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="dimensions">
+<h3><code class="docutils literal notranslate"><span class="pre">dimensions</span></code><a class="headerlink" href="#dimensions" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.6.0.</span></p>
 </div>
@@ -351,14 +353,14 @@ Each dimension is another dictionary with a list of <code class="docutils litera
           <span class="o">-</span> <span class="mi">3000</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="caches">
-<span id="index-3"></span><span id="id3"></span><h2>caches<a class="headerlink" href="#caches" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="caches">
+<span id="index-3"></span><span id="id3"></span><h2>caches<a class="headerlink" href="#caches" title="Permalink to this heading">¶</a></h2>
 <p>Here you can configure which sources should be cached.
 Available options are:</p>
-<section id="id4">
-<h3><code class="docutils literal notranslate"><span class="pre">sources</span></code><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">sources</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <p>A list of data sources for this cache. You can use sources defined in the <code class="docutils literal notranslate"><span class="pre">sources</span></code> and <code class="docutils literal notranslate"><span class="pre">caches</span></code> section. This parameter is <cite>required</cite>. MapProxy will merge multiple sources from left (bottom) to right (top) before they are stored on disk.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">caches</span><span class="p">:</span>
   <span class="n">my_cache</span><span class="p">:</span>
@@ -367,8 +369,8 @@ Available options are:</p>
 </pre></div>
 </div>
 <p>WMS and Mapserver sources also support tagged names (<code class="docutils literal notranslate"><span class="pre">wms:lyr1,lyr2</span></code>). See <a class="reference internal" href="sources.html#tagged-source-names"><span class="std std-ref">Tagged source names</span></a>.</p>
-<section id="band-merging">
-<h4>Band merging<a class="headerlink" href="#band-merging" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="band-merging">
+<h4>Band merging<a class="headerlink" href="#band-merging" title="Permalink to this heading">¶</a></h4>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.9.0.</span></p>
 </div>
@@ -394,19 +396,19 @@ Available options are:</p>
          <span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="cache-sources">
-<h4>Cache sources<a class="headerlink" href="#cache-sources" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="cache-sources">
+<h4>Cache sources<a class="headerlink" href="#cache-sources" title="Permalink to this heading">¶</a></h4>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.5.0.</span></p>
 </div>
 <p>You can also use other caches as a source. MapProxy loads tiles directly from that cache if the grid of the target cache is identical or <em>compatible</em> with the grid of the source cache. You have a compatible grid when all tiles in the cache grid are also available in source grid, even if the tile coordinates (X/Y/Z) are different.</p>
 <p>When the grids are not compatible, e.g. when they use different projections, then MapProxy will access the source cache as if it is a WMS source and it will use meta-requests and do image reprojection as necessary.</p>
 <p>See <a class="reference internal" href="configuration_examples.html#using-existing-caches"><span class="std std-ref">Using existing caches</span></a> for more information.</p>
-</section>
-</section>
-<section id="format">
-<span id="mixed-image-format"></span><h3><code class="docutils literal notranslate"><span class="pre">format</span></code><a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="format">
+<span id="mixed-image-format"></span><h3><code class="docutils literal notranslate"><span class="pre">format</span></code><a class="headerlink" href="#format" title="Permalink to this heading">¶</a></h3>
 <p>The internal image format for the cache. Available options are <code class="docutils literal notranslate"><span class="pre">image/png</span></code>, <code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code> etc. and <code class="docutils literal notranslate"><span class="pre">mixed</span></code>.
 The default is <code class="docutils literal notranslate"><span class="pre">image/png</span></code>.</p>
 <div class="versionadded">
@@ -422,13 +424,13 @@ You need to set the <code class="docutils literal notranslate"><span class="pre"
     <span class="o">...</span>
 </pre></div>
 </div>
-</section>
-<section id="request-format">
-<h3><code class="docutils literal notranslate"><span class="pre">request_format</span></code><a class="headerlink" href="#request-format" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="request-format">
+<h3><code class="docutils literal notranslate"><span class="pre">request_format</span></code><a class="headerlink" href="#request-format" title="Permalink to this heading">¶</a></h3>
 <p>MapProxy will try to use this format to request new tiles, if it is not set <code class="docutils literal notranslate"><span class="pre">format</span></code> is used. This option has no effect if the source does not support that format or the format of the source is set explicitly (see <code class="docutils literal notranslate"><span class="pre">suported_format</span></code> or <code class="docutils literal notranslate"><span class="pre">format</span></code> for sources).</p>
-</section>
-<section id="link-single-color-images">
-<span id="id5"></span><h3><code class="docutils literal notranslate"><span class="pre">link_single_color_images</span></code><a class="headerlink" href="#link-single-color-images" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="link-single-color-images">
+<span id="id5"></span><h3><code class="docutils literal notranslate"><span class="pre">link_single_color_images</span></code><a class="headerlink" href="#link-single-color-images" title="Permalink to this heading">¶</a></h3>
 <p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, MapProxy will not store tiles that only contain a single color as a
 separate file. MapProxy stores these tiles only once and uses symbolic links to this file
 for every occurrence. This can reduce the size of your tile cache if you have larger areas
@@ -437,14 +439,14 @@ with no data (e.g. water areas, areas with no roads, etc.).</p>
 <p class="admonition-title">Note</p>
 <p>This feature is only available on Unix, since Windows has no support for symbolic links.</p>
 </div>
-</section>
-<section id="minimize-meta-requests">
-<h3><code class="docutils literal notranslate"><span class="pre">minimize_meta_requests</span></code><a class="headerlink" href="#minimize-meta-requests" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="minimize-meta-requests">
+<h3><code class="docutils literal notranslate"><span class="pre">minimize_meta_requests</span></code><a class="headerlink" href="#minimize-meta-requests" title="Permalink to this heading">¶</a></h3>
 <p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, MapProxy will only issue a single request to the source. This option can reduce the request latency for uncached areas (on demand caching).</p>
 <p>By default MapProxy requests all uncached meta-tiles that intersect the requested bbox. With a typical configuration it is not uncommon that a requests will trigger four requests each larger than 2000x2000 pixel. With the <code class="docutils literal notranslate"><span class="pre">minimize_meta_requests</span></code> option enabled, each request will trigger only one request to the source. That request will be aligned to the next tile boundaries and the tiles will be cached.</p>
-</section>
-<section id="watermark">
-<span id="index-4"></span><h3><code class="docutils literal notranslate"><span class="pre">watermark</span></code><a class="headerlink" href="#watermark" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="watermark">
+<span id="index-4"></span><h3><code class="docutils literal notranslate"><span class="pre">watermark</span></code><a class="headerlink" href="#watermark" title="Permalink to this heading">¶</a></h3>
 <p>Add a watermark right into the cached tiles. The watermark is thus also present in TMS or KML requests.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">text</span></code></dt><dd><p>The watermark text. Should be short.</p>
@@ -460,9 +462,9 @@ Use a value between 30 and 100 for unobtrusive watermarks.</p>
 every tile, with <code class="docutils literal notranslate"><span class="pre">wide</span></code> the watermark will be placed on every second tile.</p>
 </dd>
 </dl>
-</section>
-<section id="grids">
-<h3><code class="docutils literal notranslate"><span class="pre">grids</span></code><a class="headerlink" href="#grids" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="grids">
+<h3><code class="docutils literal notranslate"><span class="pre">grids</span></code><a class="headerlink" href="#grids" title="Permalink to this heading">¶</a></h3>
 <p>You can configure one or more grids for each cache. MapProxy will create one cache for each grid.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grids</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;my_utm_grid&#39;</span><span class="p">,</span> <span class="s1">&#39;GLOBAL_MERCATOR&#39;</span><span class="p">]</span>
 </pre></div>
@@ -474,41 +476,41 @@ only the SRS most requests are in should be used.</p>
 systems. For example, if you set one grid with <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> and one with <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code>
 then all requests for projected SRS will access the <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code> cache and
 requests for geographical SRS will use <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code>.</p>
-</section>
-<section id="meta-size-and-meta-buffer">
-<h3><code class="docutils literal notranslate"><span class="pre">meta_size</span></code> and <code class="docutils literal notranslate"><span class="pre">meta_buffer</span></code><a class="headerlink" href="#meta-size-and-meta-buffer" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="meta-size-and-meta-buffer">
+<h3><code class="docutils literal notranslate"><span class="pre">meta_size</span></code> and <code class="docutils literal notranslate"><span class="pre">meta_buffer</span></code><a class="headerlink" href="#meta-size-and-meta-buffer" title="Permalink to this heading">¶</a></h3>
 <p>Change the <code class="docutils literal notranslate"><span class="pre">meta_size</span></code> and <code class="docutils literal notranslate"><span class="pre">meta_buffer</span></code> of this cache. See <a class="reference internal" href="#meta-size"><span class="std std-ref">global cache options</span></a> for more details.</p>
-</section>
-<section id="bulk-meta-tiles">
-<h3><code class="docutils literal notranslate"><span class="pre">bulk_meta_tiles</span></code><a class="headerlink" href="#bulk-meta-tiles" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bulk-meta-tiles">
+<h3><code class="docutils literal notranslate"><span class="pre">bulk_meta_tiles</span></code><a class="headerlink" href="#bulk-meta-tiles" title="Permalink to this heading">¶</a></h3>
 <p>Enables meta-tile handling for tiled sources. See <a class="reference internal" href="#meta-size"><span class="std std-ref">global cache options</span></a> for more details.</p>
-</section>
-<section id="image">
-<h3><code class="docutils literal notranslate"><span class="pre">image</span></code><a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="image">
+<h3><code class="docutils literal notranslate"><span class="pre">image</span></code><a class="headerlink" href="#image" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="#image-options"><span class="std std-ref">See below</span></a> for all image options.</p>
-</section>
-<section id="use-direct-from-level-and-use-direct-from-res">
-<h3><code class="docutils literal notranslate"><span class="pre">use_direct_from_level</span></code> and <code class="docutils literal notranslate"><span class="pre">use_direct_from_res</span></code><a class="headerlink" href="#use-direct-from-level-and-use-direct-from-res" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="use-direct-from-level-and-use-direct-from-res">
+<h3><code class="docutils literal notranslate"><span class="pre">use_direct_from_level</span></code> and <code class="docutils literal notranslate"><span class="pre">use_direct_from_res</span></code><a class="headerlink" href="#use-direct-from-level-and-use-direct-from-res" title="Permalink to this heading">¶</a></h3>
 <p>You can limit until which resolution MapProxy should cache data with these two options.
 Requests below the configured resolution or level will be passed to the underlying source and the results will not be stored. The resolution of <code class="docutils literal notranslate"><span class="pre">use_direct_from_res</span></code> should use the units of the first configured grid of this cache. This takes only effect when used in WMS services.</p>
-</section>
-<section id="upscale-tiles-and-downscale-tiles">
-<h3><code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> and <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code><a class="headerlink" href="#upscale-tiles-and-downscale-tiles" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="upscale-tiles-and-downscale-tiles">
+<h3><code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> and <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code><a class="headerlink" href="#upscale-tiles-and-downscale-tiles" title="Permalink to this heading">¶</a></h3>
 <p>MapProxy is able to create missing tiles by rescaling tiles from zoom levels below or above.</p>
 <p>MapProxy will scale up tiles from one or more zoom levels above (with lower resolutions) if you set <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> to 1 or higher. The value configures by how many zoom levels MapProxy can search for a proper tile. Higher values allow more blurry results.</p>
-<p>You can use <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> if you want to provide tiles or WMS responses in a higher resolution then your available cache. This also works with partially seeded caches, eg. where you have an arial image cache of 20cm, with some areas also in 10cm resolution. <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> allows you to provide responses for 10cm requests in all areas, allways returning the best available data.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> if you want to provide tiles or WMS responses in a higher resolution then your available cache. This also works with partially seeded caches, eg. where you have an aerial image cache of 20cm, with some areas also in 10cm resolution. <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> allows you to provide responses for 10cm requests in all areas, always returning the best available data.</p>
 <p>MapProxy will scale down tiles from one or more zoom levels below (with higher resolutions) if you set <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code> to 1 or higher. The value configures by how many zoom levels MapProxy can search for a proper tile. Note that the number of tiles growth exponentialy. Typically, a single tile can be downscaled from four tiles of the next zoom level. Downscaling from two levels below requires 16 tiles, three levels below requires 64, etc.. A larger WMS request can quickly accumulate thousands of tiles required for downscaling. It is therefore <cite>not</cite> recommended to use <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code> values larger then one.</p>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code> to fill a cache for a source that only provides data for higher resolutions.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mapproxy-seed</span></code> will seed each level independently for caches with <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> or <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code>. It will start with the highest zoom level for <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code>, so that tiles in the next (lower) zoom levels can be created by downscaling the already created tiles. It will start in the lowest zoom level for <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code>, so that tiles in the next (higher) zoom levels can be created by upscaling the already creates tiles.</p>
 <p>A transparent tile is returned if no tile is found within the configured <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> or <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code> range.</p>
 <p>To trigger the rescaling behaviour, a tile needs to be missing in the cache and MapProxy needs to be unable to fetch the tile from the source. MapProxy is unable to fetch the tile if the cache has no sources, or if all sources are either <code class="docutils literal notranslate"><span class="pre">seed_only</span></code> or limited to a different resolution (<code class="docutils literal notranslate"><span class="pre">min_res</span></code>/<code class="docutils literal notranslate"><span class="pre">max_res</span></code>).</p>
-</section>
-<section id="cache-rescaled-tiles">
-<h3><code class="docutils literal notranslate"><span class="pre">cache_rescaled_tiles</span></code><a class="headerlink" href="#cache-rescaled-tiles" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="cache-rescaled-tiles">
+<h3><code class="docutils literal notranslate"><span class="pre">cache_rescaled_tiles</span></code><a class="headerlink" href="#cache-rescaled-tiles" title="Permalink to this heading">¶</a></h3>
 <p>Tiles created by the <code class="docutils literal notranslate"><span class="pre">upscale_tiles</span></code> or <code class="docutils literal notranslate"><span class="pre">downscale_tiles</span></code> option are only stored in the cache if this option is set to true.</p>
-</section>
-<section id="refresh-before">
-<h3><code class="docutils literal notranslate"><span class="pre">refresh_before</span></code><a class="headerlink" href="#refresh-before" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="refresh-before">
+<h3><code class="docutils literal notranslate"><span class="pre">refresh_before</span></code><a class="headerlink" href="#refresh-before" title="Permalink to this heading">¶</a></h3>
 <p>Here you can force MapProxy to refresh tiles from the source while serving if they are found to be expired.
 The validity conditions are the same as for seeding:</p>
 <p>Explanation:</p>
@@ -537,30 +539,30 @@ The validity conditions are the same as for seeding:</p>
     <span class="n">days</span><span class="p">:</span> <span class="mi">1</span>
 </pre></div>
 </div>
-</section>
-<section id="disable-storage">
-<h3><code class="docutils literal notranslate"><span class="pre">disable_storage</span></code><a class="headerlink" href="#disable-storage" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="disable-storage">
+<h3><code class="docutils literal notranslate"><span class="pre">disable_storage</span></code><a class="headerlink" href="#disable-storage" title="Permalink to this heading">¶</a></h3>
 <p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, MapProxy will not store any tiles for this cache. MapProxy will re-request all required tiles for each incoming request,
 even if the there are matching tiles in the cache. See <a class="reference internal" href="sources.html#wms-seed-only"><span class="std std-ref">seed_only</span></a> if you need an <em>offline</em> mode.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Be careful when using a cache with disabled storage in tile services when the cache uses WMS sources with metatiling.</p>
 </div>
-</section>
-<section id="cache-dir">
-<h3><code class="docutils literal notranslate"><span class="pre">cache_dir</span></code><a class="headerlink" href="#cache-dir" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="cache-dir">
+<h3><code class="docutils literal notranslate"><span class="pre">cache_dir</span></code><a class="headerlink" href="#cache-dir" title="Permalink to this heading">¶</a></h3>
 <p>Directory where MapProxy should store tiles for this cache. Uses the value of <code class="docutils literal notranslate"><span class="pre">globals.cache.base_dir</span></code> by default. MapProxy will store each cache in a subdirectory named after the cache and the grid SRS (e.g. <code class="docutils literal notranslate"><span class="pre">cachename_EPSG1234</span></code>).
 See <a class="reference internal" href="caches.html#cache-file-directory"><span class="std std-ref">directory option</span></a> on how configure a complete path.</p>
-</section>
-<section id="cache">
-<h3><code class="docutils literal notranslate"><span class="pre">cache</span></code><a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="cache">
+<h3><code class="docutils literal notranslate"><span class="pre">cache</span></code><a class="headerlink" href="#cache" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.2.0.</span></p>
 </div>
 <p>Configure the type of the background tile cache. You configure the type with the <code class="docutils literal notranslate"><span class="pre">type</span></code> option.  The default type is <code class="docutils literal notranslate"><span class="pre">file</span></code> and you can leave out the <code class="docutils literal notranslate"><span class="pre">cache</span></code> option if you want to use the file cache. Read <a class="reference internal" href="caches.html"><span class="doc">Caches</span></a> for a detailed list of all available cache backends.</p>
-</section>
-<section id="example-caches-configuration">
-<h3>Example <code class="docutils literal notranslate"><span class="pre">caches</span></code> configuration<a class="headerlink" href="#example-caches-configuration" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="example-caches-configuration">
+<h3>Example <code class="docutils literal notranslate"><span class="pre">caches</span></code> configuration<a class="headerlink" href="#example-caches-configuration" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">caches</span><span class="p">:</span>
  <span class="n">simple</span><span class="p">:</span>
    <span class="n">source</span><span class="p">:</span> <span class="p">[</span><span class="n">mysource</span><span class="p">]</span>
@@ -579,10 +581,10 @@ See <a class="reference internal" href="caches.html#cache-file-directory"><span 
      <span class="n">directory_layout</span><span class="p">:</span> <span class="n">tms</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="id6">
-<span id="id7"></span><h2>grids<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="id6">
+<span id="id7"></span><h2>grids<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h2>
 <p>Here you can define the tile grids that MapProxy uses for the internal caching.
 There are multiple options to define the grid, but beware, not all are required at the same time and some combinations will result in ambiguous results.</p>
 <p>There are three pre-defined grids all with global coverage:</p>
@@ -594,30 +596,30 @@ There are multiple options to define the grid, but beware, not all are required 
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.6.0: </span><code class="docutils literal notranslate"><span class="pre">GLOBAL_WEBMERCATOR</span></code></p>
 </div>
-<section id="id8">
-<h3><code class="docutils literal notranslate"><span class="pre">name</span></code><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><code class="docutils literal notranslate"><span class="pre">name</span></code><a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <p>Overwrite the name of the grid used in WMTS URLs. The name is also used in TMS and KML URLs when the <code class="docutils literal notranslate"><span class="pre">use_grid_names</span></code> option of the services is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-</section>
-<section id="srs">
-<h3><code class="docutils literal notranslate"><span class="pre">srs</span></code><a class="headerlink" href="#srs" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="srs">
+<h3><code class="docutils literal notranslate"><span class="pre">srs</span></code><a class="headerlink" href="#srs" title="Permalink to this heading">¶</a></h3>
 <p>The spatial reference system used for the internal cache, written as <code class="docutils literal notranslate"><span class="pre">EPSG:xxxx</span></code>.</p>
-</section>
-<section id="tile-size">
-<span id="index-6"></span><h3><code class="docutils literal notranslate"><span class="pre">tile_size</span></code><a class="headerlink" href="#tile-size" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="tile-size">
+<span id="index-6"></span><h3><code class="docutils literal notranslate"><span class="pre">tile_size</span></code><a class="headerlink" href="#tile-size" title="Permalink to this heading">¶</a></h3>
 <p>The size of each tile. Defaults to 256x256 pixel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tile_size</span><span class="p">:</span> <span class="p">[</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="res">
-<span id="index-7"></span><h3><code class="docutils literal notranslate"><span class="pre">res</span></code><a class="headerlink" href="#res" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="res">
+<span id="index-7"></span><h3><code class="docutils literal notranslate"><span class="pre">res</span></code><a class="headerlink" href="#res" title="Permalink to this heading">¶</a></h3>
 <p>A list with all resolutions that MapProxy should cache.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="res-factor">
-<span id="index-8"></span><h3><code class="docutils literal notranslate"><span class="pre">res_factor</span></code><a class="headerlink" href="#res-factor" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="res-factor">
+<span id="index-8"></span><h3><code class="docutils literal notranslate"><span class="pre">res_factor</span></code><a class="headerlink" href="#res-factor" title="Permalink to this heading">¶</a></h3>
 <p>Here you can define a factor between each resolution.
 It should be either a number or the term <code class="docutils literal notranslate"><span class="pre">sqrt2</span></code>.
 <code class="docutils literal notranslate"><span class="pre">sqrt2</span></code> is a shorthand for a resolution factor of 1.4142, the square root of two. With this factor the resolution doubles every second level.
@@ -625,9 +627,9 @@ Compared to the default factor 2 you will get another cached level between all s
 levels. This is suited for free zooming in vector-based layers where the results might
 look to blurry/pixelated in some resolutions.</p>
 <p>For requests with no matching cached resolution the next best resolution is used and MapProxy will transform the result.</p>
-</section>
-<section id="threshold-res">
-<h3><code class="docutils literal notranslate"><span class="pre">threshold_res</span></code><a class="headerlink" href="#threshold-res" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="threshold-res">
+<h3><code class="docutils literal notranslate"><span class="pre">threshold_res</span></code><a class="headerlink" href="#threshold-res" title="Permalink to this heading">¶</a></h3>
 <p>A list with resolutions at which MapProxy should switch from one level to another. MapProxy automatically tries to determine the optimal cache level for each request. You can tweak the behavior with the <code class="docutils literal notranslate"><span class="pre">stretch_factor</span></code> option (see below).</p>
 <p>If you need explicit transitions from one level to another at fixed resolutions, then you can use the <code class="docutils literal notranslate"><span class="pre">threshold_res</span></code> option to define these resolutions. You only need to define the explicit transitions.</p>
 <p>Example: You are caching at 1000, 500 and 200m/px resolutions and you are required to display the 1000m/px level for requests with lower than 700m/px resolutions and the 500m/px level for requests with higher resolutions. You can define that transition as follows:</p>
@@ -636,9 +638,9 @@ look to blurry/pixelated in some resolutions.</p>
 </pre></div>
 </div>
 <p>Requests with 1500, 1000 or 701m/px resolution will use the first level, requests with 700 or 500m/px will use the second level. All other transitions (between 500 an 200m/px in this case) will be calculated automatically with the <code class="docutils literal notranslate"><span class="pre">stretch_factor</span></code> (about 416m/px in this case with a default configuration).</p>
-</section>
-<section id="bbox">
-<h3><code class="docutils literal notranslate"><span class="pre">bbox</span></code><a class="headerlink" href="#bbox" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bbox">
+<h3><code class="docutils literal notranslate"><span class="pre">bbox</span></code><a class="headerlink" href="#bbox" title="Permalink to this heading">¶</a></h3>
 <p>The extent of your grid. You can use either a list or a string with the lower left and upper right coordinates. You can set the SRS of the coordinates with the <code class="docutils literal notranslate"><span class="pre">bbox_srs</span></code> option. If that option is not set the <code class="docutils literal notranslate"><span class="pre">srs</span></code> of the grid will be used.</p>
 <p>MapProxy always expects your BBOX coordinates order to be west, south, east, north regardless of your SRS <a class="reference internal" href="#axis-order"><span class="std std-ref">axis order</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bbox</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
@@ -646,13 +648,13 @@ look to blurry/pixelated in some resolutions.</p>
 <span class="n">bbox</span><span class="p">:</span> <span class="s2">&quot;0,40,15,55&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="bbox-srs">
-<h3><code class="docutils literal notranslate"><span class="pre">bbox_srs</span></code><a class="headerlink" href="#bbox-srs" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bbox-srs">
+<h3><code class="docutils literal notranslate"><span class="pre">bbox_srs</span></code><a class="headerlink" href="#bbox-srs" title="Permalink to this heading">¶</a></h3>
 <p>The SRS of the grid bbox. See above.</p>
-</section>
-<section id="origin">
-<span id="grid-origin"></span><span id="index-9"></span><h3><code class="docutils literal notranslate"><span class="pre">origin</span></code><a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="origin">
+<span id="grid-origin"></span><span id="index-9"></span><h3><code class="docutils literal notranslate"><span class="pre">origin</span></code><a class="headerlink" href="#origin" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.3.0.</span></p>
 </div>
@@ -664,17 +666,17 @@ look to blurry/pixelated in some resolutions.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">ul</span></code> or <code class="docutils literal notranslate"><span class="pre">nw</span></code>:</dt><dd><p>If the x=0, y=0 tile is in the upper-left/north-west corner of the tile grid.</p>
 </dd>
 </dl>
-</section>
-<section id="num-levels">
-<h3><code class="docutils literal notranslate"><span class="pre">num_levels</span></code><a class="headerlink" href="#num-levels" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="num-levels">
+<h3><code class="docutils literal notranslate"><span class="pre">num_levels</span></code><a class="headerlink" href="#num-levels" title="Permalink to this heading">¶</a></h3>
 <p>The total number of cached resolution levels. Defaults to 20, except for grids with  <code class="docutils literal notranslate"><span class="pre">sqrt2</span></code> resolutions. This option has no effect when you set an explicit list of cache resolutions.</p>
-</section>
-<section id="min-res-and-max-res">
-<h3><code class="docutils literal notranslate"><span class="pre">min_res</span></code> and <code class="docutils literal notranslate"><span class="pre">max_res</span></code><a class="headerlink" href="#min-res-and-max-res" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="min-res-and-max-res">
+<h3><code class="docutils literal notranslate"><span class="pre">min_res</span></code> and <code class="docutils literal notranslate"><span class="pre">max_res</span></code><a class="headerlink" href="#min-res-and-max-res" title="Permalink to this heading">¶</a></h3>
 <p>The the resolutions of the first and the last level.</p>
-</section>
-<section id="stretch-factor">
-<h3><code class="docutils literal notranslate"><span class="pre">stretch_factor</span></code><a class="headerlink" href="#stretch-factor" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="stretch-factor">
+<h3><code class="docutils literal notranslate"><span class="pre">stretch_factor</span></code><a class="headerlink" href="#stretch-factor" title="Permalink to this heading">¶</a></h3>
 <p>MapProxy chooses the <cite>optimal</cite> cached level for requests that do not exactly
 match any cached resolution. MapProxy will stretch or shrink images to the
 requested resolution. The <cite>stretch_factor</cite> defines the maximum factor
@@ -683,29 +685,29 @@ performance but will look blurry when the value is to large (&gt; 1.2).</p>
 <p>Example: Your MapProxy caches 10m and 5m resolutions. Requests with 9m
 resolution will be generated from the 10m level, requests for 8m from the 5m
 level.</p>
-</section>
-<section id="max-shrink-factor">
-<h3><code class="docutils literal notranslate"><span class="pre">max_shrink_factor</span></code><a class="headerlink" href="#max-shrink-factor" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="max-shrink-factor">
+<h3><code class="docutils literal notranslate"><span class="pre">max_shrink_factor</span></code><a class="headerlink" href="#max-shrink-factor" title="Permalink to this heading">¶</a></h3>
 <p>This factor only applies for the first level and defines the maximum factor
 that MapProxy will shrink images.</p>
 <p>Example: Your MapProxy layer starts with 1km resolution. Requests with 3km
 resolution will get a result, requests with 5km will get a blank response.</p>
-</section>
-<section id="id9">
-<h3><code class="docutils literal notranslate"><span class="pre">base</span></code><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id9">
+<h3><code class="docutils literal notranslate"><span class="pre">base</span></code><a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
 <p>With this option, you can base the grid on the options of another grid you already defined.</p>
-</section>
-<section id="defining-resolutions">
-<h3>Defining Resolutions<a class="headerlink" href="#defining-resolutions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="defining-resolutions">
+<h3>Defining Resolutions<a class="headerlink" href="#defining-resolutions" title="Permalink to this heading">¶</a></h3>
 <p>There are multiple options that influence the resolutions MapProxy will use for caching: <code class="docutils literal notranslate"><span class="pre">res</span></code>, <code class="docutils literal notranslate"><span class="pre">res_factor</span></code>, <code class="docutils literal notranslate"><span class="pre">min_res</span></code>, <code class="docutils literal notranslate"><span class="pre">max_res</span></code>, <code class="docutils literal notranslate"><span class="pre">num_levels</span></code> and also <code class="docutils literal notranslate"><span class="pre">bbox</span></code> and <code class="docutils literal notranslate"><span class="pre">tile_size</span></code>. We describe the process MapProxy uses to build the list of all cache resolutions.</p>
 <p>If you supply a list with resolution values in <code class="docutils literal notranslate"><span class="pre">res</span></code> then MapProxy will use this list and will ignore all other options.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">min_res</span></code> is set then this value will be used for the first level, otherwise MapProxy will use the resolution that is needed for a single tile (<code class="docutils literal notranslate"><span class="pre">tile_size</span></code>) that contains the whole <code class="docutils literal notranslate"><span class="pre">bbox</span></code>.</p>
 <p>If you have <code class="docutils literal notranslate"><span class="pre">max_res</span></code> and <code class="docutils literal notranslate"><span class="pre">num_levels</span></code>: The resolutions will be distributed between <code class="docutils literal notranslate"><span class="pre">min_res</span></code> and <code class="docutils literal notranslate"><span class="pre">max_res</span></code>, both resolutions included. The resolutions will be logarithmical, so you will get a constant factor between each resolution. With resolutions from 1000 to 10 and 6 levels you would get 1000, 398, 158, 63, 25, 10 (rounded here for readability).</p>
 <p>If you have <code class="docutils literal notranslate"><span class="pre">max_res</span></code> and <code class="docutils literal notranslate"><span class="pre">res_factor</span></code>: The resolutions will be multiplied by <code class="docutils literal notranslate"><span class="pre">res_factor</span></code> until larger then <code class="docutils literal notranslate"><span class="pre">max_res</span></code>.</p>
 <p>If you have <code class="docutils literal notranslate"><span class="pre">num_levels</span></code> and <code class="docutils literal notranslate"><span class="pre">res_factor</span></code>: The resolutions will be multiplied by <code class="docutils literal notranslate"><span class="pre">res_factor</span></code> for up to <code class="docutils literal notranslate"><span class="pre">num_levels</span></code> levels.</p>
-</section>
-<section id="example-grids-configuration">
-<h3>Example <code class="docutils literal notranslate"><span class="pre">grids</span></code> configuration<a class="headerlink" href="#example-grids-configuration" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="example-grids-configuration">
+<h3>Example <code class="docutils literal notranslate"><span class="pre">grids</span></code> configuration<a class="headerlink" href="#example-grids-configuration" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grids</span><span class="p">:</span>
   <span class="n">localgrid</span><span class="p">:</span>
     <span class="n">srs</span><span class="p">:</span> <span class="n">EPSG</span><span class="p">:</span><span class="mi">31467</span>
@@ -719,10 +721,10 @@ resolution will get a result, requests with 5km will get a blank response.</p>
     <span class="n">tile_size</span><span class="p">:</span> <span class="p">[</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="sources-conf-label">
-<span id="index-10"></span><span id="id10"></span><h2>sources<a class="headerlink" href="#sources-conf-label" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="sources-conf-label">
+<span id="index-10"></span><span id="id10"></span><h2>sources<a class="headerlink" href="#sources-conf-label" title="Permalink to this heading">¶</a></h2>
 <p>A sources defines where MapProxy can request new data. Each source has a <code class="docutils literal notranslate"><span class="pre">type</span></code> and all other options are dependent to this type.</p>
 <p>See <a class="reference internal" href="sources.html"><span class="doc">Sources</span></a> for the documentation of all available sources.</p>
 <p>An example:</p>
@@ -737,12 +739,12 @@ resolution will get a result, requests with 5km will get a blank response.</p>
     # ...
 </pre></div>
 </div>
-</section>
-<section id="globals">
-<span id="globals-conf-label"></span><span id="index-11"></span><h2>globals<a class="headerlink" href="#globals" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="globals">
+<span id="globals-conf-label"></span><span id="index-11"></span><h2>globals<a class="headerlink" href="#globals" title="Permalink to this heading">¶</a></h2>
 <p>Here you can define some internals of MapProxy and default values that are used in the other configuration directives.</p>
-<section id="id11">
-<h3><code class="docutils literal notranslate"><span class="pre">image</span></code><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3><code class="docutils literal notranslate"><span class="pre">image</span></code><a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h3>
 <p>Here you can define some options that affect the way MapProxy generates image results.</p>
 <dl id="image-resampling-method">
 <dt><code class="docutils literal notranslate"><span class="pre">resampling_method</span></code></dt><dd><p>The resampling method used when results need to be rescaled or transformed.
@@ -772,9 +774,9 @@ Bicubic enhances the contrast at edges and should be used for vector images.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">formats</span></code></dt><dd><p>Modify existing or define new image formats. <a class="reference internal" href="#image-options"><span class="std std-ref">See below</span></a> for all image format options.</p>
 </dd>
 </dl>
-</section>
-<section id="globals-cache">
-<span id="id12"></span><h3><code class="docutils literal notranslate"><span class="pre">cache</span></code><a class="headerlink" href="#globals-cache" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="globals-cache">
+<span id="id12"></span><h3><code class="docutils literal notranslate"><span class="pre">cache</span></code><a class="headerlink" href="#globals-cache" title="Permalink to this heading">¶</a></h3>
 <p>The following options define how tiles are created and stored. Most options can be set individually for each cache as well.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.6.0: </span><code class="docutils literal notranslate"><span class="pre">tile_lock_dir</span></code></p>
@@ -822,9 +824,9 @@ mapproxy.yaml file. Defaults to <code class="docutils literal notranslate"><span
 <dt><code class="docutils literal notranslate"><span class="pre">max_tile_limit</span></code></dt><dd><p>Maximum number of tiles MapProxy will merge together for a WMS request. This limit is for each layer and defaults to 500 tiles.</p>
 </dd>
 </dl>
-</section>
-<section id="id14">
-<h3><code class="docutils literal notranslate"><span class="pre">srs</span></code><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id14">
+<h3><code class="docutils literal notranslate"><span class="pre">srs</span></code><a class="headerlink" href="#id14" title="Permalink to this heading">¶</a></h3>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">preferred_src_proj</span></code></dt><dd><p>This option allows you to control which source projection MapProxy should use
 when it needs to reproject an image.</p>
@@ -880,12 +882,12 @@ order options, even if one is empty.</p>
 <p>MapProxy can now determine the correct axis order for all coordinate systems when using pyproj&gt;=2. The axis_order_ne/axis_order_en are ignored in this case.</p>
 </dd>
 </dl>
-</section>
-<section id="http">
-<span id="http-ssl"></span><h3><code class="docutils literal notranslate"><span class="pre">http</span></code><a class="headerlink" href="#http" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="http">
+<span id="http-ssl"></span><h3><code class="docutils literal notranslate"><span class="pre">http</span></code><a class="headerlink" href="#http" title="Permalink to this heading">¶</a></h3>
 <p>HTTP related options.</p>
-<section id="secure-http-connections-https">
-<h4>Secure HTTP Connections (HTTPS)<a class="headerlink" href="#secure-http-connections-https" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="secure-http-connections-https">
+<h4>Secure HTTP Connections (HTTPS)<a class="headerlink" href="#secure-http-connections-https" title="Permalink to this heading">¶</a></h4>
 <p>MapProxy supports access to HTTPS servers. Just use <code class="docutils literal notranslate"><span class="pre">https</span></code> instead of <code class="docutils literal notranslate"><span class="pre">http</span></code> when
 defining the URL of a source.</p>
 <p>MapProxy verifies the SSL/TLS connections against your systems “certification authority” (CA) certificates. You can provide your own set of root certificates with the <code class="docutils literal notranslate"><span class="pre">ssl_ca_certs</span></code> option.
@@ -907,37 +909,37 @@ See the <a class="reference external" href="http://docs.python.org/dev/library/s
   <span class="n">ssl_no_cert_checks</span><span class="p">:</span> <span class="n">true</span>
 </pre></div>
 </div>
-</section>
-<section id="client-timeout">
-<h4><code class="docutils literal notranslate"><span class="pre">client_timeout</span></code><a class="headerlink" href="#client-timeout" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="client-timeout">
+<h4><code class="docutils literal notranslate"><span class="pre">client_timeout</span></code><a class="headerlink" href="#client-timeout" title="Permalink to this heading">¶</a></h4>
 <p>This defines how long MapProxy should wait for data from source servers. Increase this value if your source servers are slower.</p>
-</section>
-<section id="method">
-<h4><code class="docutils literal notranslate"><span class="pre">method</span></code><a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="method">
+<h4><code class="docutils literal notranslate"><span class="pre">method</span></code><a class="headerlink" href="#method" title="Permalink to this heading">¶</a></h4>
 <p>Configure which HTTP method should be used for HTTP requests. By default (<cite>AUTO</cite>) MapProxy will use GET for most requests, except for requests with a long query string (e.g. WMS requests with <cite>sld_body</cite>) where POST is used instead. You can disable this behavior with either <cite>GET</cite> or <cite>POST</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span>
   <span class="n">method</span><span class="p">:</span> <span class="n">GET</span>
 </pre></div>
 </div>
-</section>
-<section id="headers">
-<h4><code class="docutils literal notranslate"><span class="pre">headers</span></code><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="headers">
+<h4><code class="docutils literal notranslate"><span class="pre">headers</span></code><a class="headerlink" href="#headers" title="Permalink to this heading">¶</a></h4>
 <p>Add additional HTTP headers to all requests to your sources.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span>
   <span class="n">headers</span><span class="p">:</span>
     <span class="n">My</span><span class="o">-</span><span class="n">Header</span><span class="p">:</span> <span class="n">header</span> <span class="n">value</span>
 </pre></div>
 </div>
-</section>
-<section id="access-control-allow-origin">
-<h4><code class="docutils literal notranslate"><span class="pre">access_control_allow_origin</span></code><a class="headerlink" href="#access-control-allow-origin" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="access-control-allow-origin">
+<h4><code class="docutils literal notranslate"><span class="pre">access_control_allow_origin</span></code><a class="headerlink" href="#access-control-allow-origin" title="Permalink to this heading">¶</a></h4>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.8.0.</span></p>
 </div>
 <p>Sets the <code class="docutils literal notranslate"><span class="pre">Access-control-allow-origin</span></code> header to HTTP responses for <a class="reference external" href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing</a>. This header is required for WebGL or Canvas web clients. Defaults to <cite>*</cite>. Leave empty to disable the header. This option is only available in <cite>globals</cite>.</p>
-</section>
-<section id="manage-cookies">
-<h4><code class="docutils literal notranslate"><span class="pre">manage_cookies</span></code><a class="headerlink" href="#manage-cookies" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="manage-cookies">
+<h4><code class="docutils literal notranslate"><span class="pre">manage_cookies</span></code><a class="headerlink" href="#manage-cookies" title="Permalink to this heading">¶</a></h4>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.14.0.</span></p>
 </div>
@@ -945,18 +947,18 @@ See the <a class="reference external" href="http://docs.python.org/dev/library/s
 back to the source on subsequent requests. Usefull for sources which require to maintain an HTTP session to work efficiently, maybe in combination
 with basic authentication. Depending on your deployment MapProxy will still start multiple sessions (e.g. one per MapProxy process).
 Cookie handling is based on Python <a class="reference external" href="https://docs.python.org/3/library/http.cookiejar.html">CookieJar</a>. Disabled by default.</p>
-</section>
-<section id="hide-error-details">
-<h4><code class="docutils literal notranslate"><span class="pre">hide_error_details</span></code><a class="headerlink" href="#hide-error-details" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="hide-error-details">
+<h4><code class="docutils literal notranslate"><span class="pre">hide_error_details</span></code><a class="headerlink" href="#hide-error-details" title="Permalink to this heading">¶</a></h4>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.13.0.</span></p>
 </div>
 <p>When enabled, MapProxy will only report generic error messages to the client in case of any errors while fetching source services.
 The full error message might contain confidential information like internal URLs. You will find the full error message in the logs, regardless of this option. The option is enabled by default, i.e. the details are hidden.</p>
-</section>
-</section>
-<section id="tiles">
-<h3><code class="docutils literal notranslate"><span class="pre">tiles</span></code><a class="headerlink" href="#tiles" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="tiles">
+<h3><code class="docutils literal notranslate"><span class="pre">tiles</span></code><a class="headerlink" href="#tiles" title="Permalink to this heading">¶</a></h3>
 <p>Configuration options for the TMS/Tile service.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">expires_hours</span></code></dt><dd><p>The number of hours a Tile is valid. TMS clients like web browsers will
@@ -966,28 +968,28 @@ respond with the appropriate HTTP <cite>‘304 Not modified’</cite> response i
 was not changed.</p>
 </dd>
 </dl>
-</section>
-<section id="mapserver">
-<h3><code class="docutils literal notranslate"><span class="pre">mapserver</span></code><a class="headerlink" href="#mapserver" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="mapserver">
+<h3><code class="docutils literal notranslate"><span class="pre">mapserver</span></code><a class="headerlink" href="#mapserver" title="Permalink to this heading">¶</a></h3>
 <p>Options for the <a class="reference internal" href="sources.html#mapserver-label"><span class="std std-ref">Mapserver source</span></a>.</p>
-<section id="binary">
-<h4><code class="docutils literal notranslate"><span class="pre">binary</span></code><a class="headerlink" href="#binary" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="binary">
+<h4><code class="docutils literal notranslate"><span class="pre">binary</span></code><a class="headerlink" href="#binary" title="Permalink to this heading">¶</a></h4>
 <p>The complete path to the <code class="docutils literal notranslate"><span class="pre">mapserv</span></code> executable. Required if you use the <code class="docutils literal notranslate"><span class="pre">mapserver</span></code> source.</p>
-</section>
-<section id="working-dir">
-<h4><code class="docutils literal notranslate"><span class="pre">working_dir</span></code><a class="headerlink" href="#working-dir" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="working-dir">
+<h4><code class="docutils literal notranslate"><span class="pre">working_dir</span></code><a class="headerlink" href="#working-dir" title="Permalink to this heading">¶</a></h4>
 <p>Path where the Mapserver should be executed from. It should be the directory where any relative paths in your mapfile are based on. Defaults to the directory of <code class="docutils literal notranslate"><span class="pre">binary</span></code>.</p>
-</section>
-</section>
-</section>
-<section id="image-format-options">
-<span id="image-options"></span><h2>Image Format Options<a class="headerlink" href="#image-format-options" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="image-format-options">
+<span id="image-options"></span><h2>Image Format Options<a class="headerlink" href="#image-format-options" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 1.1.0.</span></p>
 </div>
 <p>There are a few options that affect how MapProxy encodes and transforms images. You can set these options in the <code class="docutils literal notranslate"><span class="pre">globals</span></code> section or individually for each source or cache.</p>
-<section id="options">
-<h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="options">
+<h3>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h3>
 <p>Available options are:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">format</span></code></dt><dd><p>The mime-type of this image format. The format defaults to the name of the image configuration.</p>
@@ -1005,8 +1007,8 @@ was not changed.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">opacity</span></code></dt><dd><p>Configures the opacity of a layer or cache. This value is used when the source or cache is placed on other layers and it can be used to overlay non-transparent images. It does not alter the image itself, and only effects when multiple layers are merged to one image. The value should be between 0.0 (full transparent) and 1.0 (opaque, i.e. the layers below will not be rendered).</p>
 </dd>
 </dl>
-<section id="encoding-options">
-<h4><code class="docutils literal notranslate"><span class="pre">encoding_options</span></code><a class="headerlink" href="#encoding-options" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="encoding-options">
+<h4><code class="docutils literal notranslate"><span class="pre">encoding_options</span></code><a class="headerlink" href="#encoding-options" title="Permalink to this heading">¶</a></h4>
 <p>The following encoding options are available:</p>
 <dl id="jpeg-quality">
 <dt><code class="docutils literal notranslate"><span class="pre">jpeg_quality</span></code></dt><dd><p>An integer value from 0 to 100 that defines the image quality of JPEG images. Larger values result in slower performance, larger file sizes but better image quality. You should try values between 75 and 90 for good compromise between performance and quality.</p>
@@ -1020,10 +1022,10 @@ The quantizing is done by the Python Image Library (PIL). <code class="docutils 
 </div>
 </dd>
 </dl>
-</section>
-</section>
-<section id="global">
-<h3>Global<a class="headerlink" href="#global" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="global">
+<h3>Global<a class="headerlink" href="#global" title="Permalink to this heading">¶</a></h3>
 <p>You can configure image formats globally with the <code class="docutils literal notranslate"><span class="pre">image.formats</span></code> option. Each format has a name and one or more options from the list above. You can choose any name, but you need to specify a <code class="docutils literal notranslate"><span class="pre">format</span></code> if the name is not a valid mime-type (e.g. <code class="docutils literal notranslate"><span class="pre">myformat</span></code> instead of <code class="docutils literal notranslate"><span class="pre">image/png</span></code>).</p>
 <p>Here is an example that defines a custom format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">globals</span><span class="p">:</span>
@@ -1053,9 +1055,9 @@ The quantizing is done by the Python Image Library (PIL). <code class="docutils 
     <span class="n">grids</span><span class="p">:</span> <span class="p">[</span><span class="n">my_grid</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="local">
-<h3>Local<a class="headerlink" href="#local" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="local">
+<h3>Local<a class="headerlink" href="#local" title="Permalink to this heading">¶</a></h3>
 <p>You can change all options individually for each cache or source. You can do this by choosing a base format and changing some options:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">caches</span><span class="p">:</span>
   <span class="n">mycache</span><span class="p">:</span>
@@ -1077,23 +1079,23 @@ The quantizing is done by the Python Image Library (PIL). <code class="docutils 
     <span class="n">grids</span><span class="p">:</span> <span class="p">[</span><span class="n">my_grid</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
-<section id="scale-vs-resolution">
-<span id="scale-resolution"></span><h3>Scale vs. resolution<a class="headerlink" href="#scale-vs-resolution" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="scale-vs-resolution">
+<span id="scale-resolution"></span><h3>Scale vs. resolution<a class="headerlink" href="#scale-vs-resolution" title="Permalink to this heading">¶</a></h3>
 <p>Scale is the ratio of a distance on a map and the corresponding distance on the ground. This implies that the map distance and the ground distance are measured in the same unit. For MapProxy a <cite>map</cite> is just a collection of pixels and the pixels do not have any size/dimension. They do correspond to a ground size but the size on the <cite>map</cite> is depended of the physical output format. MapProxy can thus only work with resolutions (pixel per ground unit) and not scales.</p>
 <p>This applies to all servers and the OGC WMS standard as well. Some neglect this fact and assume a fixed pixel dimension (like 72dpi), the OCG WMS 1.3.0 standard uses a pixel size of 0.28 mm/px (around 91dpi). But you need to understand that a <cite>scale</cite> will differ if you print a map (200, 300 or more dpi) or if you show it on a computer display (typical 90-120 dpi, but there are mobile devices with more than 300 dpi).</p>
 <p>You can convert between scales and resolutions with the <a class="reference internal" href="mapproxy_util.html#mapproxy-util-scales"><span class="std std-ref">mapproxy-util scales tool</span></a>.</p>
 <p>MapProxy will use the OCG value (0.28mm/px) if it’s necessary to use a scale value (e.g. MinScaleDenominator in WMS 1.3.0 capabilities), but you should always use resolutions within MapProxy.</p>
-<section id="wms-scalehint">
-<h4>WMS ScaleHint<a class="headerlink" href="#wms-scalehint" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="wms-scalehint">
+<h4>WMS ScaleHint<a class="headerlink" href="#wms-scalehint" title="Permalink to this heading">¶</a></h4>
 <p>The WMS ScaleHint is a bit misleading. The parameter is not a scale but the diagonal pixel resolution. It also defines the <code class="docutils literal notranslate"><span class="pre">min</span></code> as the minimum value not the minimum resolution (e.g. 10m/px is a lower resolution than 5m/px, but 5m/px is the minimum value). MapProxy always uses the term resolutions as the side length in ground units per pixel and minimum resolution is always the higher number (100m/px &lt; 10m/px). Keep that in mind when you use these values.</p>
-</section>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
+</div>
 
 
     </div>
@@ -1110,11 +1112,11 @@ The quantizing is done by the Python Image Library (PIL). <code class="docutils 
      
      <br/>
      
-       Last updated on 2021-11-24
+       Last updated on 2023-04-13
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>

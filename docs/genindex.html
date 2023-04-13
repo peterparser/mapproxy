@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; MapProxy 1.14.0 Docs</title>
+    <title>Index &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
@@ -17,10 +18,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -38,7 +39,7 @@
       <a class="navbar-brand" href="index.html">
         <span>
           MapProxy</span>
-        <span>1.14.0</span>
+        <span>1.16.0</span>
       </a>
     </div>
     <div class="collapse navbar-collapse nav-collapse">
@@ -63,6 +64,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install_windows.html">Installation on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install_osgeo4w.html">Installation on OSGeo4W</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_docker.html">Installation via Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
@@ -79,6 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Authentication and Authorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decorate_img.html">Decorate Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Writing plugins</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mapproxy_2.html">MapProxy 2.0</a></li>
 </ul>
 
@@ -125,7 +128,7 @@
 </li>
       </ul></li>
       <li>
-    --base &lt;filename&gt;
+    --base
 
       <ul>
         <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-base">mapproxy-util-autoconfig command line option</a>
@@ -135,14 +138,7 @@
     --bind
 
       <ul>
-        <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-bind">mapproxy-util-serve-develop command line option</a>
-</li>
-      </ul></li>
-      <li>
-    --bind &lt;address&gt;
-
-      <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-b">mapproxy-util-serve-develop command line option</a>
+        <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-bind">mapproxy-util-serve-develop command line option</a>, <a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-b">[1]</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-multiapp-develop-b">mapproxy-util-serve-multiapp-develop command line option</a>
 </li>
@@ -155,21 +151,21 @@
 </li>
       </ul></li>
       <li>
-    --capabilities &lt;url|filename&gt;
+    --capabilities
 
       <ul>
         <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-capabilities">mapproxy-util-autoconfig command line option</a>
 </li>
       </ul></li>
       <li>
-    --cleanup=&lt;task1,task2,..&gt;
+    --cleanup
 
       <ul>
         <li><a href="seed.html#cmdoption-cleanup">command line option</a>
 </li>
       </ul></li>
       <li>
-    --concurrency N
+    --concurrency
 
       <ul>
         <li><a href="seed.html#cmdoption-c">command line option</a>
@@ -190,11 +186,6 @@
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-coverage">mapproxy-util-export command line option</a>
 </li>
-      </ul></li>
-      <li>
-    --coverage &lt;coverage name&gt;
-
-      <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-c">mapproxy-util-grids command line option</a>
 </li>
       </ul></li>
@@ -213,7 +204,7 @@
 </li>
       </ul></li>
       <li>
-    --dpi &lt;dpi&gt;
+    --dpi
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-d">mapproxy-util-scales command line option</a>
@@ -257,16 +248,11 @@
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-grid">mapproxy-util-export command line option</a>
 </li>
-      </ul></li>
-      <li>
-    --grid &lt;grid_name&gt;
-
-      <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-g">mapproxy-util-grids command line option</a>
 </li>
       </ul></li>
       <li>
-    --host &lt;URL&gt;
+    --host
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-wms_capabilities-host">mapproxy-util-wms_capabilities command line option</a>
@@ -285,11 +271,6 @@
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-levels">mapproxy-util-export command line option</a>
 </li>
-      </ul></li>
-      <li>
-    --levels &lt;n&gt;
-
-      <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-l">mapproxy-util-scales command line option</a>
 </li>
       </ul></li>
@@ -318,20 +299,15 @@
     --mapproxy-conf
 
       <ul>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-f">mapproxy-util-create command line option</a>
+</li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-defrag-compact-cache-f">mapproxy-util-defrag-compact-cache command line option</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-f">mapproxy-util-export command line option</a>
 </li>
       </ul></li>
       <li>
-    --mapproxy-conf &lt;mapproxy.yaml&gt;
-
-      <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-f">mapproxy-util-create command line option</a>
-</li>
-      </ul></li>
-      <li>
-    --mapproxy-config &lt;path/to/config&gt;
+    --mapproxy-config
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-f">mapproxy-util-grids command line option</a>
@@ -352,28 +328,28 @@
 </li>
       </ul></li>
       <li>
-    --output &lt;filename&gt;
+    --output
 
       <ul>
         <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-output">mapproxy-util-autoconfig command line option</a>
 </li>
       </ul></li>
       <li>
-    --output-seed &lt;filename&gt;
+    --output-seed
 
       <ul>
         <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-output-seed">mapproxy-util-autoconfig command line option</a>
 </li>
       </ul></li>
       <li>
-    --overwrite &lt;filename&gt;
+    --overwrite
 
       <ul>
         <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-overwrite">mapproxy-util-autoconfig command line option</a>
 </li>
       </ul></li>
       <li>
-    --overwrite-seed &lt;filename&gt;
+    --overwrite-seed
 
       <ul>
         <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-overwrite-seed">mapproxy-util-autoconfig command line option</a>
@@ -389,7 +365,7 @@
 </li>
       </ul></li>
       <li>
-    --proxy-conf=&lt;mapproxy.yaml&gt;
+    --proxy-conf
 
       <ul>
         <li><a href="seed.html#cmdoption-f">command line option</a>
@@ -424,28 +400,23 @@
 </li>
       </ul></li>
       <li>
-    --seed-conf &lt;seed.yaml&gt;
-
-      <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-s">mapproxy-util-grids command line option</a>
-</li>
-      </ul></li>
-      <li>
-    --seed-conf==&lt;seed.yaml&gt;
-
-      <ul>
-        <li><a href="seed.html#cmdoption-s">command line option</a>
-</li>
-      </ul></li>
-      <li>
-    --seed=&lt;task1,task2,..&gt;
+    --seed
 
       <ul>
         <li><a href="seed.html#cmdoption-seed">command line option</a>
 </li>
       </ul></li>
       <li>
-    --skip-geoms-for-last-levels N
+    --seed-conf
+
+      <ul>
+        <li><a href="seed.html#cmdoption-s">command line option</a>
+</li>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-s">mapproxy-util-grids command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --skip-geoms-for-last-levels
 
       <ul>
         <li><a href="seed.html#cmdoption-l">command line option</a>
@@ -480,7 +451,7 @@
 </li>
       </ul></li>
       <li>
-    --template &lt;name&gt;
+    --template
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-t">mapproxy-util-create command line option</a>
@@ -494,7 +465,7 @@
 </li>
       </ul></li>
       <li>
-    --unit &lt;m|d&gt;
+    --unit
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-unit">mapproxy-util-scales command line option</a>
@@ -508,7 +479,7 @@
 </li>
       </ul></li>
       <li>
-    --version &lt;versionnumber&gt;
+    --version
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-wms_capabilities-version">mapproxy-util-wms_capabilities command line option</a>
@@ -525,36 +496,24 @@
     -b
 
       <ul>
-        <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-bind">mapproxy-util-serve-develop command line option</a>
-</li>
-      </ul></li>
-      <li>
-    -b &lt;address&gt;
-
-      <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-b">mapproxy-util-serve-develop command line option</a>
+        <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-bind">mapproxy-util-serve-develop command line option</a>, <a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-b">[1]</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-multiapp-develop-b">mapproxy-util-serve-multiapp-develop command line option</a>
 </li>
       </ul></li>
       <li>
-    -c &lt;coverage name&gt;
-
-      <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-c">mapproxy-util-grids command line option</a>
-</li>
-      </ul></li>
-      <li>
-    -c N
+    -c
 
       <ul>
         <li><a href="seed.html#cmdoption-c">command line option</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-c">mapproxy-util-export command line option</a>
 </li>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-c">mapproxy-util-grids command line option</a>
+</li>
       </ul></li>
       <li>
-    -d &lt;dpi&gt;
+    -d
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-d">mapproxy-util-scales command line option</a>
@@ -564,29 +523,19 @@
     -f
 
       <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-defrag-compact-cache-f">mapproxy-util-defrag-compact-cache command line option</a>
-</li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-f">mapproxy-util-export command line option</a>
-</li>
-      </ul></li>
-      <li>
-    -f &lt;mapproxy.yaml&gt;
-
-      <ul>
         <li><a href="seed.html#cmdoption-f">command line option</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-f">mapproxy-util-create command line option</a>
 </li>
-      </ul></li>
-      <li>
-    -f &lt;path/to/config&gt;
-
-      <ul>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-defrag-compact-cache-f">mapproxy-util-defrag-compact-cache command line option</a>
+</li>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-f">mapproxy-util-export command line option</a>
+</li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-f">mapproxy-util-grids command line option</a>
 </li>
       </ul></li>
       <li>
-    -g &lt;grid_name&gt;
+    -g
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-g">mapproxy-util-grids command line option</a>
@@ -603,23 +552,13 @@
     -l
 
       <ul>
+        <li><a href="seed.html#cmdoption-l">command line option</a>
+</li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-l">mapproxy-util-create command line option</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-l">mapproxy-util-grids command line option</a>
 </li>
-      </ul></li>
-      <li>
-    -l &lt;n&gt;
-
-      <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-l">mapproxy-util-scales command line option</a>
-</li>
-      </ul></li>
-      <li>
-    -l N
-
-      <ul>
-        <li><a href="seed.html#cmdoption-l">command line option</a>
 </li>
       </ul></li>
       <li>
@@ -632,7 +571,7 @@
 </li>
       </ul></li>
       <li>
-    -s &lt;seed.yaml&gt;
+    -s
 
       <ul>
         <li><a href="seed.html#cmdoption-s">command line option</a>
@@ -641,7 +580,7 @@
 </li>
       </ul></li>
       <li>
-    -t &lt;name&gt;
+    -t
 
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-t">mapproxy-util-create command line option</a>
@@ -691,9 +630,9 @@
     command line option
 
       <ul>
-        <li><a href="seed.html#cmdoption-cleanup">--cleanup=&lt;task1,task2,..&gt;</a>
+        <li><a href="seed.html#cmdoption-cleanup">--cleanup</a>
 </li>
-        <li><a href="seed.html#cmdoption-c">--concurrency N</a>
+        <li><a href="seed.html#cmdoption-c">--concurrency</a>
 </li>
         <li><a href="seed.html#cmdoption-continue">--continue</a>
 </li>
@@ -707,7 +646,7 @@
 </li>
         <li><a href="seed.html#cmdoption-progress-file">--progress-file</a>
 </li>
-        <li><a href="seed.html#cmdoption-f">--proxy-conf=&lt;mapproxy.yaml&gt;</a>
+        <li><a href="seed.html#cmdoption-f">--proxy-conf</a>
 </li>
         <li><a href="seed.html#cmdoption-quiet">--quiet</a>
 </li>
@@ -715,11 +654,11 @@
 </li>
         <li><a href="seed.html#cmdoption-reseed-interval">--reseed-interval</a>
 </li>
-        <li><a href="seed.html#cmdoption-s">--seed-conf==&lt;seed.yaml&gt;</a>
+        <li><a href="seed.html#cmdoption-seed">--seed</a>
 </li>
-        <li><a href="seed.html#cmdoption-seed">--seed=&lt;task1,task2,..&gt;</a>
+        <li><a href="seed.html#cmdoption-s">--seed-conf</a>
 </li>
-        <li><a href="seed.html#cmdoption-l">--skip-geoms-for-last-levels N</a>
+        <li><a href="seed.html#cmdoption-l">--skip-geoms-for-last-levels</a>
 </li>
         <li><a href="seed.html#cmdoption-skip-uncached">--skip-uncached</a>
 </li>
@@ -727,17 +666,17 @@
 </li>
         <li><a href="seed.html#cmdoption-use-cache-lock">--use-cache-lock</a>
 </li>
-        <li><a href="seed.html#cmdoption-c">-c N</a>
+        <li><a href="seed.html#cmdoption-c">-c</a>
 </li>
-        <li><a href="seed.html#cmdoption-f">-f &lt;mapproxy.yaml&gt;</a>
+        <li><a href="seed.html#cmdoption-f">-f</a>
 </li>
         <li><a href="seed.html#cmdoption-i">-i</a>
 </li>
-        <li><a href="seed.html#cmdoption-l">-l N</a>
+        <li><a href="seed.html#cmdoption-l">-l</a>
 </li>
         <li><a href="seed.html#cmdoption-n">-n</a>
 </li>
-        <li><a href="seed.html#cmdoption-s">-s &lt;seed.yaml&gt;</a>
+        <li><a href="seed.html#cmdoption-s">-s</a>
 </li>
       </ul></li>
   </ul></td>
@@ -801,19 +740,19 @@
     mapproxy-util-autoconfig command line option
 
       <ul>
-        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-base">--base &lt;filename&gt;</a>
+        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-base">--base</a>
 </li>
-        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-capabilities">--capabilities &lt;url|filename&gt;</a>
+        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-capabilities">--capabilities</a>
 </li>
         <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-force">--force</a>
 </li>
-        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-output">--output &lt;filename&gt;</a>
+        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-output">--output</a>
 </li>
-        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-output-seed">--output-seed &lt;filename&gt;</a>
+        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-output-seed">--output-seed</a>
 </li>
-        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-overwrite">--overwrite &lt;filename&gt;</a>
+        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-overwrite">--overwrite</a>
 </li>
-        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-overwrite-seed">--overwrite-seed &lt;filename&gt;</a>
+        <li><a href="mapproxy_util_autoconfig.html#cmdoption-mapproxy-util-autoconfig-overwrite-seed">--overwrite-seed</a>
 </li>
       </ul></li>
       <li>
@@ -824,15 +763,15 @@
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-l">--list-templates</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-f">--mapproxy-conf &lt;mapproxy.yaml&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-f">--mapproxy-conf</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-t">--template &lt;name&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-t">--template</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-f">-f &lt;mapproxy.yaml&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-f">-f</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-l">-l</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-t">-t &lt;name&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-create-t">-t</a>
 </li>
       </ul></li>
       <li>
@@ -858,7 +797,7 @@
     mapproxy-util-export command line option
 
       <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-c">--concurrency N</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-c">--concurrency</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-coverage">--coverage</a>
 </li>
@@ -880,7 +819,7 @@
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-coverage">--where</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-c">-c N</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-c">-c</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-export-f">-f</a>
 </li>
@@ -893,25 +832,25 @@
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-all">--all</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-c">--coverage &lt;coverage name&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-c">--coverage</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-g">--grid &lt;grid_name&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-g">--grid</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-l">--list</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-f">--mapproxy-config &lt;path/to/config&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-f">--mapproxy-config</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-s">--seed-conf &lt;seed.yaml&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-s">--seed-conf</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-c">-c &lt;coverage name&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-c">-c</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-f">-f &lt;path/to/config&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-f">-f</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-g">-g &lt;grid_name&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-g">-g</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-l">-l</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-s">-s &lt;seed.yaml&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-grids-s">-s</a>
 </li>
       </ul></li>
       <li>
@@ -920,50 +859,46 @@
       <ul>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-as-res-config">--as-res-config</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-d">--dpi &lt;dpi&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-d">--dpi</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-l">--levels &lt;n&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-l">--levels</a>
 </li>
         <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-res-to-scale">--res-to-scale</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-unit">--unit &lt;m|d&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-unit">--unit</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-d">-d &lt;dpi&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-d">-d</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-l">-l &lt;n&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-scales-l">-l</a>
 </li>
       </ul></li>
       <li>
     mapproxy-util-serve-develop command line option
 
       <ul>
-        <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-bind">--bind</a>
-</li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-b">--bind &lt;address&gt;</a>
+        <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-bind">--bind</a>, <a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-b">[1]</a>
 </li>
         <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-debug">--debug</a>, <a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-debug">[1]</a>
 </li>
-        <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-bind">-b</a>
-</li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-b">-b &lt;address&gt;</a>
+        <li><a href="deployment.html#cmdoption-mapproxy-util-serve-develop-bind">-b</a>, <a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-develop-b">[1]</a>
 </li>
       </ul></li>
       <li>
     mapproxy-util-serve-multiapp-develop command line option
 
       <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-multiapp-develop-b">--bind &lt;address&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-multiapp-develop-b">--bind</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-multiapp-develop-b">-b &lt;address&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-serve-multiapp-develop-b">-b</a>
 </li>
       </ul></li>
       <li>
     mapproxy-util-wms_capabilities command line option
 
       <ul>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-wms_capabilities-host">--host &lt;URL&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-wms_capabilities-host">--host</a>
 </li>
-        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-wms_capabilities-version">--version &lt;versionnumber&gt;</a>
+        <li><a href="mapproxy_util.html#cmdoption-mapproxy-util-wms_capabilities-version">--version</a>
 </li>
       </ul></li>
       <li><a href="configuration.html#index-0">mapproxy.yaml</a>
@@ -1081,11 +1016,11 @@
      
      <br/>
      
-       Last updated on 2021-11-24
+       Last updated on 2023-04-13
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>

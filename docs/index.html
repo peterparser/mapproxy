@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>MapProxy Documentation &#8212; MapProxy 1.14.0 Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MapProxy Documentation &#8212; MapProxy 1.16.0 Docs</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -19,10 +19,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -40,7 +40,7 @@
       <a class="navbar-brand" href="#">
         <span>
           MapProxy</span>
-        <span>1.14.0</span>
+        <span>1.16.0</span>
       </a>
     </div>
     <div class="collapse navbar-collapse nav-collapse">
@@ -65,6 +65,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install_windows.html">Installation on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install_osgeo4w.html">Installation on OSGeo4W</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_docker.html">Installation via Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
@@ -81,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Authentication and Authorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decorate_img.html">Decorate Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Writing plugins</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mapproxy_2.html">MapProxy 2.0</a></li>
 </ul>
 
@@ -88,8 +90,8 @@
       </div>
     <div class="col-md-8">
       
-  <section id="mapproxy-documentation">
-<h1>MapProxy Documentation<a class="headerlink" href="#mapproxy-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="mapproxy-documentation">
+<h1>MapProxy Documentation<a class="headerlink" href="#mapproxy-documentation" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
@@ -112,6 +114,11 @@
 <li class="toctree-l1"><a class="reference internal" href="install_osgeo4w.html">Installation on OSGeo4W</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install_osgeo4w.html#check-installation">Check installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install_osgeo4w.html#unattended-osgeo4w-environment">Unattended OSGeo4W environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install_docker.html">Installation via Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install_docker.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_docker.html#build-your-own-image">Build your own image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
@@ -159,6 +166,7 @@
 <li class="toctree-l2"><a class="reference internal" href="caches.html#redis"><code class="docutils literal notranslate"><span class="pre">redis</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="caches.html#geopackage"><code class="docutils literal notranslate"><span class="pre">geopackage</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="caches.html#s3"><code class="docutils literal notranslate"><span class="pre">s3</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="caches.html#azureblob"><code class="docutils literal notranslate"><span class="pre">azureblob</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="caches.html#compact"><code class="docutils literal notranslate"><span class="pre">compact</span></code></a></li>
 </ul>
 </li>
@@ -204,7 +212,7 @@
 <li class="toctree-l2"><a class="reference internal" href="deployment.html#apache-mod-wsgi">Apache mod_wsgi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment.html#behind-http-server-or-proxy">Behind HTTP server or proxy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment.html#performance">Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deployment.html#load-balancing-and-high-availablity">Load Balancing and High Availablity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#load-balancing-and-high-availability">Load Balancing and High Availability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment.html#logging">Logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment.html#multimapproxy">MultiMapProxy</a></li>
 </ul>
@@ -272,6 +280,17 @@
 <li class="toctree-l2"><a class="reference internal" href="development.html#coding-style-guide">Coding Style Guide</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Writing plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#how-to-add-a-plugin">How to add a plugin ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#adding-a-new-service">Adding a new service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#customizing-layer-metadata-in-yaml-configuration-file">Customizing layer metadata in YAML configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#adding-a-new-source">Adding a new source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#customizing-the-demo-service">Customizing the demo service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#adding-new-commands-to-mapproxy-util">Adding new commands to mapproxy-util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#credits">Credits</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="mapproxy_2.html">MapProxy 2.0</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mapproxy_2.html#grids">Grids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mapproxy_2.html#wms">WMS</a></li>
@@ -280,14 +299,14 @@
 </li>
 </ul>
 </div>
-</section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</section>
+</div>
 
 
     </div>
@@ -304,11 +323,11 @@
      
      <br/>
      
-       Last updated on 2021-11-24
+       Last updated on 2023-04-13
      <br/>
 
      
-       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.
+       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.
      
    </p>
  </div>
