@@ -15,9 +15,11 @@ RUN apt update && apt -y install --no-install-recommends \
   libxml2-dev libxslt-dev && \
   apt-get -y --purge autoremove && \
   apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
-
-RUN mkdir /mapproxy
+  rm -rf /var/lib/apt/lists/* && \
+  groupadd mapproxy && \
+  mkdir -pv /mapproxy/config/cache_data && \
+  useradd --home-dir /mapproxy -s /bin/bash -g mapproxy mapproxy && \
+  chown -R mapproxy:mapproxy /mapproxy
 
 WORKDIR /mapproxy
 
@@ -47,9 +49,9 @@ ENTRYPOINT ["bash", "-c", "./start.sh development"]
 
 FROM base AS nginx
 
-RUN apt update && apt -y install --no-install-recommends nginx gcc
-
 # cleanup
+
+RUN apt update && apt install gcc -y
 RUN apt-get -y --purge autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -57,10 +59,12 @@ RUN apt-get -y --purge autoremove \
 RUN pip install uwsgi && \
     pip cache purge
 
+RUN apt remove gcc -y
+
 COPY uwsgi.conf .
 
-COPY nginx-default.conf /etc/nginx/sites-enabled/default
+EXPOSE 8080
 
-EXPOSE 80
+USER mapproxy
 
 ENTRYPOINT ["bash", "-c", "./start.sh nginx"]
